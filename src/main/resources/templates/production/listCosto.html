@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui.custom.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.tablesorter.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/underscore-min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/backbone-min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listCosto.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="noti" th:include="/common/notification"></section>
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+					<article class="tool">
+						<ul class="acci">
+							<li><div>Opciones</div></li>
+							<li>
+								<a th:href="@{/production/cost/getCosts}">
+									<span class="icon-plus"></span><span>Generar costos</span>
+								</a>
+							</li>
+						</ul>
+						<ul class="rang">
+							<li><div>Busqueda</div></li>
+							<li>
+								<a href="">
+									<span class="icon-search"></span>
+									<input type="text" data-field="inicio" placeholder="Inicio" />
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="icon-search"></span>
+									<input type="text" data-field="fin" placeholder="Fin" />
+								</a>
+							</li>
+						</ul>
+					</article>
+				</section>
+				<section class="cont">
+					<article class="titl">
+						<ul class="subt">
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Ingresos</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="icon-database"></span><span></span>
+								</a>
+							</li>
+						</ul>
+					</article>
+					<article class="list">
+					</article>
+					<script type="text/template" id="template-costos">
+						<table id="list">
+							<thead>
+								<tr>
+									<th><span>#</span></th>
+									<th><span>OT</span></th>
+									<th><span>Item</span></th>
+									<th><span>Costo</span></th>
+									<th><span>Total</span></th>
+								</tr>
+							</thead>
+							<tbody>
+							<% _.each(collection, function(costo, index) { %>
+								<tr>
+									<td><span><%= (index + 1) %></span></td>
+									<td><span><strong><%= costo.plan.codigo %></strong></span></td>
+									<td><span><strong>Insumos:</strong></span></td>
+									<td><span><strong>Costo:</strong></span></td>
+									<td><span></span></td>
+								</tr>
+								<% _.each(costo.plan.pedido.pedidoPreparados, function(ingrediente) { %>
+								<tr>
+									<td><span>#</span></td>
+									<td><span>-</span></td>
+									<td><span><%= ingrediente.descripcion %></span></td>
+									<td><span><%= ingrediente.costo %></span></td>
+									<td><span><%= (ingrediente.costoTotal * costo.plan.pedido.cantidad) %></span></td>
+								</tr>
+								<% }); %>
+								<tr>
+									<td><span>#</span></td>
+									<td><span>-</span></td>
+									<td><span><strong>Maquina:</strong></span></td>
+									<td><span><strong>Costo:</strong></span></td>
+									<td><span></span></td>
+								</tr>
+								<% if (costo.trabajo != null) { %>
+								<tr>
+									<td><span>#</span></td>
+									<td><span>-</span></td>
+									<td><span><%= costo.trabajo.maquina.descripcion %></span></td>
+									<td><span><%= costo.trabajo.maquina.costo %></span></td>
+									<td><span><%= (costo.trabajo.maquina.costo * costo.trabajo.horas) %></span></td>
+								</tr>
+								<% } else { %>
+								<tr>
+									<td><span>#</span></td>
+									<td><span>-</span></td>
+									<td><span>Ninguna maquina registrada</span></td>
+									<td><span>-</span></td>
+									<td><span></span></td>
+								</tr>
+								<% } %>
+								<tr>
+									<td><span>#</span></td>
+									<td><span>-</span></td>
+									<td><span><strong>Operario: </strong></span></td>
+									<td><span><strong>Costo:</strong></span></td>
+									<td><span></span></td>
+								</tr>
+								<% if (costo.plan.planProducidos.length > 0) { %>
+								<% _.each(costo.plan.planProducidos, function(producido) { %>
+								<tr>
+									<td><span>#</span></td>
+									<td><span>-</span></td>
+									<td><span><%= producido.personal.apellidos %>, <%= producido.personal.nombres %></span></td>
+									<td><span><%= producido.personal.costo %></span></td>
+									<td><span><%= (producido.personal.costo * producido.horas) %></span></td>
+								</tr>
+								<% }); %>
+								<% } else { %>
+								<tr>
+									<td><span>#</span></td>
+									<td><span>-</span></td>
+									<td><span>Ningun operario registrado</span></td>
+									<td><span>-</span></td>
+									<td><span></span></td>
+								</tr>
+								<% } %>
+							<% }); %>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="5"><span></span></td>
+								</tr>
+							</tfoot>
+						</table>
+					</script>
+				</section>
+				<section class="hidd">
+					<a th:href="@{/production/card/form}" id="documentView" >fallback</a>
+					<a th:href="@{/production/card/action/delete/document}" id="documentDelete" >fallback</a>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>

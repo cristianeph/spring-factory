@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Login</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<style type="text/css">
+		
+		strong{
+			font-weight: bold !important;
+		}
+		a{
+			font-size: inherit;
+			font-family: inherit;
+			text-decoration: none;
+			color: #EA774D;
+			transition: all 0.6s;
+		}
+		a:hover{
+			color: #EA774D;
+		}
+		a.sele{
+			color: #F7E7E0;
+			text-shadow: 0em 0em 1.0em #F7E7E0;
+		}
+		input{
+			font-size: inherit;
+			font-family: inherit;
+			outline: 0px;
+		}
+		input[type="radio"]{
+			width: 1.5em;
+			height: 1.5em;
+			margin: 1em 0em;
+		}
+		input[type="submit"],input[type="file"]{
+			font-family: inherit;
+			font-weight: 400;
+			background-color: #53B853;
+			padding: 0.4em 0.6em;
+			border: solid 0px #dddddd;
+			color: inherit;
+			border-radius: 0.3em 0.3em;
+			box-shadow: 0em 0em 0.1em 0.1em rgba(0, 0, 0, 0.1);
+			cursor: pointer;
+		}
+		input[type="text"], input[type="password"]{
+			min-width: 12em;
+			line-height: 1.5em;
+			padding: 1em 0.5em;
+			border-top: 0px solid #FFF;
+			border-left: 0px solid #FFF;
+			border-right: 0px solid #FFF;
+			border-bottom: 1px dotted #BEBEBE;
+			transition: all 1s;
+		}
+		input[type="text"]:focus, input[type="password"]:focus{
+			border-bottom: 1px dotted #EA774D;
+			background-color: #F7E7E0;
+		}
+		input[disabled="disabled"]{
+			background-color: whitesmoke;
+		}
+		select{
+			border: none;
+			font-size: inherit;
+			color: inherit;
+			background-color: transparent;
+			margin: 0em;
+			padding: 0em;
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+		div label{
+			display: block;
+			padding: 1em 1em;
+			line-height: 1.5em;
+			width: 8em;
+			float: left; 
+		}
+		div input{
+			display: block;
+			float: left;
+			width: calc(100% - 11em);
+		}
+		form{
+			display: block;
+			padding: 1em;
+			width: calc(400px - 2em);
+			margin: 0 auto;
+		}
+		form div{
+			overflow: hidden;
+			padding-bottom: 1em;
+		}
+		button{
+			display: block;
+			float: left;
+			padding: 1em;
+			background-color: #5C4A45;
+			border: solid 0 transparent;
+			color: white;
+		}
+		</style>
+	</head>
+	<body>
+		<section class="main">
+			<form th:action="@{/login}" method="post">
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+				<div>
+					<label for="usuario">Usuario</label>
+					<input type="text" name="usuario" id="usuario" required="required" autofocus="autofocus" />
+				</div>
+				<div>
+					<label for="password">Password</label>
+					<input type="password" name="password" id="password" required="required" />
+				</div>
+				<div>
+					<button type="submit">Ingresar</button>
+				</div>
+			</form>
+		</section>
+	</body>
+</html>

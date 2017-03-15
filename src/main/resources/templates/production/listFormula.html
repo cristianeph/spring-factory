@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.tablesorter.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listFormula.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="noti" th:include="/common/notification"></section>
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+					<article class="tool">
+						<ul class="acci">
+							<li><div>Opciones</div></li>
+							<li>
+								<a th:href="@{/production/formula/form}">
+									<span class="icon-plus"></span><span>Nueva Formula</span>
+								</a>
+							</li>
+						</ul>
+						<ul class="reco">
+							<li><div>Registros</div></li>
+							<li>
+								<a th:href="@{/production/formula/action/all}" data-operation="getAll" data-quantity="1">
+									<span class="icon-search"></span>
+									<select>
+										<option value="">Registros</option>
+										<option value="1">Ultimo registro</option>
+										<option value="25">25 registros</option>
+										<option value="50">50 registros</option>
+										<option value="100">100 registros</option>
+										<option value="0">Todos</option>
+									</select> 
+								</a>
+							</li>
+						</ul>
+						<ul class="filt">
+							<li><div>Filtro</div></li>
+							<li>
+								<a href="#">
+									<span class="icon-search"></span>
+									<input type="text" class="filt" placeholder="Criterio" />
+								</a>
+							</li>
+						</ul>
+					</article>
+				</section>
+				<section class="cont">
+					<article class="titl">
+						<ul class="subt">
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Formula</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="icon-database"></span><span></span>
+								</a>
+							</li>
+						</ul>
+					</article>
+					<article class="list">
+						<table id="list">
+							<thead>
+								<tr>
+									<th><span>#</span></th>
+									<th><span>Codigo</span></th>
+									<th><span>Nombre</span></th>
+									<th><span>Fecha</span></th>
+									<th class="qopt"><span class="icon-pencil2"></span></th>
+									<th class="qopt"><span class="icon-pencil2"></span></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+							<tfoot>
+								<tr>
+									<td colspan="6"><span></span></td>
+								</tr>
+							</tfoot>
+						</table>
+					</article>
+				</section>
+				<section class="hidd">
+					<a th:href="@{/production/formula/form}" id="documentView" >fallback</a>
+					<a th:href="@{/production/formula/action/delete/document}" id="documentDelete" >fallback</a>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui.custom.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.tablesorter.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/underscore-min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/backbone-min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listIndicador.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="noti" th:include="/common/notification"></section>
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+					<article class="tool">
+						<ul class="acci">
+							<li><div>Indicadores</div></li>
+							<li>
+								<a data-operation="indicatorAvance" th:href="@{/production/indicador/get/avance}">
+									<span class="icon-plus"></span><span>Avance Pedidos</span>
+								</a>
+							</li>
+							<li>
+								<a data-operation="indicatorProductividad" th:href="@{/production/indicador/get/productividad}">
+									<span class="icon-plus"></span><span>Productividad Operario</span>
+								</a>
+							</li>
+							<li>
+								<a data-operation="indicatorIncidencia" th:href="@{/production/indicador/get/incidencia}">
+									<span class="icon-plus"></span><span>Incidencias</span>
+								</a>
+							</li>
+							<li>
+								<a data-operation="indicatorMerma" th:href="@{/production/indicador/get/merma}">
+									<span class="icon-plus"></span><span>Merma por Pedido</span>
+								</a>
+							</li>
+							<li>
+								<a data-operation="indicatorRechazo" th:href="@{/production/indicador/get/rechazo}">
+									<span class="icon-plus"></span><span>Rechazos</span>
+								</a>
+							</li>
+						</ul>
+						<ul class="rang">
+							<li><div>Busqueda</div></li>
+							<li>
+								<a href="">
+									<span class="icon-search"></span>
+									<input type="text" data-field="inicio" placeholder="Inicio" />
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="icon-search"></span>
+									<input type="text" data-field="fin" placeholder="Fin" />
+								</a>
+							</li>
+						</ul>
+					</article>
+				</section>
+				<section class="cont">
+					<article class="titl">
+						<ul class="subt">
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Indicadores</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="icon-database"></span><span></span>
+								</a>
+							</li>
+						</ul>
+					</article>
+					<article class="list">
+					</article>
+					<script type="text/template" id="template-avance">
+						<table id="list">
+							<thead>
+								<tr>
+									<th><span>#</span></th>
+									<th><span>Pedido</span></th>
+									<th><span>Cantidad requerida</span></th>
+									<th><span>Fecha</span></th>
+									<th><span>Orden</span></th>
+									<th><span>Estado</span></th>
+								</tr>
+							</thead>
+							<tbody>
+							<% _.each(collection, function(avance, index) { %>
+								<tr>
+									<td><span><%= (index + 1) %></span></td>
+									<td><span><%= avance.pedido.codigo %></span></td>
+									<td><span><%= avance.pedido.cantidad %></span></td>
+									<td><span><%= avance.pedido.fecha %></span></td>
+									<td><span><%= (avance.plan != null) ? avance.plan.codigo : null %></span></td>
+
+									<% if (avance.plan == null) { %>
+									<td><span>0%</span></td>
+									<% } else { %>
+
+									<% if(avance.plan != null && avance.plan.planProducidos.length > 0){ %>
+
+									<% if(avance.trabajo != null){ %>
+									<td><span>100%</span></td>
+									<% } else {%>
+									<td><span>70%</span></td>
+									<% } %>
+
+									<% } else {%>
+									<td><span>40%</span></td>
+									<% } %>
+
+									<% } %>
+								</tr>
+							<% }); %>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="4"><span></span></td>
+								</tr>
+							</tfoot>
+						</table>
+					</script>
+					<script type="text/template" id="template-productividad">
+						<table id="list">
+							<thead>
+								<tr>
+									<th><span>#</span></th>
+									<th><span>Pedido</span></th>
+									<th><span>Operario</span></th>
+									<th><span>Horas trabajadas</span></th>
+									<th><span>Costo horas</span></th>
+								</tr>
+							</thead>
+							<tbody>
+							<% _.each(collection, function(productividad, index) { %>
+								<% if (productividad.planProducidos.length > 0) { %>
+								<tr>
+									<td><span>#</span></td>
+									<td><span><%= productividad.pedido.codigo %></span></td>
+									<td><span></span></td>
+									<td><span></span></td>
+									<td><span></span></td>
+								</tr>
+
+								<% _.each(productividad.planProducidos, function(detail, index) { %>
+								<tr>
+									<td><span><%= (index + 1) %></span></td>
+									<td><span>-</span></td>
+									<td><span><%= detail.personal.apellidos %>, <%= detail.personal.nombres %></span></td>
+									<td><span><%= detail.horas %></span></td>
+									<td><span><%= (detail.personal.costo * detail.horas) %></span></td>
+								</tr>
+								<% }); %>
+
+								<% } %>
+							<% }); %>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="4"><span></span></td>
+								</tr>
+							</tfoot>
+						</table>
+					</script>
+					<script type="text/template" id="template-incidencia">
+						<table id="list">
+							<thead>
+								<tr>
+									<th><span>#</span></th>
+									<th><span>Orden</span></th>
+									<th><span>Pedido</span></th>
+									<th><span>Incidencia</span></th>
+								</tr>
+							</thead>
+							<tbody>
+							<% _.each(collection, function(incidencia, index) { %>
+								<% if (incidencia.incidencias != "") { %>
+								<tr>
+									<td><span><%= (index + 1) %></span></td>
+									<td><span><%= incidencia.plan.codigo %></span></td>
+									<td><span><%= incidencia.plan.pedido.codigo %></span></td>
+									<td><span><%= incidencia.incidencias %></span></td>
+								</tr>
+								<% } %>
+							<% }); %>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="4"><span></span></td>
+								</tr>
+							</tfoot>
+						</table>
+					</script>
+					<script type="text/template" id="template-merma">
+						<table id="list">
+							<thead>
+								<tr>
+									<th><span>#</span></th>
+									<th><span>Orden</span></th>
+									<th><span>Pedido</span></th>
+									<th><span>Unidades requeridas</span></th>
+									<th><span>Merma</span></th>
+								</tr>
+							</thead>
+							<tbody>
+							<% _.each(collection, function(merma, index) { %>
+								<tr>
+									<td><span><%= (index + 1) %></span></td>
+									<td><span><%= merma.plan.codigo %></span></td>
+									<td><span><%= merma.plan.pedido.codigo %></span></td>
+									<td><span><%= merma.plan.pedido.cantidad %></span></td>
+									<td><span><%= merma.merma %></span></td>
+								</tr>
+							<% }); %>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="4"><span></span></td>
+								</tr>
+							</tfoot>
+						</table>
+					</script>
+					<script type="text/template" id="template-rechazo">
+						<table id="list">
+							<thead>
+								<tr>
+									<th><span>#</span></th>
+									<th><span>Orden</span></th>
+									<th><span>Pedido</span></th>
+									<th><span>Estado</span></th>
+								</tr>
+							</thead>
+							<tbody>
+							<% _.each(collection, function(rechazo, index) { %>
+								<tr>
+									<td><span><%= (index + 1) %></span></td>
+									<td><span><%= rechazo.codigo %></span></td>
+									<td><span><%= rechazo.pedido.codigo %></span></td>
+									<td><span><%= rechazo.estado %></span></td>
+								</tr>
+							<% }); %>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="4"><span></span></td>
+								</tr>
+							</tfoot>
+						</table>
+					</script>
+				</section>
+				<section class="hidd">
+					<a th:href="@{/production/card/form}" id="documentView" >fallback</a>
+					<a th:href="@{/production/card/action/delete/document}" id="documentDelete" >fallback</a>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>

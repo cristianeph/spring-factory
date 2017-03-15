@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+				</section>
+				<section class="cont">
+				</section>
+			</section>
+		</section>
+	</body>
+</html>

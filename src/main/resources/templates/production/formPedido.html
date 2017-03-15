@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui-timepicker-addon.min.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui.custom.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui-timepicker-addon.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/form.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formPedido.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="noti" th:include="/common/notification"></section>
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="moda" th:include="/common/modal"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+					<article class="tool">
+						<ul class="acci">
+							<li><div>Opciones</div></li>
+							<li>
+								<a href="#" data-operation="grabarDocumento">
+									<span class="icon-floppy-disk"></span><span>Grabar Pedido</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+				</section>
+				<section class="cont">
+					<article class="titl">
+						<ul class="subt">
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Pedido</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+					<article class="form">
+						<section class="docu">
+							<div><strong>Datos del Pedido</strong></div>
+							<div> 
+								<input type="hidden" id="pedido.id" disabled="disabled" /> 
+								
+								<label for="pedido.codigo">Codigo</label> 
+								<input type="text" id="pedido.codigo" />
+								
+								<label for="pedido.fecha">Fecha</label> 
+								<input type="text" id="pedido.fecha" />
+							</div>
+							<div>
+								<label for="pedido.cantidad">Cantidad</label> 
+								<input type="text" id="pedido.cantidad" />
+								
+								<label for="pedido.producto">Producto</label> 
+								<input type="text" id="pedido.producto" disabled="disabled" data-reference="" /> 
+								<a th:href="@{/production/producto/action/all}" 
+									data-operation="cambiar"  
+									data-entity="producto" 
+									data-property="descripcion"
+									data-element="pedido.producto"
+									data-title="Busqueda de Producto">
+									<span class="icon-pencil"></span> Cambiar
+								</a>
+							</div>
+							<div>
+								<label for="pedido.cliente">Cliente</label> 
+								<input type="text" id="pedido.cliente" disabled="disabled" data-reference="" /> 
+								<a th:href="@{/production/cliente/action/all}" 
+									data-operation="cambiar"  
+									data-entity="cliente" 
+									data-property="razonsocial"
+									data-element="pedido.cliente"
+									data-title="Busqueda de Cliente">
+									<span class="icon-pencil"></span> Cambiar
+								</a>
+							</div>
+						</section>
+					</article>
+				</section>
+				<section class="hidd">
+					<a th:href="@{/production/pedido/action/save}" id="documentSave"></a>
+					<a th:href="@{/production/pedido/action/find}" id="documentView"></a>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>

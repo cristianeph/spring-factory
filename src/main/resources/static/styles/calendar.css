@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+#cale-home{
+	width: 100%;
+	margin: 0 auto;
+}
+.fc-scroller.fc-day-grid-container{
+	overflow: hidden !important;
+}
+div.fc-view-container{
+	background-color: white;
+}
+th.fc-day-header.fc-widget-header{
+	font-weight: 400;
+	color: black;
+	text-transform: capitalize;
+	padding: 1em 0em;
+	border-color: transparent;
+	/*background-color: whitesmoke;*/
+}
+.fc-day.fc-widget-content.fc-sat{
+	background-color: whitesmoke;
+}
+.fc-day.fc-widget-content.fc-sun{
+	background-color: whitesmoke;
+}
+div.fc-center{
+	text-transform: capitalize;
+	color: white;
+}
+
+div.fc-center h2{
+	display: block;
+	padding: 1em;
+}

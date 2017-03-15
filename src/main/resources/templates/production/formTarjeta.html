@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui-timepicker-addon.min.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui.custom.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui-timepicker-addon.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/form.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formTarjeta.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="noti" th:include="/common/notification"></section>
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="moda" th:include="/common/modal"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+					<article class="tool">
+						<ul class="acci">
+							<li><div>Opciones</div></li>
+							<li>
+								<a href="#" data-operation="grabarDocumento">
+									<span class="icon-floppy-disk"></span><span>Grabar Tarjeta</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" data-operation="grabarDetalle">
+									<span class="icon-plus"></span><span>Guardar detalle</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+				</section>
+				<section class="cont">
+					<article class="titl">
+						<ul class="subt">
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Tarjeta de Horario</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+					<article class="form">
+						<section class="docu">
+							<div><strong>Datos de la Tarjeta de horario</strong></div>
+							<div> 
+								<input type="hidden" id="tarjeta.id" disabled="disabled" /> 
+							</div>
+						</section>
+					</article>
+					
+					<article class="form deta">
+						<section class="docu">
+							<div><strong>Datos del detalle</strong></div>
+							<div>
+								<input type="hidden" id="tarjetadetalle.id" disabled="disabled" />
+								
+								<label for="tarjetadetalle.item">Item</label> 
+								<input type="text" id="tarjetadetalle.item" disabled="disabled" />
+								
+								<label for="tarjetadetalle.horas">Horas trabajadas</label> 
+								<input type="text" id="tarjetadetalle.horas" />
+							</div>
+							<div>
+								<label for="tarjetadetalle.cantidad">Unidades producidas</label> 
+								<input type="text" id="tarjetadetalle.cantidad" />
+								
+								<label for="tarjetadetalle.comentarios">Comentarios</label> 
+								<input type="text" id="tarjetadetalle.comentarios" />
+							</div>
+							<div>
+								<label for="tarjetadetalle.merma">Merma Producida</label> 
+								<input type="text" id="tarjetadetalle.merma" />
+								
+								<label for="tarjetadetalle.incidencias">Incidencias</label> 
+								<input type="text" id="tarjetadetalle.incidencias" disabled="disabled" />
+							</div>
+							<div>
+								<label for="tarjetadetalle.plan">Orden de Trabajo</label> 
+								<input type="text" id="tarjetadetalle.plan" disabled="disabled" data-reference="" /> 
+								<a th:href="@{/production/plan/action/all}" 
+									data-operation="cambiar"  
+									data-entity="plan" 
+									data-property="codigo"
+									data-element="tarjetadetalle.plan"
+									data-title="Busqueda de Plan de Produccion">
+									<span class="icon-pencil"></span> Cambiar
+								</a>
+							</div>
+							<div>
+								<label for="tarjetadetalle.maquina">Maquina</label> 
+								<input type="text" id="tarjetadetalle.maquina" disabled="disabled" data-reference="" /> 
+								<a th:href="@{/production/maquina/action/all}" 
+									data-operation="cambiar"  
+									data-entity="maquina" 
+									data-property="descripcion"
+									data-element="tarjetadetalle.maquina"
+									data-title="Busqueda de Maquina">
+									<span class="icon-pencil"></span> Cambiar
+								</a>
+							</div>
+							<div>
+								<label for="tarjetadetalle.actividad">Actividad</label> 
+								<input type="text" id="tarjetadetalle.actividad" disabled="disabled" data-reference="" /> 
+								<a th:href="@{/production/actividad/action/all}" 
+									data-operation="cambiar"  
+									data-entity="actividad" 
+									data-property="descripcion"
+									data-element="tarjetadetalle.actividad"
+									data-title="Busqueda de Actividad">
+									<span class="icon-pencil"></span> Cambiar
+								</a>
+							</div>
+						</section>
+					</article>
+					
+					<article class="form list">
+						<section>
+							<table>
+								<caption><strong>Detalle de la Tarjeta de horario</strong></caption>
+								<thead>
+									<tr>
+										<th><span>#</span></th>
+										<th><span>Plan de produccion</span></th>
+										<th><span>Maquina</span></th>
+										<th><span>Actividad</span></th>
+										<th><span>Horas trabajadas</span></th>
+										<th><span>Unidades producidas</span></th>
+										<th><span>Merma producida</span></th>
+										<th><span>Comentarios</span></th>
+										<th><span>Incidencias</span></th>
+										<th class="qopt"><span class="icon-pencil2"></span></th>
+										<th class="qopt"><span class="icon-pencil2"></span></th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+								<tfoot>
+									<tr>
+										<td colspan="9"><span>Total de resultados: </span></td>
+									</tr>
+								</tfoot>
+							</table>
+						</section>
+					</article>
+				</section>
+				<section class="hidd">
+					<a th:href="@{/production/card/action/save}" id="documentSave"></a>
+					<a th:href="@{/production/card/action/find}" id="documentView"></a>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>

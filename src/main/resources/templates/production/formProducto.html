@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui-timepicker-addon.min.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui.custom.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui-timepicker-addon.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/form.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formProducto.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="noti" th:include="/common/notification"></section>
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="moda" th:include="/common/modal"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+					<article class="tool">
+						<ul class="acci">
+							<li><div>Opciones</div></li>
+							<li>
+								<a href="#" data-operation="grabarDocumento">
+									<span class="icon-floppy-disk"></span><span>Grabar Producto</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+				</section>
+				<section class="cont">
+					<article class="titl">
+						<ul class="subt">
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Producto</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+					<article class="form">
+						<section class="docu">
+							<div><strong>Datos de la Formula</strong></div>
+							<div>
+								<input type="hidden" id="producto.id" disabled="disabled" />
+								
+								<label for="producto.descripcion">Descripcion</label> 
+								<input type="text" id="producto.descripcion" /> 
+							</div>
+							<div>
+								<label for="producto.formula">Formula</label> 
+								<input type="text" id="producto.formula" disabled="disabled" data-reference="" /> 
+								<a th:href="@{/production/formula/action/all}" 
+									data-operation="cambiar"  
+									data-entity="formula" 
+									data-property="codigo"
+									data-element="producto.formula"
+									data-title="Busqueda de Producto">
+									<span class="icon-pencil"></span> Cambiar
+								</a>
+							</div>
+						</section>
+					</article>
+				</section>
+				<section class="hidd">
+					<a th:href="@{/production/producto/action/save}" id="documentSave"></a>
+					<a th:href="@{/production/producto/action/find}" id="documentView"></a>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>

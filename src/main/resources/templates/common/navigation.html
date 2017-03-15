@@ -1,0 +1,14 @@
+<section class="logo">
+	<ul>
+		<li><div></div></li>
+		<li><a href="#">PRD</a></li>
+	</ul>
+</section>
+<section class="navi">
+	<ul>
+		<li><a th:href="@{/logout}" class="nose"><span class="icon-switch"></span><span> Salir</span></a></li>
+		<li><a href="#" class="nose"><span class="icon-user"></span><span th:inline="text"> [[${#httpServletRequest.remoteUser}]]</span></a></li>
+		<li><a th:href="@{/production/home}" class="nose"><span>Produccion</span></a></li>
+		<li><a th:href="@{/}" class="nose"><span class="icon-home"></span></a></li>
+	</ul>
+</section>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/jquery-ui-timepicker-addon.min.css}"/>
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui.custom.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-ui-timepicker-addon.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/form.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formFormula.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="noti" th:include="/common/notification"></section>
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="moda" th:include="/common/modal"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+					<article class="tool">
+						<ul class="acci">
+							<li><div>Opciones</div></li>
+							<li>
+								<a href="#" data-operation="grabarDocumento">
+									<span class="icon-floppy-disk"></span><span>Grabar Formula</span>
+								</a>
+							</li>
+							<li>
+								<a href="#" data-operation="grabarDetalle">
+									<span class="icon-plus"></span><span>Guardar detalle</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+				</section>
+				<section class="cont">
+					<article class="titl">
+						<ul class="subt">
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Formula</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+					<article class="form">
+						<section class="docu">
+							<div><strong>Datos de la Formula</strong></div>
+							<div>
+								<input type="hidden" id="formula.id" disabled="disabled" />
+								
+								<label for="formula.codigo">Codigo</label> 
+								<input type="text" id="formula.codigo" /> 
+							</div>
+							<div>
+								<label for="formula.fecha">Fecha</label> 
+								<input type="text" id="formula.fecha" />
+							
+								<label for="formula.nombre">Nombre</label> 
+								<input type="text" id="formula.nombre" />
+							</div>
+						</section>
+					</article>
+					
+					<article class="form deta">
+						<section class="docu">
+							<div><strong>Datos del detalle</strong></div>
+							<div>
+								<input type="hidden" id="formulaingredientes.id" disabled="disabled" />
+								 
+								<input type="hidden" id="formulaingredientes.item" disabled="disabled" />
+								
+								<label for="formulaingredientes.cantidad">Cantidad</label> 
+								<input type="text" id="formulaingredientes.cantidad" />
+							
+								<label for="formulaingredientes.insumo">Insumo</label> 
+								<input type="text" id="formulaingredientes.insumo" disabled="disabled" data-reference="" /> 
+								<a th:href="@{/production/insumo/action/all}" 
+									data-operation="cambiar"  
+									data-entity="insumo" 
+									data-property="descripcion"
+									data-element="formulaingredientes.insumo"
+									data-title="Busqueda de Insumo">
+									<span class="icon-pencil"></span> Cambiar
+								</a>
+							</div>
+						</section>
+					</article>
+					
+					<article class="form list">
+						<section>
+							<table>
+								<caption><strong>Detalle de la Formula</strong></caption>
+								<thead>
+									<tr>
+										<th><span>#</span></th>
+										<th><span>Insumo</span></th>
+										<th><span>Cantidad</span></th>
+										<th class="qopt"><span class="icon-pencil2"></span></th>
+										<th class="qopt"><span class="icon-pencil2"></span></th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+								<tfoot>
+									<tr>
+										<td colspan="6"><span>Total de resultados: </span></td>
+									</tr>
+								</tfoot>
+							</table>
+						</section>
+					</article>
+				</section>
+				<section class="hidd">
+					<a th:href="@{/production/formula/action/save}" id="documentSave"></a>
+					<a th:href="@{/production/formula/action/find}" id="documentView"></a>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>
