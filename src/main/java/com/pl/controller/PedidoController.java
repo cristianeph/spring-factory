@@ -5,8 +5,11 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pl.model.IngredienteModel;
@@ -131,11 +134,16 @@ public class PedidoController {
 	
 	@RequestMapping("/production/pedido/action/all")
 	Iterable<PedidoModel> findAll(@RequestBody PedidoModel pedido){
-		
 		Iterable<PedidoModel> pedidoModels = this.pedidoService.findAll(pedido);
-		
 		return pedidoModels;
-		
+	}
+	
+	@RequestMapping(
+			value = "/api/production/pedido", 
+			params = {"page", "size"},
+			method = RequestMethod.POST)
+	Iterable<PedidoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
+		return this.pedidoService.getAll(new PageRequest((page-1), size));
 	}
 
 }

@@ -10,13 +10,9 @@
 		<link rel="stylesheet" th:href="@{/styles/style.css}" />
 		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
-		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/jquery.tablesorter.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/listProducto.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listOrdentrabajo.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -81,12 +77,23 @@
 							<thead>
 								<tr>
 									<th><span>#</span></th>
-									<th><span>Descripcion</span></th>
+									<th><span>Horas</span></th>
+									<th><span>Cantidad</span></th>
+									<th><span>Incidencias</span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
-							<tbody></tbody>
+							<tbody>
+								<tr v-for="item in jobs">
+									<td><span>{{item.id}}</span></td>
+									<td><span>{{item.horas}}</span></td>
+									<td><span>{{item.cantidad}}</span></td>
+									<td><span>{{item.incidencias}}</span></td>
+									<td><span class="icon-pencil2"></span></td>
+									<td><span class="icon-pencil2"></span></td>
+								</tr>
+							</tbody>
 							<tfoot>
 								<tr>
 									<td colspan="6"><span></span></td>

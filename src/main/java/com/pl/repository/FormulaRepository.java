@@ -1,5 +1,6 @@
 package com.pl.repository;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.Repository;
 
@@ -10,6 +11,6 @@ public interface FormulaRepository extends Repository<FormulaModel, Long>{
 	FormulaModel save(FormulaModel tarjeta);
 	void deleteById(Integer id);
 	FormulaModel findById(Integer id);
-	Iterable<FormulaModel> findAll(Pageable page);
+	Page<FormulaModel> findAll(Pageable page);
 
 }

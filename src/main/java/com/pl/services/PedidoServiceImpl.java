@@ -109,4 +109,9 @@ public class PedidoServiceImpl implements PedidoService{
 		
 	}
 
+	@Override
+	public Page<PedidoModel> getAll(PageRequest page) {
+		return this.pedidoRepository.findAll(page);
+	}
+
 }

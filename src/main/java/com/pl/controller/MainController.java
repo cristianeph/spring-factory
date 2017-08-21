@@ -80,9 +80,9 @@ public class MainController {
 	public String productionOrdenTrabajoList(){
 		return "production/listOrdentrabajo";
 	}
-	@RequestMapping("/production/avance/list")
+	@RequestMapping("/production/avancepedido/list")
 	public String productionAvanceList(){
-		return "production/listAvance";
+		return "production/listAvancepedido";
 	}
 	@RequestMapping("/production/pedido/list")
 	public String productionPedidoList(){

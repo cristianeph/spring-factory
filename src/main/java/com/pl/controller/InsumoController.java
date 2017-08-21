@@ -48,9 +48,9 @@ public class InsumoController {
 	}
 	
 	@RequestMapping(
-			value="/api/production/insumo", 
-			params={"page", "size"},
-			method=RequestMethod.POST)
+		value = "/api/production/insumo", 
+		params = {"page", "size"},
+		method = RequestMethod.POST)
 	Iterable<InsumoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
 		return this.insumoService.getAll(new PageRequest((page - 1), size));
 	}

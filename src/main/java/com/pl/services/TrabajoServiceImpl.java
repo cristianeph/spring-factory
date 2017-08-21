@@ -131,4 +131,9 @@ public class TrabajoServiceImpl implements TrabajoService{
 		
 	}
 
+	@Override
+	public Page<TrabajoModel> getAll(PageRequest page) {
+		return this.trabajoRepository.findAll(page);
+	}
+
 }

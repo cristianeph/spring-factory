@@ -82,9 +82,7 @@ public class InsumoServiceImpl implements InsumoService{
 
 	@Override
 	public Page<InsumoModel> getAll(PageRequest page) {
-		Page<InsumoModel> insumos = this.insumoRepository.findAll(page);
-		System.out.println("Se encuentran" + insumos.getContent().size());
-		return insumos;
+		return this.insumoRepository.findAll(page);
 	}
 
 }

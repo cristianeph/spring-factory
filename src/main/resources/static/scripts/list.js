@@ -81,19 +81,17 @@ function retrieveData(entity, action){
 		console.log(entity);
 		
 		getData(action, entity)
-			.done(function(data){
-				
+			.onload = function(){
+				var data = JSON.parse(this.responseText);
 				console.log(data);
 				console.log("el servidor respondio sin problemas");
 				updateLista(data);
 				showNotification();
 				
-			})
+			}/*
 			.fail(function(data){
-				
 				console.log("el servidor tiene problemas para responder la peticion");
-				
-			});
+			});*/
 	
 	}, 1000);
 	

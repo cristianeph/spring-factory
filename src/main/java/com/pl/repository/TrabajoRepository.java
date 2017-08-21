@@ -15,7 +15,7 @@ public interface TrabajoRepository extends Repository<TrabajoModel, Long>{
 	TrabajoModel save(TrabajoModel trabajo);
 	TrabajoModel deleteById(Integer id);
 	TrabajoModel findById(Integer id);
-	Iterable<TrabajoModel> findAll(Pageable page);
+	Page<TrabajoModel> findAll(Pageable page);
 	
 	@Query("SELECT t FROM TrabajoModel t INNER JOIN t.plan p WHERE p.id = :id")
 	Page<TrabajoModel> findByPlanId(Pageable page, @Param("id") Integer id);

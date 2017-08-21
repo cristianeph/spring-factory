@@ -105,4 +105,9 @@ public class FormulaServiceImpl implements FormulaService{
 		
 	}
 
+	@Override
+	public Page<FormulaModel> getAll(PageRequest page) {
+		return this.formulaRepository.findAll(page);
+	}
+
 }

@@ -15,7 +15,7 @@ public interface PedidoRepository extends Repository<PedidoModel, Long>{
 	PedidoModel save(PedidoModel plan);
 	PedidoModel deleteById(Integer id);
 	PedidoModel findById(Integer id);
-	Iterable<PedidoModel> findAll(Pageable page);
+	Page<PedidoModel> findAll(Pageable page);
 
 	@Query("SELECT p FROM PedidoModel p WHERE p.fecha BETWEEN :start AND :end ORDER BY p.id DESC")
 	Page<PedidoModel> findAllBetweenFecha(Pageable page, @Param("start") Date start, @Param("end") Date end);

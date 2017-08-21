@@ -57,13 +57,13 @@ function deleteDocument(event){
 		console.log(action.split("/")[6]);
 		console.log(row);
 		
-		getData(action, null).done(function(data){
-			
+		getData(action).onload = function(){
+			var response = JSON.parse(this.responseText);
 			console.log("termino de eliminar el objeto");
-			console.log(row);
-			$("#list tbody tr[data-code='" + row + "']").remove();
+			console.log(response);
+			$("#list tbody tr[data-code='" + response + "']").remove();
 			
-		});
+		};
 		
 	}
 	
