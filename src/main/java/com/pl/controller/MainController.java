@@ -24,14 +24,6 @@ public class MainController {
 	public String productionHome(){
 		return "production/home";
 	}
-	@RequestMapping("/production/pedido/list")
-	public String productionPedidoList(){
-		return "production/listPedido";
-	}
-	@RequestMapping("/production/pedido/form")
-	public String productionPedidoForm(){
-		return "production/formPedido";
-	}
 	@RequestMapping("/production/plan/validate/list")
 	public String productionValPlanList(){
 		return "production/listValidatePlan";
@@ -64,13 +56,41 @@ public class MainController {
 	public String productionFormulaForm(){
 		return "production/formFormula";
 	}
+	@RequestMapping("/production/producto/form")
+	public String productionProductForm(){
+		return "production/formProducto";
+	}
 	@RequestMapping("/production/producto/list")
 	public String productionProductList(){
 		return "production/listProducto";
 	}
-	@RequestMapping("/production/producto/form")
-	public String productionProductForm(){
-		return "production/formProducto";
+	@RequestMapping("/production/insumo/list")
+	public String productionInsumoList(){
+		return "production/listInsumo";
+	}
+	@RequestMapping("/production/solicitud/list")
+	public String productionSolicitudList(){
+		return "production/listSolicitud";
+	}
+	@RequestMapping("/production/solicitudformula/list")
+	public String productionSolicitudformulaList(){
+		return "production/listSolicitudformula";
+	}
+	@RequestMapping("/production/ordentrabajo/list")
+	public String productionOrdenTrabajoList(){
+		return "production/listOrdentrabajo";
+	}
+	@RequestMapping("/production/avance/list")
+	public String productionAvanceList(){
+		return "production/listAvance";
+	}
+	@RequestMapping("/production/pedido/list")
+	public String productionPedidoList(){
+		return "production/listPedido";
+	}
+	@RequestMapping("/production/pedido/form")
+	public String productionPedidoForm(){
+		return "production/formPedido";
 	}
 	
 	@RequestMapping("/production/costo/list")

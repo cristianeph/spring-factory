@@ -2,68 +2,42 @@
  * 
  */
 $(document).ready(function($){
-	
 	$("#list").tablesorter();
-	
 	$(".busq input").on("keyup", function(e){
-		
 		if(e.keyCode == 13){
-			
 			console.log("se cancelo el enter!");
 			return false;
-			
 		}else{
-
 			var value = $(this).val();
 			var action = $(this).parent().attr("href");
 			var field = $(this).attr("data-field");
-			
 			entity[field] = value;
-			
 			clearTimeout(delay);
-			
 			delay = setTimeout(function(){
-				
 				retrieveData(entity, action);
-				
 			},1000);
-		
 		}
-		
 	});
 	
 	$(".reco select").change(function(){
-
 		var action = $(this).parent().attr("href");
 		var value = $(this).val();
-		
 		if(value != ""){
-			
 			entity["rows"] = parseInt(value);
-			
 			retrieveData(entity, action);
-			
 		}
-		
 	});
 	
 	$(".resu a").click(function(e){
-		
 		e.preventDefault();
-		
 		var action = $(this).attr("href");
 		var value = $(this).attr("data-value");
-		
 		entity["resume"] = parseInt(value);
-		
 		retrieveData(entity, action);
-		
 	});
 
 	$(".busq a, .reco a, .filt a, .rang a").click(function(e){
-		
 		e.preventDefault();
-		
 	});
 	
 });

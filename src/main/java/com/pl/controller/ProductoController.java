@@ -28,13 +28,14 @@ public class ProductoController {
 	
 	@RequestMapping("/production/producto/action/find")
 	ProductoModel findById(@RequestBody ProductoModel producto){
-		
 		System.out.println("se recibe el parametro: " + producto.getId());
-		
-		ProductoModel productoModel = this.productoService.findById(producto);
-		
+		ProductoModel productoModel = this.productoService.findById(producto.getId());
 		return productoModel;
-		
+	}
+	
+	@RequestMapping("/production/producto/{id}")
+	ProductoModel findWithId(@PathVariable Integer id){
+		return this.productoService.findById(id);
 	}
 	
 	@RequestMapping("/production/producto/action/delete/document/{id}")

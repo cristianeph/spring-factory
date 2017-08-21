@@ -35,7 +35,7 @@ public class FormulaController {
 			
 			System.out.println("id del detalle: " + detalle.getId());
 			
-			InsumoModel insumoEncontrado = insumoService.findById(detalle.getInsumo());
+			InsumoModel insumoEncontrado = insumoService.findById(detalle.getInsumo().getId());
 			System.out.println("se encontro el plan actuaizado: " + insumoEncontrado.getId());
 			detalle.setInsumo(insumoEncontrado);
 			

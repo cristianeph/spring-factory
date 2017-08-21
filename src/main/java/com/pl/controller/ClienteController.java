@@ -11,47 +11,35 @@ import com.pl.services.ClienteService;
 
 @RestController
 @EnableAutoConfiguration
+@RequestMapping("/production/cliente/action")
 public class ClienteController {
 	
 	@Autowired
 	private ClienteService clienteService;
 	
-	@RequestMapping("/production/cliente/action/save")
+	@RequestMapping("/save")
 	ClienteModel save(@RequestBody ClienteModel cliente){
-		
 		ClienteModel clienteModel = this.clienteService.save(cliente);
-		
 		return clienteModel;
-		
 	}
 	
-	@RequestMapping("/production/cliente/action/find")
+	@RequestMapping("/find")
 	ClienteModel findById(@RequestBody ClienteModel cliente){
-		
 		System.out.println("se recibe el parametro: " + cliente.getId());
-		
 		ClienteModel clienteModel = this.clienteService.findById(cliente);
-		
 		return clienteModel;
-		
 	}
 	
-	@RequestMapping("/production/cliente/action/delete")
+	@RequestMapping("/delete")
 	ClienteModel deleteById(@RequestBody ClienteModel cliente){
-		
 		ClienteModel clienteModel = this.clienteService.deleteById(cliente);
-		
 		return clienteModel;
-		
 	}
 	
-	@RequestMapping("/production/cliente/action/all")
+	@RequestMapping("/all")
 	Iterable<ClienteModel> findAll(@RequestBody ClienteModel cliente){
-		
 		Iterable<ClienteModel> clienteModels = this.clienteService.findAll(cliente);
-		
 		return clienteModels;
-		
 	}
 
 }

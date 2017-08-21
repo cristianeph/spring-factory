@@ -102,7 +102,7 @@ var baseObjects = {
 	"periodo" : periodo
 };
 
-$(document).ready(function($){
+/*$(document).ready(function($){
 	
 	var urlPage = location.pathname;
 	var urlParts = urlPage.split("/");
@@ -167,7 +167,7 @@ $(document).ready(function($){
 		$("body").toggleClass("over");
 	});
 	
-});
+});*/
 
 window.addEventListener("popstate", function(e){
 	
@@ -228,29 +228,21 @@ function getBirthdayAlerts(){
 	
 }
 
-function getData(action, entity){
+
+function getData(url, data){
 	
-	console.log(JSON.stringify(entity));
+	//console.log(data);	
+
+	var token = document.querySelector("meta[name='_csrf']").getAttribute("content");
+	var header = document.querySelector("meta[name='_csrf_header']").getAttribute("content");	
+	var xhr = new XMLHttpRequest();
 	
-	var token = $("meta[name='_csrf']").attr("content");
-	var header = $("meta[name='_csrf_header']").attr("content");
-	//console.log(token);console.log(header);
-	var settings = {
-		"async": true,
-		"crossDomain": true,
-		"url": action,
-		"method": "POST",
-		"headers": {
-			"content-type": "application/json"
-		},
-		beforeSend : function(xhr) {
-			xhr.setRequestHeader(header, token);
-		},
-		"processData": false,
-		"data": JSON.stringify(entity)
-	}
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.setRequestHeader(header, token);
+	xhr.send(JSON.stringify(data));
 	
-	return $.ajax(settings);
+	return xhr;
 	
 }
 
