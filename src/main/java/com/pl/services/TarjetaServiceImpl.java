@@ -1,5 +1,6 @@
 package com.pl.services;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,6 +99,16 @@ public class TarjetaServiceImpl implements TarjetaService{
 			
 		}
 		
+	}
+
+	@Override
+	public Page<TarjetaModel> getAll(PageRequest page) {
+		return this.tarjetaRepository.findAll(page);
+	}
+
+	@Override
+	public TarjetaModel getById(Integer id) {
+		return this.tarjetaRepository.findById(id);
 	}
 
 }

@@ -15,7 +15,7 @@ public interface PlanRepository extends Repository<PlanModel, Long>{
 	PlanModel save(PlanModel plan);
 	PlanModel deleteById(Integer id);
 	PlanModel findById(Integer id);
-	Iterable<PlanModel> findAll(Pageable page);
+	Page<PlanModel> findAll(Pageable page);
 
 	@Query("SELECT p FROM PlanModel p WHERE p.fecha BETWEEN :start AND :end ORDER BY p.id DESC")
 	Page<PlanModel> findAllBetweenFecha(Pageable page, @Param("start") Date start, @Param("end") Date end);

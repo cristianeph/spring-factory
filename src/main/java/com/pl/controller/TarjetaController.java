@@ -5,9 +5,12 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pl.model.ActividadModel;
@@ -103,45 +106,51 @@ public class TarjetaController {
 		
 	}
 	
-	@RequestMapping("/production/card/action/find")
-	TarjetaModel findById(@RequestBody TarjetaModel tarjeta){
-		
-		System.out.println("se recibe el parametro: " + tarjeta.getId());
-		
-		TarjetaModel tarjetaModel = this.tarjetaService.findById(tarjeta);
-		
-		return tarjetaModel;
-		
-	}
-	
 	@RequestMapping("/production/card/action/delete")
 	TarjetaModel deleteById(@RequestBody TarjetaModel tarjeta){
-		
 		this.tarjetaService.deleteById(tarjeta);
-		
 		return null;
-		
 	}
 	
 	@RequestMapping("/production/card/action/delete/document/{id}")
 	TarjetaModel deleteByDocument(@PathVariable Integer id){
-		
 		TarjetaModel tarjeta = new TarjetaModel();
 		tarjeta.setId(id);
-		
 		this.tarjetaService.deleteById(tarjeta);
-		
 		return null;
-		
 	}
 	
 	@RequestMapping("/production/card/action/all")
 	Iterable<TarjetaModel> findAll(@RequestBody TarjetaModel tarjeta){
-		
 		Iterable<TarjetaModel> tarjetaModels = this.tarjetaService.findAll(tarjeta);
-		
 		return tarjetaModels;
-		
+	}
+	
+	@RequestMapping("/production/card/action/find")
+	TarjetaModel findById(@RequestBody TarjetaModel tarjeta){
+		return this.tarjetaService.findById(tarjeta);
+	}
+	
+	@RequestMapping(
+		value = "/api/production/tarjeta",
+		method = RequestMethod.POST)
+	TarjetaModel saveOne(@RequestBody TarjetaModel tarjeta){
+		return this.tarjetaService.save(tarjeta);
+	}
+	
+	@RequestMapping(
+		value = "/api/production/tarjeta", 
+		params = {"page", "size"},
+		method = RequestMethod.GET)
+	Iterable<TarjetaModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
+		return this.tarjetaService.getAll(new PageRequest((page - 1), size));
+	}
+	
+	@RequestMapping(
+		value = "/api/production/tarjeta/{id}",
+		method = RequestMethod.GET)
+	TarjetaModel getById(@PathVariable Integer id){
+		return this.tarjetaService.getById(id);
 	}
 
 }

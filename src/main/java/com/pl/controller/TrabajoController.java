@@ -67,6 +67,14 @@ public class TrabajoController {
 	}
 	
 	@RequestMapping(
+		value = "/api/production/trabajo/invalid", 
+		params = {"page", "size"},
+		method = RequestMethod.GET)
+	Iterable<TrabajoModel> getAllInvalid(@RequestParam Integer page, @RequestParam Integer size){
+		return this.trabajoService.getAllInvalid(new PageRequest((page - 1), size));
+	}
+	
+	@RequestMapping(
 		value = "/api/production/trabajo/{id}",
 		method = RequestMethod.GET)
 	TrabajoModel getById(@PathVariable Integer id){

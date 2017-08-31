@@ -1,5 +1,6 @@
 package com.pl.services;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -139,6 +140,11 @@ public class TrabajoServiceImpl implements TrabajoService{
 	@Override
 	public TrabajoModel getById(Integer id) {
 		return this.trabajoRepository.findById(id);
+	}
+
+	@Override
+	public Page<TrabajoModel> getAllInvalid(PageRequest page) {
+		return this.trabajoRepository.findByCantidadOrHoras(page, new BigDecimal(0), 0);
 	}
 
 }

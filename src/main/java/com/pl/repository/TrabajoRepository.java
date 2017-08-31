@@ -1,5 +1,6 @@
 package com.pl.repository;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.springframework.data.domain.Page;
@@ -16,6 +17,7 @@ public interface TrabajoRepository extends Repository<TrabajoModel, Long>{
 	TrabajoModel deleteById(Integer id);
 	TrabajoModel findById(Integer id);
 	Page<TrabajoModel> findAll(Pageable page);
+	Page<TrabajoModel> findByCantidadOrHoras(Pageable page, BigDecimal cantidad, Integer horas);
 	
 	@Query("SELECT t FROM TrabajoModel t INNER JOIN t.plan p WHERE p.id = :id")
 	Page<TrabajoModel> findByPlanId(Pageable page, @Param("id") Integer id);

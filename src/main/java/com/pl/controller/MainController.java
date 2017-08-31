@@ -48,6 +48,14 @@ public class MainController {
 	public String productionCardForm(){
 		return "production/formTarjeta";
 	}
+	@RequestMapping("/production/validartrabajo/list")
+	public String productionTrabajoList(){
+		return "production/listValidartrabajo";
+	}
+	@RequestMapping("/production/validartrabajo/form")
+	public String productionTrabajoForm(){
+		return "production/formValidartrabajo";
+	}
 	@RequestMapping("/production/formula/list")
 	public String productionFormulaList(){
 		return "production/listFormula";
@@ -55,6 +63,14 @@ public class MainController {
 	@RequestMapping("/production/formula/form")
 	public String productionFormulaForm(){
 		return "production/formFormula";
+	}
+	@RequestMapping("/production/actividad/form")
+	public String productionActividadForm(){
+		return "production/formActividad";
+	}
+	@RequestMapping("/production/actividad/list")
+	public String productionActividadList(){
+		return "production/listActividad";
 	}
 	@RequestMapping("/production/producto/form")
 	public String productionProductForm(){

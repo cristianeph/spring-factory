@@ -3,6 +3,10 @@
  */
 $(document).ready(function($){
 	$("#list").tablesorter();
+
+	$(".busq a, .reco a, .filt a, .rang a").click(function(e){
+		e.preventDefault();
+	});
 	$(".busq input").on("keyup", function(e){
 		if(e.keyCode == 13){
 			console.log("se cancelo el enter!");
@@ -18,7 +22,13 @@ $(document).ready(function($){
 			},1000);
 		}
 	});
-	
+	$(".resu a").click(function(e){
+		e.preventDefault();
+		var action = $(this).attr("href");
+		var value = $(this).attr("data-value");
+		entity["resume"] = parseInt(value);
+		retrieveData(entity, action);
+	});
 	$(".reco select").change(function(){
 		var action = $(this).parent().attr("href");
 		var value = $(this).val();
@@ -28,22 +38,10 @@ $(document).ready(function($){
 		}
 	});
 	
-	$(".resu a").click(function(e){
-		e.preventDefault();
-		var action = $(this).attr("href");
-		var value = $(this).attr("data-value");
-		entity["resume"] = parseInt(value);
-		retrieveData(entity, action);
-	});
-
-	$(".busq a, .reco a, .filt a, .rang a").click(function(e){
-		e.preventDefault();
-	});
-	
 });
 
 function retrieveData(entity, action){
-	
+	console.log("consultando...")
 	showNotification();
 	clearTimeout(delay);
 	
@@ -81,14 +79,13 @@ function retrieveData(entity, action){
 		console.log(entity);
 		
 		getData(action, entity)
-			.onload = function(){
-				var data = JSON.parse(this.responseText);
+			.done(function(data){
 				console.log(data);
 				console.log("el servidor respondio sin problemas");
 				updateLista(data);
 				showNotification();
 				
-			}/*
+			})/*
 			.fail(function(data){
 				console.log("el servidor tiene problemas para responder la peticion");
 			});*/

@@ -13,6 +13,7 @@ public interface TrabajoService {
 	TrabajoModel deleteById(TrabajoModel trabajo);
 	TrabajoModel findById(TrabajoModel trabajo);
 	Page<TrabajoModel> findAll(TrabajoModel trabajo);
+	Page<TrabajoModel> getAllInvalid(PageRequest page);
 	Page<TrabajoModel> getAll(PageRequest page);
 	TrabajoModel getById(Integer id);
 	

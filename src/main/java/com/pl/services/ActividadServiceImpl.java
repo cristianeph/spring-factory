@@ -101,4 +101,14 @@ public class ActividadServiceImpl implements ActividadService{
 		
 	}
 
+	@Override
+	public Page<ActividadModel> getAll(PageRequest page) {
+		return this.actividadRepository.findAll(page);
+	}
+
+	@Override
+	public ActividadModel getById(Integer id) {
+		return this.actividadRepository.findById(id);
+	}
+
 }

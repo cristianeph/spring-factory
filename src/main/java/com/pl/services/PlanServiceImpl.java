@@ -131,4 +131,14 @@ public class PlanServiceImpl implements PlanService{
 		
 	}
 
+	@Override
+	public Page<PlanModel> getAll(PageRequest page) {
+		return this.planRepository.findAll(page);
+	}
+
+	@Override
+	public PlanModel getById(Integer id) {
+		return this.planRepository.findById(id);
+	}
+
 }

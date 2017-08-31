@@ -61,7 +61,7 @@ public class MaquinaController {
 	@RequestMapping(
 		value = "/api/production/maquina",
 		method = RequestMethod.POST)
-	MaquinaModel getAll(@RequestBody MaquinaModel maquina){
+	MaquinaModel saveOne(@RequestBody MaquinaModel maquina){
 		return this.maquinaService.save(maquina);
 	}
 	
