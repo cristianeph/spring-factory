@@ -136,4 +136,9 @@ public class TrabajoServiceImpl implements TrabajoService{
 		return this.trabajoRepository.findAll(page);
 	}
 
+	@Override
+	public TrabajoModel getById(Integer id) {
+		return this.trabajoRepository.findById(id);
+	}
+
 }

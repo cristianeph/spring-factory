@@ -101,4 +101,14 @@ public class ClienteServiceImpl implements ClienteService{
 		
 	}
 
+	@Override
+	public Page<ClienteModel> getAll(PageRequest page) {
+		return this.clienteRepository.findAll(page);
+	}
+
+	@Override
+	public ClienteModel getById(Integer id) {
+		return this.clienteRepository.findById(id);
+	}
+
 }

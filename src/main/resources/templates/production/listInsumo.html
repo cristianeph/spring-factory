@@ -11,7 +11,7 @@
 		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/listInsumo.js}"></script>
 	</head>
 	<body>
@@ -79,15 +79,13 @@
 									<th><span>#</span></th>
 									<th><span>Descripcion</span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
-									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr v-for="item in inputs">
 									<td><span>{{item.id}}</span></td>
 									<td><span>{{item.descripcion}}</span></td>
-									<td><span class="icon-pencil2"></span></td>
-									<td><span class="icon-pencil2"></span></td>
+									<td><a v-bind:href="getEditionForm(item)"><span>Actualizar insumo</span></a></td>
 								</tr>
 							</tbody>
 							<tfoot>
@@ -97,10 +95,6 @@
 							</tfoot>
 						</table>
 					</article>
-				</section>
-				<section class="hidd">
-					<a th:href="@{/production/producto/form}" id="documentView" >fallback</a>
-					<a th:href="@{/production/producto/action/delete/document}" id="documentDelete" >fallback</a>
 				</section>
 			</section>
 		</section>

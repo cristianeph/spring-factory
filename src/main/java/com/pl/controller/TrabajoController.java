@@ -3,6 +3,7 @@ package com.pl.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -63,6 +64,13 @@ public class TrabajoController {
 		method = RequestMethod.POST)
 	Iterable<TrabajoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
 		return this.trabajoService.getAll(new PageRequest((page - 1), size));
+	}
+	
+	@RequestMapping(
+		value = "/api/production/trabajo/{id}",
+		method = RequestMethod.GET)
+	TrabajoModel getById(@PathVariable Integer id){
+		return this.trabajoService.getById(id);
 	}
 
 }

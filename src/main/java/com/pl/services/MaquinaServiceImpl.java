@@ -101,4 +101,14 @@ public class MaquinaServiceImpl implements MaquinaService{
 		
 	}
 
+	@Override
+	public Page<MaquinaModel> getAll(PageRequest page) {
+		return this.maquinaRepository.findAll(page);
+	}
+
+	@Override
+	public MaquinaModel getById(Integer id) {
+		return this.maquinaRepository.findById(id);
+	}
+
 }

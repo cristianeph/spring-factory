@@ -12,7 +12,7 @@
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/listCustomer.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listMaquina.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -25,9 +25,9 @@
 						<ul class="acci">
 							<li><div>Opciones</div></li>
 							<li>
-								<a th:href="@{/production/producto/form}">
-									<span class="icon-plus"></span><span>Nuevo Producto</span>
-								</a>
+								<!-- <a th:href="@{/production/producto/form}">
+									<span class="icon-plus"></span><span>Nuevo Insumo</span>
+								</a> -->
 							</li>
 						</ul>
 						<ul class="reco">
@@ -62,7 +62,7 @@
 						<ul class="subt">
 							<li>
 								<a href="#">
-									<span class="icon-list-numbered"></span><span> Modulos - Producto</span>
+									<span class="icon-list-numbered"></span><span> Modulos - Insumos</span>
 								</a>
 							</li>
 							<li>
@@ -77,24 +77,20 @@
 							<thead>
 								<tr>
 									<th><span>#</span></th>
-									<th><span>RUC</span></th>
-									<th><span>Razon social</span></th>
-									<th><span>Direccion</span></th>
+									<th><span>Descripcion</span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr v-for="item in customers">
+								<tr v-for="item in machines">
 									<td><span>{{item.id}}</span></td>
-									<td><span>{{item.ruc}}</span></td>
-									<td><span>{{item.razonsocial}}</span></td>
-									<td><span>{{item.direccion}}</span></td>
-									<td><a v-bind:href="getEditionForm(item)"><span>Actualizar cliente</span></a></td>
+									<td><span>{{item.descripcion}}</span></td>
+									<td><a v-bind:href="getEditionForm(item)"><span>Actualizar insumo</span></a></td>
 								</tr>
 							</tbody>
 							<tfoot>
 								<tr>
-									<td colspan="4"><span></span></td>
+									<td colspan="6"><span></span></td>
 								</tr>
 							</tfoot>
 						</table>

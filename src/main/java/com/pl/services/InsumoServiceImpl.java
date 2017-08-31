@@ -85,4 +85,14 @@ public class InsumoServiceImpl implements InsumoService{
 		return this.insumoRepository.findAll(page);
 	}
 
+	@Override
+	public InsumoModel getById(Integer id) {
+		return this.insumoRepository.findById(id);
+	}
+
+	@Override
+	public InsumoModel save(InsumoModel insumo) {
+		return this.insumoRepository.save(insumo);
+	}
+
 }

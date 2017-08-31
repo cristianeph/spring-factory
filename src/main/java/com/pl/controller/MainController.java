@@ -64,6 +64,26 @@ public class MainController {
 	public String productionProductList(){
 		return "production/listProducto";
 	}
+	@RequestMapping("/production/maquina/form")
+	public String productionMachineForm(){
+		return "production/formMaquina";
+	}
+	@RequestMapping("/production/maquina/list")
+	public String productionMachineList(){
+		return "production/listMaquina";
+	}
+	@RequestMapping("/production/cliente/form")
+	public String productionCustomerForm(){
+		return "production/formCliente";
+	}
+	@RequestMapping("/production/cliente/list")
+	public String productionCustomerList(){
+		return "production/listCliente";
+	}
+	@RequestMapping("/production/insumo/form")
+	public String productionInsumoForm(){
+		return "production/formInsumo";
+	}
 	@RequestMapping("/production/insumo/list")
 	public String productionInsumoList(){
 		return "production/listInsumo";

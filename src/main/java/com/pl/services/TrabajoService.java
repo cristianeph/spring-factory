@@ -14,6 +14,7 @@ public interface TrabajoService {
 	TrabajoModel findById(TrabajoModel trabajo);
 	Page<TrabajoModel> findAll(TrabajoModel trabajo);
 	Page<TrabajoModel> getAll(PageRequest page);
+	TrabajoModel getById(Integer id);
 	
 	TrabajoModel findByPlanId(Integer id);
 	Page<TrabajoModel> findAllBetweenPlanFecha(Date start, Date end);

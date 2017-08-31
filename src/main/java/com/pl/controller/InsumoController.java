@@ -49,10 +49,24 @@ public class InsumoController {
 	
 	@RequestMapping(
 		value = "/api/production/insumo", 
-		params = {"page", "size"},
 		method = RequestMethod.POST)
+	InsumoModel saveOne(@RequestBody InsumoModel insumo){
+		return this.insumoService.save(insumo);
+	}
+	
+	@RequestMapping(
+		value = "/api/production/insumo", 
+		params = {"page", "size"},
+		method = RequestMethod.GET)
 	Iterable<InsumoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
 		return this.insumoService.getAll(new PageRequest((page - 1), size));
+	}
+	
+	@RequestMapping(
+		value = "/api/production/insumo/{id}",
+		method = RequestMethod.GET)
+	InsumoModel getById(@PathVariable Integer id){
+		return this.insumoService.getById(id);
 	}
 
 }
