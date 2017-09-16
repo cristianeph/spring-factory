@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 		beforeMount: function() {
 			if(getUrlValue().id != undefined){
-				let url = urlResource + "/" + getUrlValue().id; 
+				var url = urlResource + "/" + getUrlValue().id; 
 				getData(url).onload = function(data){
 					var response = JSON.parse(this.responseText);
 					Machine.setData(response);
@@ -37,8 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	document.querySelector("[data-operation='grabarDocumento']").onclick = function(event){
 		event.preventDefault();
-		let object = Machine.getData();
-		let url = urlResource;
+		var object = Machine.getData();
+		var url = urlResource;
 		postData(url, object).onload = function() {
 			var response = JSON.parse(this.responseText);
             if (handleHttpStatus(response) == true) {

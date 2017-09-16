@@ -2,25 +2,29 @@
  * 
  */
 var urlPage = location.pathname;
-var Customer = null;
-var urlResource = "/api/production/cliente";
+var Sample = null;
+var urlResource = "/api/production/muestra";
 
 document.addEventListener("DOMContentLoaded", function () {
 	
-	Customer = new Vue({
-		el: "#customer",
+	Sample = new Vue({
+		el: "#sample",
 		data: {
 			id: 0,
-			razonsocial: "",
-			direccion: "",
-			ruc: ""
+			descripcion: "",
+            resultado: "",
+            viscocidad: "",
+            rendimiento: "",
+			recipiente: ""
 		},
 		methods: {
 			setData: function(data) {
 				this.id = data.id;
-				this.razonsocial = data.razonsocial;
-				this.direccion = data.direccion;
-				this.ruc = data.ruc;
+				this.descripcion = data.descripcion;
+				this.resultado = data.resultado;
+				this.viscocidad = data.viscocidad;
+				this.rendimiento = data.rendimiento;
+				this.recipiente = data.recipiente;
 			},
 			getData: function() {
 				return JSON.parse(JSON.stringify(this.$data));
@@ -31,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				var url = urlResource + "/" + getUrlValue().id; 
 				getData(url).onload = function(data){
 					var response = JSON.parse(this.responseText);
-					Customer.setData(response);
+					Sample.setData(response);
 				};
 			}
 		}
@@ -39,13 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	document.querySelector("[data-operation='grabarDocumento']").onclick = function(event){
 		event.preventDefault();
-		var object = Customer.getData();
+		var object = Sample.getData();
 		var url = urlResource;
 		postData(url, object).onload = function() {
 			var response = JSON.parse(this.responseText);
             if (handleHttpStatus(response) == true) {
-            		console.log(response);
-            		Customer.setData(response);
+				console.log(response);
+				Sample.setData(response);
                 alert("El registro ha sido grabado correctamente");
             }
 		}

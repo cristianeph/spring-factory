@@ -4,6 +4,7 @@
 
 var urlPage = location.pathname;
 var urlResource = "/api/production/trabajo";
+var urlForm = "/production/ordentrabajo/form";
 var list = null;
 var listData = null;
 
@@ -13,6 +14,11 @@ document.addEventListener("DOMContentLoaded", function(){
 		data: {
 			jobs: listData
 		},
+        methods: {
+            getEditionForm: function(job){
+                return urlForm + "?id=" + job.id;
+            }
+        },
 		beforeMount: function(){
 			let that = this;
 			let url = urlResource + "?page=1&size=15"

@@ -12,7 +12,7 @@
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/formMaquina.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formSolicitudformula.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -52,12 +52,26 @@
 									<input type="text" name="id" id="id" v-model="id" readonly="readonly" /> 
 								</div>
 								<div>
-									<label for="descripcion">Descripcion</label> 
-									<input type="text" name="descripcion" id="descripcion" v-model="descripcion" /> 
+									<label for="fecha">Fecha</label>
+									<input type="text" name="fecha" id="fecha" v-model="fecha" />
 								</div>
 								<div>
-									<label for="costo">Costo</label> 
-									<input type="text" name="costo" id="costo" v-model="costo" /> 
+									<label for="observacion">Observacion</label>
+									<input type="text" name="observacion" id="observacion" v-model="observacion" />
+								</div>
+								<div>
+									<label for="prueba">Observacion</label>
+									<select name="prueba" id="prueba" v-model="prueba.selected">
+										<option value="">Seleccione una prueba</option>
+										<option v-for="option in prueba.options" v-bind:value="option.id">{{option.codigo + ' - ' + option.estado}}</option>
+									</select>
+								</div>
+								<div>
+									<label for="muestra">Observacion</label>
+									<select name="muestra" id="muestra" v-model="muestra.selected">
+										<option value="">Seleccione una prueba</option>
+										<option v-for="option in muestra.options" v-bind:value="option.id">{{option.descripcion}}</option>
+									</select>
 								</div>
 							</form>
 						</section>

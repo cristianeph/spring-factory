@@ -12,7 +12,7 @@
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/formMaquina.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formMuestra.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -25,11 +25,7 @@
 					<article class="tool">
 						<ul class="acci">
 							<li><div>Opciones</div></li>
-							<li>
-								<a href="#" data-operation="grabarDocumento">
-									<span class="icon-floppy-disk"></span><span>Grabar Maquina</span>
-								</a>
-							</li>
+							<li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Grabar</span></a></li>
 						</ul>
 					</article>
 				</section>
@@ -38,14 +34,14 @@
 						<ul class="subt">
 							<li>
 								<a href="#">
-									<span class="icon-list-numbered"></span><span> Modulos - Maquina</span>
+									<span class="icon-list-numbered"></span><span> Modulos - Muestra</span>
 								</a>
 							</li>
 						</ul>
 					</article>
 					<article class="form">
 						<section class="docu">
-							<form id="machine">
+							<form id="sample">
 								<div><strong>Datos de la Maquina</strong></div>
 								<div>
 									<label for="id">Id</label> 
@@ -56,8 +52,20 @@
 									<input type="text" name="descripcion" id="descripcion" v-model="descripcion" /> 
 								</div>
 								<div>
-									<label for="costo">Costo</label> 
-									<input type="text" name="costo" id="costo" v-model="costo" /> 
+									<label for="resultado">Resultado</label>
+									<input type="text" name="resultado" id="resultado" v-model="resultado" />
+								</div>
+								<div>
+									<label for="viscocidad">Viscocidad</label>
+									<input type="text" name="viscocidad" id="viscocidad" v-model="viscocidad" />
+								</div>
+								<div>
+									<label for="rendimiento">Rendimiento</label>
+									<input type="text" name="rendimiento" id="rendimiento" v-model="rendimiento" />
+								</div>
+								<div>
+									<label for="recipiente">Recipiente</label>
+									<input type="text" name="recipiente" id="recipiente" v-model="recipiente" />
 								</div>
 							</form>
 						</section>

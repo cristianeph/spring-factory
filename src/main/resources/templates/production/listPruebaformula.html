@@ -12,7 +12,7 @@
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/listSolicitudformula.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listPruebaformula.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -22,6 +22,9 @@
 				<section class="menu">
 					<article class="quic" th:include="/common/menu"></article>
 					<article class="tool">
+						<ul class="acci">
+							<li><div>Opciones</div></li>
+						</ul>
 						<ul class="filt">
 							<li><div>Filtro</div></li>
 							<li>
@@ -36,8 +39,16 @@
 				<section class="cont">
 					<article class="titl">
 						<ul class="subt">
-							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Insumos</span></a></li>
-							<li><a href="#"><span class="icon-database"></span><span></span></a></li>
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Prueba de formula</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="icon-database"></span><span></span>
+								</a>
+							</li>
 						</ul>
 					</article>
 					<article class="list">
@@ -45,20 +56,18 @@
 							<thead>
 								<tr>
 									<th><span>#</span></th>
-									<th><span>Fecha</span></th>
+									<th><span>Codigo</span></th>
+									<th><span>Estado</span></th>
 									<th><span>Observaciones</span></th>
-									<th><span>Prueba</span></th>
-									<th><span>Muestra</span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr v-for="item in machines">
 									<td><span>{{item.id}}</span></td>
-									<td><span>{{item.fecha}}</span></td>
-									<td><span>{{item.observacion}}</span></td>
-                                    <td><span>{{item.prueba.codigo}}</span></td>
-                                    <td><span>{{item.muestra.descripcion}}</span></td>
+									<td><span>{{item.codigo}}</span></td>
+									<td><span>{{item.estado}}</span></td>
+									<td><span>{{item.observaciones}}</span></td>
 									<td><a v-bind:href="getEditionForm(item)"><span>Actualizar insumo</span></a></td>
 								</tr>
 							</tbody>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formOrdentrabajo.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="noti" th:include="/common/notification"></section>
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="moda" th:include="/common/modal"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+					<article class="tool">
+						<ul class="acci">
+							<li><div>Opciones</div></li>
+							<li>
+								<a href="#" data-operation="grabarDocumento">
+									<span class="icon-floppy-disk"></span><span>Grabar Orden de trabajo</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+				</section>
+				<section class="cont">
+					<article class="titl">
+						<ul class="subt">
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Orden de trabajo</span>
+								</a>
+							</li>
+						</ul>
+					</article>
+					<article class="form">
+						<section class="docu">
+							<form id="job">
+								<div><strong>Datos del Insumo</strong></div>
+								<div>
+									<label for="id">Id</label> 
+									<input type="text" name="id" id="id" v-model="id" readonly="readonly" /> 
+								</div>
+								<div>
+									<label for="item">Secuencia</label>
+									<input type="text" name="item" id="item" v-model="item" readonly="readonly" />
+								</div>
+								<div>
+									<label for="horas">Horas</label>
+									<input type="text" name="horas" id="horas" v-model="horas" />
+								</div>
+								<div>
+									<label for="cantidad">Cantidad</label>
+									<input type="text" name="cantidad" id="cantidad" v-model="cantidad" />
+								</div>
+								<div>
+									<label for="merma">Merma</label>
+									<input type="text" name="merma" id="merma" v-model="merma" />
+								</div>
+								<div>
+									<label for="comentarios">Comentarios</label>
+									<input type="text" name="comentarios" id="comentarios" v-model="comentarios" />
+								</div>
+								<div>
+									<label for="incidencias">Incidencias</label>
+									<input type="text" name="incidencias" id="incidencias" v-model="incidencias" />
+								</div>
+                                <div>
+                                    <label for="maquina">Maquina</label>
+                                    <select name="maquina" id="maquina" v-model="maquina.selected">
+                                        <option value="">Seleccione una maquina</option>
+                                        <option v-for="option in maquina.options" v-bind:value="option.id">{{option.descripcion}}</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="actividad">Actividad</label>
+                                    <select name="actividad" id="actividad" v-model="actividad.selected">
+                                        <option value="">Seleccione una maquina</option>
+                                        <option v-for="option in actividad.options" v-bind:value="option.id">{{option.descripcion}}</option>
+                                    </select>
+                                </div>
+							</form>
+						</section>
+					</article>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>

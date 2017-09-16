@@ -2,25 +2,29 @@
  * 
  */
 var urlPage = location.pathname;
-var Customer = null;
-var urlResource = "/api/production/cliente";
+var Testformula = null;
+var urlResource = "/api/production/pruebaformula";
 
 document.addEventListener("DOMContentLoaded", function () {
 	
-	Customer = new Vue({
-		el: "#customer",
+	Testformula = new Vue({
+		el: "#test",
 		data: {
 			id: 0,
-			razonsocial: "",
-			direccion: "",
-			ruc: ""
+			codigo: "",
+			estado: "",
+            observaciones: "",
+            sugerencias: "",
+            merma: ""
 		},
 		methods: {
 			setData: function(data) {
 				this.id = data.id;
-				this.razonsocial = data.razonsocial;
-				this.direccion = data.direccion;
-				this.ruc = data.ruc;
+				this.codigo = data.codigo;
+				this.estado = data.estado;
+                this.observaciones = data.observaciones;
+                this.sugerencias = data.sugerencias;
+                this.merma = data.merma;
 			},
 			getData: function() {
 				return JSON.parse(JSON.stringify(this.$data));
@@ -31,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				var url = urlResource + "/" + getUrlValue().id; 
 				getData(url).onload = function(data){
 					var response = JSON.parse(this.responseText);
-					Customer.setData(response);
+					Testformula.setData(response);
 				};
 			}
 		}
@@ -39,13 +43,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	document.querySelector("[data-operation='grabarDocumento']").onclick = function(event){
 		event.preventDefault();
-		var object = Customer.getData();
+		var object = Testformula.getData();
 		var url = urlResource;
 		postData(url, object).onload = function() {
 			var response = JSON.parse(this.responseText);
             if (handleHttpStatus(response) == true) {
             		console.log(response);
-            		Customer.setData(response);
+            		Testformula.setData(response);
                 alert("El registro ha sido grabado correctamente");
             }
 		}

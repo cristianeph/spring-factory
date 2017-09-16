@@ -29,9 +29,7 @@ public class MaquinaServiceImpl implements MaquinaService{
 	private final MaquinaRepository maquinaRepository;
 	
 	public MaquinaServiceImpl(MaquinaRepository maquinaRepository){
-		
 		this.maquinaRepository = maquinaRepository;
-		
 	}
 
 	@Override

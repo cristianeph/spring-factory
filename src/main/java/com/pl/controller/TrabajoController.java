@@ -1,5 +1,8 @@
 package com.pl.controller;
 
+import com.pl.model.MaquinaActividadModel;
+import com.pl.services.ActividadService;
+import com.pl.services.MaquinaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +22,10 @@ public class TrabajoController {
 	
 	@Autowired
 	private TrabajoService trabajoService;
+	@Autowired
+	private MaquinaService maquinaService;
+	@Autowired
+	private ActividadService actividadService;
 	
 	@RequestMapping("/production/trabajo/action/save")
 	TrabajoModel save(@RequestBody TrabajoModel trabajo){
@@ -57,21 +64,28 @@ public class TrabajoController {
 		return trabajoModels;
 		
 	}
+
+	@RequestMapping(
+			value = "/api/production/trabajo/invalid",
+			params = {"page", "size"},
+			method = RequestMethod.GET)
+	Iterable<TrabajoModel> getAllInvalid(@RequestParam Integer page, @RequestParam Integer size){
+		return this.trabajoService.getAllInvalid(new PageRequest((page - 1), size));
+	}
+
+	@RequestMapping(
+			value = "/api/production/trabajo",
+			method = RequestMethod.POST)
+	TrabajoModel saveOne(@RequestBody TrabajoModel trabajo){
+		return this.trabajoService.save(trabajo);
+	}
 	
 	@RequestMapping(
 		value = "/api/production/trabajo", 
 		params = {"page", "size"},
-		method = RequestMethod.POST)
+		method = RequestMethod.GET)
 	Iterable<TrabajoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
 		return this.trabajoService.getAll(new PageRequest((page - 1), size));
-	}
-	
-	@RequestMapping(
-		value = "/api/production/trabajo/invalid", 
-		params = {"page", "size"},
-		method = RequestMethod.GET)
-	Iterable<TrabajoModel> getAllInvalid(@RequestParam Integer page, @RequestParam Integer size){
-		return this.trabajoService.getAllInvalid(new PageRequest((page - 1), size));
 	}
 	
 	@RequestMapping(
@@ -79,6 +93,16 @@ public class TrabajoController {
 		method = RequestMethod.GET)
 	TrabajoModel getById(@PathVariable Integer id){
 		return this.trabajoService.getById(id);
+	}
+
+	@RequestMapping(
+			value = "/api/production/trabajo/parameters",
+			method = RequestMethod.GET)
+	MaquinaActividadModel getParameters(){
+		MaquinaActividadModel maquinaActividad = new MaquinaActividadModel();
+		maquinaActividad.setActividades(this.actividadService.getAll(new PageRequest((0), Integer.MAX_VALUE)));
+		maquinaActividad.setMaquinas(this.maquinaService.getAll(new PageRequest((0), Integer.MAX_VALUE)));
+		return maquinaActividad;
 	}
 
 }
