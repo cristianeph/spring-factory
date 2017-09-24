@@ -2,6 +2,9 @@ package com.pl.services;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import com.pl.model.SolicitudModel;
@@ -23,9 +26,17 @@ public class SolicitudServiceImpl implements SolicitudService{
 
 	@Override
 	public SolicitudModel save(SolicitudModel solicitud) {
-		
 		return this.solicitudRepository.save(solicitud);
-		
+	}
+
+	@Override
+	public Page<SolicitudModel> findAll(PageRequest page) {
+		return this.solicitudRepository.findAll(page);
+	}
+
+	@Override
+	public SolicitudModel findById(Integer id) {
+		return this.solicitudRepository.findById(id);
 	}
 
 }

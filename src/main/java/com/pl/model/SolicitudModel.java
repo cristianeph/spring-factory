@@ -1,26 +1,29 @@
 package com.pl.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(
-	name="solicitud"
+	name="solicitudinsumo"
 )
 public class SolicitudModel {
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	
-	@Column(name="idinsumo")
-	private Integer idInsumo;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="idinsumo")
+	private InsumoModel insumo;
 	
 	@Column(name="idplan")
 	private Integer idPlan;
+
+	private BigDecimal cantidad;
+
+	private String codigo;
+
+	private String estado;
 
 	public Integer getId() {
 		return id;
@@ -30,21 +33,43 @@ public class SolicitudModel {
 		this.id = id;
 	}
 
-	public Integer getIdInsumo() {
-		return idInsumo;
-	}
+    public InsumoModel getInsumo() {
+        return insumo;
+    }
 
-	public void setIdInsumo(Integer idInsumo) {
-		this.idInsumo = idInsumo;
-	}
+    public void setInsumo(InsumoModel insumo) {
+        this.insumo = insumo;
+    }
 
-	public Integer getIdPlan() {
+    public Integer getIdPlan() {
 		return idPlan;
 	}
 
 	public void setIdPlan(Integer idPlan) {
 		this.idPlan = idPlan;
 	}
-	
-	
+
+	public BigDecimal getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(BigDecimal cantidad) {
+		this.cantidad = cantidad;
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 }

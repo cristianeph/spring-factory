@@ -15,9 +15,9 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(
-	name="tarjeta"
+	name="parteproduccion"
 )
-public class TarjetaModel {
+public class ParteProduccionModel {
 	
 	@Transient
 	private Integer rows;
@@ -27,9 +27,8 @@ public class TarjetaModel {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "tarjeta", orphanRemoval=true, cascade = CascadeType.ALL)
-	private Collection<TrabajoModel> tarjetaTrabajos = new ArrayList<TrabajoModel>();
-	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "parteproduccion", orphanRemoval=true, cascade = CascadeType.ALL)
+	private Collection<TrabajoModel> tarjetaTrabajos = new ArrayList<>();
 	
 	public Integer getRows() {
 		return rows;

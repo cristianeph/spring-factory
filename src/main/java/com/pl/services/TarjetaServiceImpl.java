@@ -1,6 +1,5 @@
 package com.pl.services;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +17,8 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.pl.model.TarjetaModel;
-import com.pl.model.TarjetaModel_;
+import com.pl.model.ParteProduccionModel;
+import com.pl.model.ParteProduccionModel_;
 import com.pl.repository.TarjetaRepository;
 
 @Transactional
@@ -38,14 +37,14 @@ public class TarjetaServiceImpl implements TarjetaService{
 	}
 
 	@Override
-	public TarjetaModel save(TarjetaModel tarjeta) {
+	public ParteProduccionModel save(ParteProduccionModel tarjeta) {
 		
 		return this.tarjetaRepository.save(tarjeta);
 		
 	}
 
 	@Override
-	public void deleteById(TarjetaModel tarjeta) {
+	public void deleteById(ParteProduccionModel tarjeta) {
 		
 		System.out.println("entro: " + tarjeta.getId());
 		
@@ -54,24 +53,24 @@ public class TarjetaServiceImpl implements TarjetaService{
 	}
 
 	@Override
-	public TarjetaModel findById(TarjetaModel tarjeta) {
+	public ParteProduccionModel findById(ParteProduccionModel tarjeta) {
 		
 		return this.tarjetaRepository.findById(tarjeta.getId());
 		
 	}
 
 	@Override
-	public Page<TarjetaModel> findAll(TarjetaModel tarjeta) {
+	public Page<ParteProduccionModel> findAll(ParteProduccionModel tarjeta) {
 		
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<TarjetaModel> query = builder.createQuery(TarjetaModel.class);
-		Root<TarjetaModel> root = query.from(TarjetaModel.class);
+		CriteriaQuery<ParteProduccionModel> query = builder.createQuery(ParteProduccionModel.class);
+		Root<ParteProduccionModel> root = query.from(ParteProduccionModel.class);
 		
 		List<Predicate> predicates = new ArrayList<Predicate>();
 		
 		if(tarjeta.getId() != 0){
 			System.out.println(tarjeta.getId());
-			predicates.add(builder.equal(root.get(TarjetaModel_.id), tarjeta.getId()));
+			predicates.add(builder.equal(root.get(ParteProduccionModel_.id), tarjeta.getId()));
 		}
 		
 		Predicate[] predicatesArray = new Predicate[predicates.size()];
@@ -85,16 +84,16 @@ public class TarjetaServiceImpl implements TarjetaService{
 			System.out.println("CANTIDAD de resultados: " + tarjeta.getRows());
 			
 			if(tarjeta.getRows() > 0){
-				return (Page<TarjetaModel>) this.tarjetaRepository.findAll(new PageRequest(0, tarjeta.getRows(), Direction.DESC, "id"));
+				return (Page<ParteProduccionModel>) this.tarjetaRepository.findAll(new PageRequest(0, tarjeta.getRows(), Direction.DESC, "id"));
 			}else{
-				return (Page<TarjetaModel>) this.tarjetaRepository.findAll(new PageRequest(0, Integer.MAX_VALUE, Direction.DESC, "id"));
+				return (Page<ParteProduccionModel>) this.tarjetaRepository.findAll(new PageRequest(0, Integer.MAX_VALUE, Direction.DESC, "id"));
 			}
 			
 		}else{
 			
 			System.out.println("SI se mandaron parametros para la busqueda");
 			
-			Page<TarjetaModel> tarjetas = new PageImpl<TarjetaModel>(entityManager.createQuery(query.select(root)).getResultList()); 
+			Page<ParteProduccionModel> tarjetas = new PageImpl<ParteProduccionModel>(entityManager.createQuery(query.select(root)).getResultList());
 			return tarjetas;
 			
 		}
@@ -102,12 +101,12 @@ public class TarjetaServiceImpl implements TarjetaService{
 	}
 
 	@Override
-	public Page<TarjetaModel> getAll(PageRequest page) {
+	public Page<ParteProduccionModel> getAll(PageRequest page) {
 		return this.tarjetaRepository.findAll(page);
 	}
 
 	@Override
-	public TarjetaModel getById(Integer id) {
+	public ParteProduccionModel getById(Integer id) {
 		return this.tarjetaRepository.findById(id);
 	}
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pl.model.ActividadModel;
 import com.pl.model.MaquinaModel;
 import com.pl.model.PlanModel;
-import com.pl.model.TarjetaModel;
+import com.pl.model.ParteProduccionModel;
 import com.pl.model.TrabajoModel;
 import com.pl.services.ActividadService;
 import com.pl.services.MaquinaService;
@@ -24,7 +23,6 @@ import com.pl.services.PlanService;
 import com.pl.services.TarjetaService;
 
 @RestController
-@EnableAutoConfiguration
 public class TarjetaController {
 	
 	@Autowired
@@ -40,7 +38,7 @@ public class TarjetaController {
 	private ActividadService actividadService;
 	
 	@RequestMapping("/production/card/action/save")
-	TarjetaModel save(@RequestBody TarjetaModel tarjeta){
+    ParteProduccionModel save(@RequestBody ParteProduccionModel tarjeta){
 		
 		System.out.println(tarjeta.getId());
 		
@@ -73,7 +71,7 @@ public class TarjetaController {
 		
 		tarjeta.clearTrabajoModel();
 		
-		TarjetaModel tarjetaActualizada = this.tarjetaService.save(tarjeta);
+		ParteProduccionModel tarjetaActualizada = this.tarjetaService.save(tarjeta);
 		
 		System.out.println("se resetearon los detalles: " + tarjetaActualizada.getTarjetaTrabajos().size());
 		
@@ -90,7 +88,7 @@ public class TarjetaController {
 			
 		}
 		
-		TarjetaModel tarjetaProcesada = this.tarjetaService.save(tarjetaActualizada);
+		ParteProduccionModel tarjetaProcesada = this.tarjetaService.save(tarjetaActualizada);
 		
 		System.out.println(tarjetaProcesada.getTarjetaTrabajos().size());
 		
@@ -107,34 +105,34 @@ public class TarjetaController {
 	}
 	
 	@RequestMapping("/production/card/action/delete")
-	TarjetaModel deleteById(@RequestBody TarjetaModel tarjeta){
+    ParteProduccionModel deleteById(@RequestBody ParteProduccionModel tarjeta){
 		this.tarjetaService.deleteById(tarjeta);
 		return null;
 	}
 	
 	@RequestMapping("/production/card/action/delete/document/{id}")
-	TarjetaModel deleteByDocument(@PathVariable Integer id){
-		TarjetaModel tarjeta = new TarjetaModel();
+    ParteProduccionModel deleteByDocument(@PathVariable Integer id){
+		ParteProduccionModel tarjeta = new ParteProduccionModel();
 		tarjeta.setId(id);
 		this.tarjetaService.deleteById(tarjeta);
 		return null;
 	}
 	
 	@RequestMapping("/production/card/action/all")
-	Iterable<TarjetaModel> findAll(@RequestBody TarjetaModel tarjeta){
-		Iterable<TarjetaModel> tarjetaModels = this.tarjetaService.findAll(tarjeta);
+	Iterable<ParteProduccionModel> findAll(@RequestBody ParteProduccionModel tarjeta){
+		Iterable<ParteProduccionModel> tarjetaModels = this.tarjetaService.findAll(tarjeta);
 		return tarjetaModels;
 	}
 	
 	@RequestMapping("/production/card/action/find")
-	TarjetaModel findById(@RequestBody TarjetaModel tarjeta){
+    ParteProduccionModel findById(@RequestBody ParteProduccionModel tarjeta){
 		return this.tarjetaService.findById(tarjeta);
 	}
 	
 	@RequestMapping(
 		value = "/api/production/tarjeta",
 		method = RequestMethod.POST)
-	TarjetaModel saveOne(@RequestBody TarjetaModel tarjeta){
+    ParteProduccionModel saveOne(@RequestBody ParteProduccionModel tarjeta){
 		return this.tarjetaService.save(tarjeta);
 	}
 	
@@ -142,14 +140,14 @@ public class TarjetaController {
 		value = "/api/production/tarjeta", 
 		params = {"page", "size"},
 		method = RequestMethod.GET)
-	Iterable<TarjetaModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
+	Iterable<ParteProduccionModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
 		return this.tarjetaService.getAll(new PageRequest((page - 1), size));
 	}
 	
 	@RequestMapping(
 		value = "/api/production/tarjeta/{id}",
 		method = RequestMethod.GET)
-	TarjetaModel getById(@PathVariable Integer id){
+    ParteProduccionModel getById(@PathVariable Integer id){
 		return this.tarjetaService.getById(id);
 	}
 

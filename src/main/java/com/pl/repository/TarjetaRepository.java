@@ -4,13 +4,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.Repository;
 
-import com.pl.model.TarjetaModel;
+import com.pl.model.ParteProduccionModel;
 
-public interface TarjetaRepository extends Repository<TarjetaModel, Long>{
+public interface TarjetaRepository extends Repository<ParteProduccionModel, Long>{
 	
-	TarjetaModel save(TarjetaModel tarjeta);
+	ParteProduccionModel save(ParteProduccionModel tarjeta);
 	void deleteById(Integer id);
-	TarjetaModel findById(Integer id);
-	Page<TarjetaModel> findAll(Pageable page);
+	ParteProduccionModel findById(Integer id);
+	Page<ParteProduccionModel> findAll(Pageable page);
 
 }

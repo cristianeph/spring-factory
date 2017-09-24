@@ -38,8 +38,8 @@ public class PlanModel {
 	@JoinColumn(name="idpedido")
 	private PedidoModel pedido;
 	
-	@OneToMany(fetch=FetchType.EAGER, mappedBy = "plan", orphanRemoval=true, cascade = CascadeType.ALL)
-	private Collection<ProducidoModel> planProducidos = new ArrayList<ProducidoModel>();
+	/*@OneToMany(fetch=FetchType.EAGER, mappedBy = "plan", orphanRemoval=true, cascade = CascadeType.ALL)
+	private Collection<ProducidoModel> planProducidos = new ArrayList<ProducidoModel>();*/
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="trabajo")
 	
@@ -91,8 +91,8 @@ public class PlanModel {
 	public void setPedido(PedidoModel pedido) {
 		this.pedido = pedido;
 	}
-	
-	public Collection<ProducidoModel> getPlanProducidos() {
+
+	/*public Collection<ProducidoModel> getPlanProducidos() {
 		return planProducidos;
 	}
 	public void setPlanProducidos(Collection<ProducidoModel> planProducidos) {
@@ -104,8 +104,6 @@ public class PlanModel {
 			producido.releasePlanModel();
 		}
 		planProducidos.clear();
-	}
-	
-	
+	}*/
 
 }

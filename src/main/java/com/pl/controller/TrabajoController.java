@@ -17,7 +17,6 @@ import com.pl.model.TrabajoModel;
 import com.pl.services.TrabajoService;
 
 @RestController
-@EnableAutoConfiguration
 public class TrabajoController {
 	
 	@Autowired

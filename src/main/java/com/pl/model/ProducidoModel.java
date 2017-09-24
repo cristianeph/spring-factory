@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(
-	name="producido"
+	name="tarjetahorario"
 )
 public class ProducidoModel {
 	

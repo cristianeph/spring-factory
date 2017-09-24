@@ -18,7 +18,6 @@ import com.pl.model.PreparadoModel;
 import com.pl.services.PedidoService;
 
 @RestController
-@EnableAutoConfiguration
 public class PedidoController {
 	
 	@Autowired

@@ -3,8 +3,8 @@
  */
 
 var urlPage = location.pathname;
-var urlResource = "/api/production/solicitudformula";
-var urlForm = "/production/solicitudformula/form";
+var urlResource = "/api/production/solicitudinsumo";
+var urlForm = "/production/solicitudinsumo/form";
 var list = null;
 var listData = null;
 
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	list = new Vue({
 		el: "#list",
 		data: {
-            requests: listData
+			requests: listData
 		},
 		methods: {
 			getEditionForm: function(input){

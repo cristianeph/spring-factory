@@ -16,7 +16,6 @@ import com.pl.services.InsumoService;
 import com.pl.services.KardexService;
 
 @RestController
-@EnableAutoConfiguration
 public class InsumoController {
 	
 	@Autowired
@@ -52,6 +51,13 @@ public class InsumoController {
 		method = RequestMethod.POST)
 	InsumoModel saveOne(@RequestBody InsumoModel insumo){
 		return this.insumoService.save(insumo);
+	}
+
+	@RequestMapping(
+			value = "/api/production/insumo",
+			method = RequestMethod.GET)
+	Iterable<InsumoModel> all(){
+		return this.insumoService.getAll(new PageRequest(0, Integer.MAX_VALUE));
 	}
 	
 	@RequestMapping(

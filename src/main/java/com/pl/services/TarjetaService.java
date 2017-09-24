@@ -3,16 +3,16 @@ package com.pl.services;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import com.pl.model.TarjetaModel;
+import com.pl.model.ParteProduccionModel;
 
 public interface TarjetaService {
 	
-	TarjetaModel save(TarjetaModel tarjeta);
-	void deleteById(TarjetaModel tarjeta);
-	TarjetaModel findById(TarjetaModel tarjeta);
-	Page<TarjetaModel> findAll(TarjetaModel tarjeta);
+	ParteProduccionModel save(ParteProduccionModel tarjeta);
+	void deleteById(ParteProduccionModel tarjeta);
+	ParteProduccionModel findById(ParteProduccionModel tarjeta);
+	Page<ParteProduccionModel> findAll(ParteProduccionModel tarjeta);
 	
-	Page<TarjetaModel> getAll(PageRequest page);
-	TarjetaModel getById(Integer id);
+	Page<ParteProduccionModel> getAll(PageRequest page);
+	ParteProduccionModel getById(Integer id);
 
 }

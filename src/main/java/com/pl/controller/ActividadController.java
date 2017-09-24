@@ -14,7 +14,6 @@ import com.pl.model.ActividadModel;
 import com.pl.services.ActividadService;
 
 @RestController
-@EnableAutoConfiguration
 public class ActividadController {
 	
 	@Autowired

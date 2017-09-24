@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@EnableAutoConfiguration
 public class MainController {
 
     @RequestMapping("/")
@@ -158,9 +157,14 @@ public class MainController {
         return "production/listInsumo";
     }
 
-    @RequestMapping("/production/solicitud/list")
+    @RequestMapping("/production/solicitudinsumo/list")
     public String productionSolicitudList() {
-        return "production/listSolicitud";
+        return "production/listSolicitudinsumo";
+    }
+
+    @RequestMapping("/production/solicitudinsumo/form")
+    public String productionSolicitudForm() {
+        return "production/formSolicitudinsumo";
     }
 
     @RequestMapping("/production/avancepedido/list")

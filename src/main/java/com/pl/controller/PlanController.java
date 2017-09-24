@@ -25,7 +25,6 @@ import com.pl.services.PlanService;
 import com.pl.services.SolicitudService;
 
 @RestController
-@EnableAutoConfiguration
 public class PlanController {
 
     @Autowired
@@ -43,63 +42,11 @@ public class PlanController {
     @RequestMapping("/production/plan/action/save")
     PlanModel save(@RequestBody PlanModel plan) {
 
-        PedidoModel pedidoEncontrado = null;
-        System.out.println("se recibe: " + plan.getPedido().getId());
-        if (plan.getPedido().getId() != null) {
+        PedidoModel pedidoEncontrado = pedidoService.findById(plan.getPedido());
+        plan.setPedido(pedidoEncontrado);
+        plan = this.planService.save(plan);
 
-            pedidoEncontrado = pedidoService.findById(plan.getPedido());
-            System.out.println("obteniendo pedido: " + pedidoEncontrado.getCodigo());
-            plan.setPedido(null);
-
-        }
-
-        System.out.println(plan.getId());
-
-        for (ProducidoModel detalle : plan.getPlanProducidos()) {
-
-            System.out.println("id del detalle: " + detalle.getId());
-
-            PersonalModel personalEncontrado = personalService.findById(detalle.getPersonal());
-            System.out.println("se encontro el personal actualizado: " + personalEncontrado.getId() + " : " + personalEncontrado.getApellidos());
-            detalle.setPersonal(personalEncontrado);
-
-            detalle.setPlan(plan);
-
-        }
-
-        //initial collection
-
-        Collection<ProducidoModel> producidoModelInitial = new ArrayList<ProducidoModel>();
-        producidoModelInitial.addAll(plan.getPlanProducidos());
-
-        //actual collection
-
-        plan.clearProducidoModel();
-
-        PlanModel planActualizada = this.planService.save(plan);
-        //System.out.println("obteniendo pedido: " + pedidoEncontrado.getCodigo());
-        System.out.println("se resetearon los detalles: " + planActualizada.getPlanProducidos().size());
-
-        planActualizada.getPlanProducidos().clear();
-        planActualizada.getPlanProducidos().addAll(producidoModelInitial);
-
-        System.out.println("tamano guardado de detalles: " + producidoModelInitial.size());
-
-        System.out.println("tamano actual de detalles: " + planActualizada.getPlanProducidos().size());
-
-        for (ProducidoModel detalle : planActualizada.getPlanProducidos()) {
-
-            detalle.setPlan(planActualizada);
-
-        }
-
-        planActualizada.setPedido(pedidoEncontrado);
-
-        PlanModel planProcesada = this.planService.save(planActualizada);
-
-        System.out.println("se actualizaron los detalles" + planProcesada.getPlanProducidos().size());
-
-        return planProcesada;
+        return plan;
 
     }
 
@@ -124,7 +71,7 @@ public class PlanController {
         this.planService.save(planEncontrado);
         System.out.println("se cambia el estado del plan");
         SolicitudModel solicitud = new SolicitudModel();
-        solicitud.setIdInsumo(planInsumo.getInsumo().getId());
+        solicitud.setInsumo(planInsumo.getInsumo());
         solicitud.setIdPlan(planInsumo.getPlan().getId());
         this.solicitudService.save(solicitud);
         System.out.println("se crea la solicitud");

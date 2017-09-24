@@ -14,7 +14,6 @@ import com.pl.model.MaquinaModel;
 import com.pl.services.MaquinaService;
 
 @RestController
-@EnableAutoConfiguration
 public class MaquinaController {
 	
 	@Autowired

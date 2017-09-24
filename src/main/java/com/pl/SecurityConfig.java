@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.pl.services.UsuarioServiceImpl;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -42,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 				.permitAll()
 			.and()
 				.logout()
-				.logoutSuccessUrl("/logout")
+				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+				.logoutSuccessUrl("/login")
 				.permitAll();
 	}
 

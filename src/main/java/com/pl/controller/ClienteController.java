@@ -14,7 +14,6 @@ import com.pl.model.ClienteModel;
 import com.pl.services.ClienteService;
 
 @RestController
-@EnableAutoConfiguration
 @RequestMapping("/api/production")
 public class ClienteController {
 	

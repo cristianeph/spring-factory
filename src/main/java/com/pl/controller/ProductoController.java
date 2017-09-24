@@ -11,7 +11,6 @@ import com.pl.model.ProductoModel;
 import com.pl.services.ProductoService;
 
 @RestController
-@EnableAutoConfiguration
 public class ProductoController {
 	
 	@Autowired

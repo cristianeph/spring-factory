@@ -10,7 +10,6 @@ import com.pl.model.PeriodoModel;
 import com.pl.services.PeriodoService;
 
 @RestController
-@EnableAutoConfiguration
 public class PeriodoController {
 	
 	@Autowired

@@ -10,7 +10,6 @@ import com.pl.model.PersonalModel;
 import com.pl.services.PersonalService;
 
 @RestController
-@EnableAutoConfiguration
 public class PersonalController {
 	
 	@Autowired

@@ -17,7 +17,6 @@ import com.pl.model.PreparadoModel;
 import com.pl.services.KardexService;
 
 @RestController
-@EnableAutoConfiguration
 public class KardexController {
 	
 	@Autowired

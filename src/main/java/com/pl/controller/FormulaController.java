@@ -20,7 +20,6 @@ import com.pl.services.FormulaService;
 import com.pl.services.InsumoService;
 
 @RestController
-@EnableAutoConfiguration
 public class FormulaController {
 	
 	@Autowired

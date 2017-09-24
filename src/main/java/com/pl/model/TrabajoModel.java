@@ -30,15 +30,15 @@ public class TrabajoModel {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idtarjeta")
-	private TarjetaModel tarjeta;
+	private ParteProduccionModel tarjeta;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	/*@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idmaquina")
 	private MaquinaModel maquina;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idactividad")
-	private ActividadModel actividad;
+	private ActividadModel actividad;*/
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idplan")
@@ -70,23 +70,11 @@ public class TrabajoModel {
 		this.id = id;
 	}
 	@JsonIgnore
-	public TarjetaModel getTarjeta() {
+	public ParteProduccionModel getTarjeta() {
 		return tarjeta;
 	}
-	public void setTarjeta(TarjetaModel tarjeta) {
+	public void setTarjeta(ParteProduccionModel tarjeta) {
 		this.tarjeta = tarjeta;
-	}
-	public MaquinaModel getMaquina() {
-		return maquina;
-	}
-	public void setMaquina(MaquinaModel maquina) {
-		this.maquina = maquina;
-	}
-	public ActividadModel getActividad() {
-		return actividad;
-	}
-	public void setActividad(ActividadModel actividad) {
-		this.actividad = actividad;
 	}
 	public PlanModel getPlan() {
 		return plan;

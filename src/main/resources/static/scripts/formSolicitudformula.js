@@ -11,7 +11,7 @@ var muestraList = null;
 document.addEventListener("DOMContentLoaded", function () {
 	
 	Requestformula = new Vue({
-		el: "#machine",
+		el: "#request",
 		data: {
 			id: 0,
 			fecha: "",

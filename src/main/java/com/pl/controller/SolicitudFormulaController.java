@@ -1,7 +1,6 @@
 package com.pl.controller;
 
 import com.pl.model.MuestraPruebaModel;
-import com.pl.model.PruebaFormulaModel;
 import com.pl.model.SolicitudFormulaModel;
 import com.pl.services.MuestraService;
 import com.pl.services.PruebaFormulaService;

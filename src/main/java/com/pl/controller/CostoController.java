@@ -14,7 +14,6 @@ import com.pl.services.PlanService;
 import com.pl.services.TrabajoService;
 
 @RestController
-@EnableAutoConfiguration
 public class CostoController {
 	
 	@Autowired
