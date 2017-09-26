@@ -1,10 +1,6 @@
 package com.pl.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pl.model.PedidoModel;
-import com.pl.model.PersonalModel;
 import com.pl.model.PlanInsumoModel;
 import com.pl.model.PlanModel;
-import com.pl.model.ProducidoModel;
 import com.pl.model.SolicitudModel;
 import com.pl.services.PedidoService;
 import com.pl.services.PersonalService;

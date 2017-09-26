@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(
 	name="tarjetahorario"
 )
-public class ProducidoModel {
+public class TarjetaHorarioModel {
 	
 	@Transient
 	private Integer rows;

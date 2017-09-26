@@ -47,14 +47,14 @@ public class MainController {
         return "production/formPlan";
     }
 
-    @RequestMapping("/production/card/list")
-    public String productionCardList() {
-        return "production/listTarjeta";
+    @RequestMapping("/production/parteproduccion/list")
+    public String productionParteproduccionList() {
+        return "production/listParteproduccion";
     }
 
-    @RequestMapping("/production/card/form")
-    public String productionCardForm() {
-        return "production/formTarjeta";
+    @RequestMapping("/production/parteproduccion/form")
+    public String productionParteproduccionForm() {
+        return "production/formParteproduccion";
     }
 
     @RequestMapping("/production/validartrabajo/list")

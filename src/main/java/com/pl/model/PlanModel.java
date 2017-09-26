@@ -39,7 +39,7 @@ public class PlanModel {
 	private PedidoModel pedido;
 	
 	/*@OneToMany(fetch=FetchType.EAGER, mappedBy = "plan", orphanRemoval=true, cascade = CascadeType.ALL)
-	private Collection<ProducidoModel> planProducidos = new ArrayList<ProducidoModel>();*/
+	private Collection<TarjetaHorarioModel> planProducidos = new ArrayList<TarjetaHorarioModel>();*/
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="trabajo")
 	
@@ -92,15 +92,15 @@ public class PlanModel {
 		this.pedido = pedido;
 	}
 
-	/*public Collection<ProducidoModel> getPlanProducidos() {
+	/*public Collection<TarjetaHorarioModel> getPlanProducidos() {
 		return planProducidos;
 	}
-	public void setPlanProducidos(Collection<ProducidoModel> planProducidos) {
+	public void setPlanProducidos(Collection<TarjetaHorarioModel> planProducidos) {
 		this.planProducidos = planProducidos;
 	}
 
 	public void clearProducidoModel(){
-		for (ProducidoModel producido : planProducidos) {
+		for (TarjetaHorarioModel producido : planProducidos) {
 			producido.releasePlanModel();
 		}
 		planProducidos.clear();

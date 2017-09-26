@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(
-	name="trabajo"
+	name="ordentrabajo"
 )
 public class TrabajoModel {
 	
@@ -29,8 +29,8 @@ public class TrabajoModel {
 	private Integer id;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="idtarjeta")
-	private ParteProduccionModel tarjeta;
+	@JoinColumn(name="idparteproduccion")
+	private ParteProduccionModel parteproduccion;
 	
 	/*@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idmaquina")
@@ -69,13 +69,15 @@ public class TrabajoModel {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	@JsonIgnore
-	public ParteProduccionModel getTarjeta() {
-		return tarjeta;
+	public ParteProduccionModel getParteproduccion() {
+		return parteproduccion;
 	}
-	public void setTarjeta(ParteProduccionModel tarjeta) {
-		this.tarjeta = tarjeta;
+	public void setParteproduccion(ParteProduccionModel parteproduccion) {
+		this.parteproduccion = parteproduccion;
 	}
+
 	public PlanModel getPlan() {
 		return plan;
 	}
@@ -105,9 +107,6 @@ public class TrabajoModel {
 	}
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
-	}
-	public void releaseTrabajoModel(){
-		this.tarjeta = null;
 	}
 	public BigDecimal getMerma() {
 		return merma;

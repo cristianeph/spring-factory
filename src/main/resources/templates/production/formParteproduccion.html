@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="_csrf" th:content="${_csrf.token}" />
+		<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<title>Home</title>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" th:href="@{/styles/style.css}" />
+		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
+		<link rel="stylesheet" th:href="@{/styles/base.css}" />
+		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formParteproduccion2.js}"></script>
+	</head>
+	<body>
+		<section class="main">
+			<section class="noti" th:include="/common/notification"></section>
+			<section class="head" th:include="/common/navigation"></section>
+			<section class="moda" th:include="/common/modal"></section>
+			<section class="body">
+				<section class="menu">
+					<article class="quic" th:include="/common/menu"></article>
+					<article class="tool">
+						<ul class="acci">
+							<li><div>Opciones</div></li>
+							<li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Grabar Parte de producción</span></a></li>
+							<li><a href="#" data-operation="grabarDetalle"><span class="icon-plus"></span><span>Guardar detalle</span></a></li>
+						</ul>
+					</article>
+				</section>
+				<section class="cont">
+					<article class="titl">
+						<ul class="subt">
+							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Parte de producción</span></a></li>
+						</ul>
+					</article>
+					<article class="form made" id="production">
+						<section class="mast">
+                            <h1><strong>Datos del Parte</strong></h1>
+							<form>
+								<div>
+									<label for="id">Id: </label>
+									<input type="text" name="id" id="id" v-model="master.id" readonly="readonly" />
+								</div>
+								<div>
+									<label for="codigo">Código: </label>
+									<input type="text" name="codigo" id="codigo" v-model="master.codigo" readonly="readonly" />
+								</div>
+								<div>
+									<label for="fecha">Fecha: </label>
+									<input type="text" name="fecha" id="fecha" v-model="master.fecha" />
+								</div>
+								<div>
+									<label for="inicio">Inicio: </label>
+									<input type="text" name="inicio" id="inicio" v-model="master.inicio" />
+								</div>
+								<div>
+									<label for="fin">Fin: </label>
+									<input type="text" name="fin" id="fin" v-model="master.fin" />
+								</div>
+								<div>
+									<label for="maquina">Maquina: </label>
+									<select name="maquina" id="maquina" v-model="master.maquina.selected">
+										<option value="">Seleccione una maquina</option>
+										<option v-for="option in master.maquina.options" v-bind:value="option.id">{{option.descripcion}}</option>
+									</select>
+								</div>
+								<div>
+									<label for="actividad">Actividad: </label>
+									<select name="actividad" id="actividad" v-model="master.actividad.selected">
+										<option value="">Seleccione una maquina</option>
+										<option v-for="option in master.actividad.options" v-bind:value="option.id">{{option.descripcion}}</option>
+									</select>
+								</div>
+							</form>
+						</section>
+						<section class="deta">
+                            <h1><strong>Detalles</strong></h1>
+							<table>
+								<thead>
+									<tr>
+										<th><span>#</span></th>
+										<th><span>Plan de produccion</span></th>
+										<th><span>Horas trabajadas</span></th>
+										<th><span>Unidades producidas</span></th>
+										<th><span>Merma producida</span></th>
+										<th class="qopt"><span class="icon-pencil2"></span></th>
+										<th class="qopt"><span class="icon-pencil2"></span></th>
+									</tr>
+								</thead>
+								<tbody>
+                                    <tr v-for="item in master.tarjetaTrabajos">
+                                        <td><span>{{item.id}}</span></td>
+                                        <td><span>{{item.plan.codigo}}</span></td>
+                                        <td><span>{{item.horas}}</span></td>
+                                        <td><span>{{item.cantidad}}</span></td>
+                                        <td><span>{{item.merma}}</span></td>
+                                        <td class="qopt"><span class="icon-pencil2"></span></td>
+                                        <td class="qopt"><span class="icon-pencil2"></span></td>
+                                    </tr>
+                                </tbody>
+								<tfoot>
+									<tr>
+										<td colspan="7"><span>Total de resultados: </span></td>
+									</tr>
+								</tfoot>
+							</table>
+                            <form>
+                                <div>
+                                    <label for="id">Id: </label>
+                                    <input type="text" name="id" id="id" v-model="detail.id" readonly="readonly" />
+                                </div>
+                                <div>
+                                    <label for="item">Item: </label>
+                                    <input type="text" name="item" id="item" v-model="detail.item" />
+                                </div>
+                                <div>
+                                    <label for="horas">Horas: </label>
+                                    <input type="text" name="horas" id="horas" v-model="detail.horas" />
+                                </div>
+                                <div>
+                                    <label for="cantidad">Cantidad: </label>
+                                    <input type="text" name="cantidad" id="cantidad" v-model="detail.cantidad" />
+                                </div>
+                                <div>
+                                    <label for="merma">Merma: </label>
+                                    <input type="text" name="merma" id="merma" v-model="detail.merma" />
+                                </div>
+                                <div>
+                                    <label for="comentarios">Comentarios: </label>
+                                    <input type="text" name="comentarios" id="comentarios" v-model="detail.comentarios" />
+                                </div>
+                                <div>
+                                    <label for="incidencias">Incidencias: </label>
+                                    <input type="text" name="incidencias" id="incidencias" v-model="detail.incidencias" />
+                                </div>
+                                <div>
+                                    <label for="plan">Plan: </label>
+                                    <select name="plan" id="plan" v-model="detail.plan.selected">
+                                        <option value="">Seleccione un plan</option>
+                                        <option v-for="option in detail.plan.options" v-bind:value="option.id">{{option.codigo}}</option>
+                                    </select>
+                                </div>
+                            </form>
+						</section>
+					</article>
+				</section>
+				<section class="hidd">
+					<a th:href="@{/production/partetrabajo/action/save}" id="documentSave"></a>
+					<a th:href="@{/production/partetrabajo/action/find}" id="documentView"></a>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>

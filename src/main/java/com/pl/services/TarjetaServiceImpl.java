@@ -1,6 +1,7 @@
 package com.pl.services;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,6 +11,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import com.pl.model.TrabajoModel;
+import com.pl.repository.TrabajoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -29,18 +32,25 @@ public class TarjetaServiceImpl implements TarjetaService{
 	private EntityManager entityManager;
 	
 	private final TarjetaRepository tarjetaRepository;
+	private final TrabajoRepository trabajoRepository;
 	
-	public TarjetaServiceImpl(TarjetaRepository tarjetaRepository){
-		
+	public TarjetaServiceImpl(TarjetaRepository tarjetaRepository,
+							  TrabajoRepository trabajoRepository){
+		this.trabajoRepository = trabajoRepository;
 		this.tarjetaRepository = tarjetaRepository;
-		
 	}
 
 	@Override
-	public ParteProduccionModel save(ParteProduccionModel tarjeta) {
-		
-		return this.tarjetaRepository.save(tarjeta);
-		
+	public ParteProduccionModel save(ParteProduccionModel parte) {
+		Collection<TrabajoModel> details = parte.getTarjetaTrabajos();
+		this.tarjetaRepository.save(parte);
+		ParteProduccionModel parteSaved = parte;
+		details.stream().forEach(item -> {
+			TrabajoModel trabajo = this.trabajoRepository.findById(item.getId());
+			trabajo.setParteproduccion(parteSaved);
+			trabajo = this.trabajoRepository.save(trabajo);
+		});
+		return parteSaved;
 	}
 
 	@Override

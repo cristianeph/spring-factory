@@ -30,12 +30,6 @@ $(document).ready(function($){
 							"<td data-field='plan' data-value='" + item.plan.id + "'>" +
 								"<span>" + item.plan.codigo + "</span>" +
 							"</td>" +
-							"<td data-field='maquina' data-value='" + item.maquina.id + "'>" +
-								"<span>" + item.maquina.descripcion + "</span>" +
-							"</td>" +
-							"<td data-field='actividad' data-value='" + item.actividad.id + "'>" +
-								"<span>" + item.actividad.descripcion + "</span>" +
-							"</td>" +
 							"<td data-field='horas'><span>" + item.horas + "</span></td>" +
 							"<td data-field='cantidad'><span>" + item.cantidad + "</span></td>" +
 							"<td data-field='merma'><span>" + item.merma + "</span></td>" +
@@ -69,12 +63,6 @@ $(document).ready(function($){
 			
 			var detail = {
 				"id" : parseInt(element.attr("data-row-code")),
-				"maquina" : {
-					"id" : element.find("td[data-field='maquina']").attr("data-value")
-				},
-				"actividad" : {
-					"id" : element.find("td[data-field='actividad']").attr("data-value")
-				},
 				"plan" : {
 					"id" : element.find("td[data-field='plan']").attr("data-value")
 				},
@@ -133,12 +121,6 @@ $(document).ready(function($){
 					"<td data-field='plan' data-value='" + $("input[id='tarjetadetalle.plan']").attr("data-code") + "'>" +
 						"<span>" + $("input[id='tarjetadetalle.plan']").val() + "</span>" +
 					"</td>" +
-					"<td data-field='maquina' data-value='" + $("input[id='tarjetadetalle.maquina']").attr("data-code") + "'>" +
-						"<span>" + $("input[id='tarjetadetalle.maquina']").val() + "</span>" +
-					"</td>" +
-					"<td data-field='actividad' data-value='" + $("input[id='tarjetadetalle.actividad']").attr("data-code") + "'>" +
-						"<span>" + $("input[id='tarjetadetalle.actividad']").val() + "</span>" +
-					"</td>" +
 					"<td data-field='horas'><span>" + $("input[id='tarjetadetalle.horas']").val() + "</span></td>" +
 					"<td data-field='cantidad'><span>" + $("input[id='tarjetadetalle.cantidad']").val() + "</span></td>" +
 					"<td data-field='merma'><span>" + $("input[id='tarjetadetalle.merma']").val() + "</span></td>" +
@@ -165,12 +147,6 @@ $(document).ready(function($){
 			container.find("[data-field='plan']").html("<span>" + $("input[id='tarjetadetalle.plan']").val() + "</span>");
 			container.find("[data-field='plan']").attr("data-value", $("input[id='tarjetadetalle.plan']").attr("data-code"));
 			
-			container.find("[data-field='maquina']").html("<span>" + $("input[id='tarjetadetalle.maquina']").val() + "</span>");
-			container.find("[data-field='maquina']").attr("data-value", $("input[id='tarjetadetalle.maquina']").attr("data-code"));
-			
-			container.find("[data-field='actividad']").html("<span>" + $("input[id='tarjetadetalle.actividad']").val() + "</span>");
-			container.find("[data-field='actividad']").attr("data-value", $("input[id='tarjetadetalle.actividad']").attr("data-code"));
-			
 			container.find("[data-field='horas']").html("<span>" + $("input[id='tarjetadetalle.horas']").val() + "</span>");
 			container.find("[data-field='cantidad']").html("<span>" + $("input[id='tarjetadetalle.cantidad']").val() + "</span>");
 			container.find("[data-field='merma']").html("<span>" + $("input[id='tarjetadetalle.merma']").val() + "</span>");
@@ -184,12 +160,6 @@ $(document).ready(function($){
 		
 		$("input[id='tarjetadetalle.plan']").val("")
 		$("input[id='tarjetadetalle.plan']").attr("data-code","")
-		
-		$("input[id='tarjetadetalle.maquina']").val("")
-		$("input[id='tarjetadetalle.maquina']").attr("data-code","")
-		
-		$("input[id='tarjetadetalle.actividad']").val("")
-		$("input[id='tarjetadetalle.actividad']").attr("data-code","")
 		
 		$("input[id='tarjetadetalle.horas']").val("")
 		$("input[id='tarjetadetalle.cantidad']").val("")
@@ -221,12 +191,6 @@ function editDetail(event){
 	
 	$("input[id='tarjetadetalle.plan']").val(container.find("td[data-field='plan']").text());
 	$("input[id='tarjetadetalle.plan']").attr("data-code", container.find("td[data-field='plan']").attr("data-value"));
-	
-	$("input[id='tarjetadetalle.maquina']").val(container.find("td[data-field='maquina']").text());
-	$("input[id='tarjetadetalle.maquina']").attr("data-code", container.find("td[data-field='maquina']").attr("data-value"));
-	
-	$("input[id='tarjetadetalle.actividad']").val(container.find("td[data-field='actividad']").text());
-	$("input[id='tarjetadetalle.actividad']").attr("data-code", container.find("td[data-field='actividad']").attr("data-value"));
 	
 }
 
