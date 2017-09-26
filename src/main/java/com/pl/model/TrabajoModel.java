@@ -13,6 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.pl.repository.PruebaProduccionModel;
 
 @Entity
 @Table(
@@ -32,22 +33,22 @@ public class TrabajoModel {
 	@JoinColumn(name="idparteproduccion")
 	private ParteProduccionModel parteproduccion;
 	
-	/*@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="idmaquina")
-	private MaquinaModel maquina;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="idactividad")
-	private ActividadModel actividad;*/
-	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idplan")
 	private PlanModel plan;
+
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="idmerma")
+	private MermaModel merma;
+
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="idprueba")
+    private PruebaProduccionModel prueba;
 	
 	private Integer item;
 	private Integer horas;
 	private BigDecimal cantidad;
-	private BigDecimal merma;
+	/*private BigDecimal merma;*/
 	private String comentarios;
 	private String incidencias;
 	
@@ -69,7 +70,6 @@ public class TrabajoModel {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 	@JsonIgnore
 	public ParteProduccionModel getParteproduccion() {
 		return parteproduccion;
@@ -77,14 +77,25 @@ public class TrabajoModel {
 	public void setParteproduccion(ParteProduccionModel parteproduccion) {
 		this.parteproduccion = parteproduccion;
 	}
-
 	public PlanModel getPlan() {
 		return plan;
 	}
 	public void setPlan(PlanModel plan) {
 		this.plan = plan;
 	}
-	public Integer getItem() {
+    public MermaModel getMerma() {
+        return merma;
+    }
+    public void setMerma(MermaModel merma) {
+        this.merma = merma;
+    }
+    public PruebaProduccionModel getPrueba() {
+        return prueba;
+    }
+    public void setPrueba(PruebaProduccionModel prueba) {
+        this.prueba = prueba;
+    }
+    public Integer getItem() {
 		return item;
 	}
 	public void setItem(Integer item) {
@@ -108,12 +119,12 @@ public class TrabajoModel {
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
 	}
-	public BigDecimal getMerma() {
+	/*public BigDecimal getMerma() {
 		return merma;
 	}
 	public void setMerma(BigDecimal merma) {
 		this.merma = merma;
-	}
+	}*/
 	public String getIncidencias() {
 		return incidencias;
 	}
