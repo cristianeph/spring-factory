@@ -2,26 +2,34 @@
  * 
  */
 var urlPage = location.pathname;
-var Input = null;
-var urlResource = "/api/production/insumo";
+var Test = null;
+var urlResource = "/api/production/pruebaproduccion";
+var urlParametersResource = "/api/production/merma/parameters";
+var ordenList = null;
 
 document.addEventListener("DOMContentLoaded", function () {
-	
-	Input = new Vue({
-		el: "#input",
+
+    Test = new Vue({
+		el: "#test",
 		data: {
-			id: 0,
-			descripcion: "",
-			costo: ""
+		    master: {
+                id: 0,
+                descripcion: "",
+                observaciones: ""
+            },
+            relation: {
+		        selected: "",
+                options: ordenList
+            }
 		},
 		methods: {
 			setData: function(data) {
-				this.id = data.id;
-				this.descripcion = data.descripcion;
-				this.costo = data.costo;
+				this.master.id = data.id;
+				this.master.descripcion = data.descripcion;
+                this.master.observaciones = data.observaciones;
 			},
 			getData: function() {
-				return JSON.parse(JSON.stringify(this.$data));
+				return JSON.parse(JSON.stringify(this.$data.master));
 			}
 		},
 		beforeMount: function() {
@@ -29,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				var url = urlResource + "/" + getUrlValue().id; 
 				getData(url).onload = function(data){
 					var response = JSON.parse(this.responseText);
-					Input.setData(response);
+                    Test.setData(response);
 				};
 			}
 		}
@@ -37,13 +45,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	document.querySelector("[data-operation='grabarDocumento']").onclick = function(event){
 		event.preventDefault();
-		var object = Input.getData();
+		var object = Test.getData();
 		var url = urlResource;
 		postData(url, object).onload = function() {
 			var response = JSON.parse(this.responseText);
             if (handleHttpStatus(response) == true) {
-            		console.log(response);
-            		Input.setData(response);
+				console.log(response);
+                Test.setData(response);
                 alert("El registro ha sido grabado correctamente");
             }
 		}

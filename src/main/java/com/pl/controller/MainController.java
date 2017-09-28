@@ -47,6 +47,26 @@ public class MainController {
         return "production/formPlan";
     }
 
+    @RequestMapping("/production/merma/list")
+    public String productionMermaList() {
+        return "production/listMerma";
+    }
+
+    @RequestMapping("/production/merma/form")
+    public String productionMermaForm() {
+        return "production/formMerma";
+    }
+
+    @RequestMapping("/production/pruebaproduccion/list")
+    public String productionPruebaproduccionList() {
+        return "production/listPruebaproduccion";
+    }
+
+    @RequestMapping("/production/pruebaproduccion/form")
+    public String productionPruebaproduccionForm() {
+        return "production/formPruebaproduccion";
+    }
+
     @RequestMapping("/production/parteproduccion/list")
     public String productionParteproduccionList() {
         return "production/listParteproduccion";

@@ -5,20 +5,20 @@ import java.util.Date;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
-import com.pl.model.TrabajoModel;
+import com.pl.model.OrdenTrabajoModel;
 
 public interface TrabajoService {
 
-	TrabajoModel save(TrabajoModel trabajo);
-	TrabajoModel deleteById(TrabajoModel trabajo);
-	TrabajoModel findById(TrabajoModel trabajo);
-	Page<TrabajoModel> findAll(TrabajoModel trabajo);
-	Page<TrabajoModel> getAllInvalid(PageRequest page);
-	Page<TrabajoModel> getAll(PageRequest page);
-	TrabajoModel getById(Integer id);
+	OrdenTrabajoModel save(OrdenTrabajoModel trabajo);
+	OrdenTrabajoModel deleteById(OrdenTrabajoModel trabajo);
+	OrdenTrabajoModel findById(OrdenTrabajoModel trabajo);
+	Page<OrdenTrabajoModel> findAll(OrdenTrabajoModel trabajo);
+	Page<OrdenTrabajoModel> getAllInvalid(PageRequest page);
+	Page<OrdenTrabajoModel> getAll(PageRequest page);
+	OrdenTrabajoModel getById(Integer id);
 	
-	TrabajoModel findByPlanId(Integer id);
-	Page<TrabajoModel> findAllBetweenPlanFecha(Date start, Date end);
-	Page<TrabajoModel> findMermaAllBetweenPlanFecha(Date start, Date end);
+	OrdenTrabajoModel findByPlanId(Integer id);
+	Page<OrdenTrabajoModel> findAllBetweenPlanFecha(Date start, Date end);
+	Page<OrdenTrabajoModel> findMermaAllBetweenPlanFecha(Date start, Date end);
 
 }

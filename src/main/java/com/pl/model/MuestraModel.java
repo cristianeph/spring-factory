@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(
-        name = "muestra"
+        name="muestra"
 )
 public class MuestraModel {
     @Id

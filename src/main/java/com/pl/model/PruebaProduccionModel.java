@@ -1,4 +1,4 @@
-package com.pl.repository;
+package com.pl.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,12 +8,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(
-        name = "pruebaproduccion"
+        name="pruebaorden"
 )
 public class PruebaProduccionModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    private String descripcion;
     private String observaciones;
 
     public Integer getId() {
@@ -22,6 +23,14 @@ public class PruebaProduccionModel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getObservaciones() {

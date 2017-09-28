@@ -12,7 +12,7 @@
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/formPruebaformula.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formMerma.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -25,51 +25,34 @@
 					<article class="tool">
 						<ul class="acci">
 							<li><div>Opciones</div></li>
-							<li>
-								<a href="#" data-operation="grabarDocumento">
-									<span class="icon-floppy-disk"></span><span>Grabar Prueba</span>
-								</a>
-							</li>
+							<li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Grabar Merma</span></a></li>
 						</ul>
 					</article>
 				</section>
 				<section class="cont">
 					<article class="titl">
 						<ul class="subt">
-							<li>
-								<a href="#">
-									<span class="icon-list-numbered"></span><span> Modulos - Prueba de formula</span>
-								</a>
-							</li>
+							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Merma</span></a></li>
 						</ul>
 					</article>
 					<article class="form">
 						<section class="mast">
-							<h1><strong>Datos de la Maquina</strong></h1>
-							<form id="test">
+							<h1><strong>Datos de la Merma</strong></h1>
+							<form id="loss">
 								<div>
 									<label for="id">Id</label> 
 									<input type="text" name="id" id="id" v-model="id" readonly="readonly" /> 
 								</div>
 								<div>
-									<label for="codigo">Codigo</label>
-									<input type="text" name="codigo" id="codigo" v-model="codigo" />
+									<label for="cantidad">Cantidad: </label>
+									<input type="text" name="cantidad" id="cantidad" v-model="cantidad" />
 								</div>
 								<div>
-									<label for="estado">Estado</label>
-									<input type="text" name="estado" id="estado" v-model="estado" />
-								</div>
-								<div>
-									<label for="observaciones">Estado</label>
-									<input type="text" name="observaciones" id="observaciones" v-model="observaciones" />
-								</div>
-								<div>
-									<label for="sugerencias">Sugerencias</label>
-									<input type="text" name="sugerencias" id="sugerencias" v-model="sugerencias" />
-								</div>
-								<div>
-									<label for="merma">Merma</label>
-									<input type="text" name="merma" id="merma" v-model="merma" />
+									<label for="orden">Orden de Trabajo: </label>
+									<select name="orden" id="orden" v-model="orden.selected">
+										<option value="">Seleccione una prueba</option>
+										<option v-for="option in orden.options" v-bind:value="option.id">{{option.id + ' - ' + option.cantidad}}</option>
+									</select>
 								</div>
 							</form>
 						</section>

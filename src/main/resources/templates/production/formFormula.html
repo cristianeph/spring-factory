@@ -56,46 +56,50 @@
 						</ul>
 					</article>
 					<article class="form">
-						<section class="docu">
-							<div><strong>Datos de la Formula</strong></div>
-							<div>
-								<input type="hidden" id="formula.id" disabled="disabled" />
-								
-								<label for="formula.codigo">Codigo</label> 
-								<input type="text" id="formula.codigo" /> 
-							</div>
-							<div>
-								<label for="formula.fecha">Fecha</label> 
-								<input type="text" id="formula.fecha" />
-							
-								<label for="formula.nombre">Nombre</label> 
-								<input type="text" id="formula.nombre" />
-							</div>
+						<section class="mast">
+							<h1><strong>Datos de la Formula</strong></h1>
+							<form>
+								<div>
+									<input type="hidden" id="formula.id" disabled="disabled" />
+
+									<label for="formula.codigo">Codigo</label>
+									<input type="text" id="formula.codigo" />
+								</div>
+								<div>
+									<label for="formula.fecha">Fecha</label>
+									<input type="text" id="formula.fecha" />
+
+									<label for="formula.nombre">Nombre</label>
+									<input type="text" id="formula.nombre" />
+								</div>
+							</form>
 						</section>
 					</article>
 					
 					<article class="form deta">
-						<section class="docu">
-							<div><strong>Datos del detalle</strong></div>
-							<div>
-								<input type="hidden" id="formulaingredientes.id" disabled="disabled" />
-								 
-								<input type="hidden" id="formulaingredientes.item" disabled="disabled" />
-								
-								<label for="formulaingredientes.cantidad">Cantidad</label> 
-								<input type="text" id="formulaingredientes.cantidad" />
-							
-								<label for="formulaingredientes.insumo">Insumo</label> 
-								<input type="text" id="formulaingredientes.insumo" disabled="disabled" data-reference="" /> 
-								<a th:href="@{/production/insumo/action/all}" 
-									data-operation="cambiar"  
-									data-entity="insumo" 
-									data-property="descripcion"
-									data-element="formulaingredientes.insumo"
-									data-title="Busqueda de Insumo">
-									<span class="icon-pencil"></span> Cambiar
-								</a>
-							</div>
+						<section class="mast">
+							<h1><strong>Datos del detalle</strong></h1>
+							<form>
+								<div>
+									<input type="hidden" id="formulaingredientes.id" disabled="disabled" />
+
+									<input type="hidden" id="formulaingredientes.item" disabled="disabled" />
+
+									<label for="formulaingredientes.cantidad">Cantidad</label>
+									<input type="text" id="formulaingredientes.cantidad" />
+
+									<label for="formulaingredientes.insumo">Insumo</label>
+									<input type="text" id="formulaingredientes.insumo" disabled="disabled" data-reference="" />
+									<a th:href="@{/production/insumo/action/all}"
+									   data-operation="cambiar"
+									   data-entity="insumo"
+									   data-property="descripcion"
+									   data-element="formulaingredientes.insumo"
+									   data-title="Busqueda de Insumo">
+										<span class="icon-pencil"></span> Cambiar
+									</a>
+								</div>
+							</form>
 						</section>
 					</article>
 					

@@ -18,8 +18,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Component;
 
-import com.pl.model.TrabajoModel;
-import com.pl.model.TrabajoModel_;
+import com.pl.model.OrdenTrabajoModel;
+import com.pl.model.OrdenTrabajoModel_;
 import com.pl.repository.TrabajoRepository;
 
 @Component("trabajoService")
@@ -37,43 +37,43 @@ public class TrabajoServiceImpl implements TrabajoService{
 	}
 
 	@Override
-	public TrabajoModel save(TrabajoModel trabajo) {
+	public OrdenTrabajoModel save(OrdenTrabajoModel trabajo) {
 		
 		return this.trabajoRepository.save(trabajo);
 		
 	}
 
 	@Override
-	public TrabajoModel deleteById(TrabajoModel trabajo) {
+	public OrdenTrabajoModel deleteById(OrdenTrabajoModel trabajo) {
 		
 		return this.trabajoRepository.deleteById(trabajo.getId());
 		
 	}
 
 	@Override
-	public TrabajoModel findById(TrabajoModel trabajo) {
+	public OrdenTrabajoModel findById(OrdenTrabajoModel trabajo) {
 		
 		return this.trabajoRepository.findById(trabajo.getId());
 		
 	}
 
 	@Override
-	public Page<TrabajoModel> findAll(TrabajoModel trabajo) {
+	public Page<OrdenTrabajoModel> findAll(OrdenTrabajoModel trabajo) {
 		
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<TrabajoModel> query = builder.createQuery(TrabajoModel.class);
-		Root<TrabajoModel> root = query.from(TrabajoModel.class);
+		CriteriaQuery<OrdenTrabajoModel> query = builder.createQuery(OrdenTrabajoModel.class);
+		Root<OrdenTrabajoModel> root = query.from(OrdenTrabajoModel.class);
 		
 		List<Predicate> predicates = new ArrayList<Predicate>();
 		
 		if(trabajo.getId() != 0){
 			System.out.println(trabajo.getId());
-			predicates.add(builder.equal(root.get(TrabajoModel_.id), trabajo.getId()));
+			predicates.add(builder.equal(root.get(OrdenTrabajoModel_.id), trabajo.getId()));
 		}
 		
 		if(trabajo.getComentarios() != ""){
 			System.out.println(trabajo.getComentarios());
-			predicates.add(builder.like(root.get(TrabajoModel_.comentarios), "%" + trabajo.getComentarios() + "%"));
+			predicates.add(builder.like(root.get(OrdenTrabajoModel_.comentarios), "%" + trabajo.getComentarios() + "%"));
 		}
 		
 		Predicate[] predicatesArray = new Predicate[predicates.size()];
@@ -87,16 +87,16 @@ public class TrabajoServiceImpl implements TrabajoService{
 			System.out.println("CANTIDAD de resultados: " + trabajo.getRows());
 			
 			if(trabajo.getRows() > 0){
-				return (Page<TrabajoModel>) this.trabajoRepository.findAll(new PageRequest(0, trabajo.getRows(), Direction.DESC, "id"));
+				return (Page<OrdenTrabajoModel>) this.trabajoRepository.findAll(new PageRequest(0, trabajo.getRows(), Direction.DESC, "id"));
 			}else{
-				return (Page<TrabajoModel>) this.trabajoRepository.findAll(new PageRequest(0, Integer.MAX_VALUE, Direction.DESC, "id"));
+				return (Page<OrdenTrabajoModel>) this.trabajoRepository.findAll(new PageRequest(0, Integer.MAX_VALUE, Direction.DESC, "id"));
 			}
 			
 		}else{
 			
 			System.out.println("SI se mandaron parametros para la busqueda");
 			
-			Page<TrabajoModel> trabajos = new PageImpl<TrabajoModel>(entityManager.createQuery(query.select(root)).getResultList()); 
+			Page<OrdenTrabajoModel> trabajos = new PageImpl<OrdenTrabajoModel>(entityManager.createQuery(query.select(root)).getResultList());
 			return trabajos;
 			
 		}
@@ -104,14 +104,14 @@ public class TrabajoServiceImpl implements TrabajoService{
 	}
 
 	@Override
-	public TrabajoModel findByPlanId(Integer id) {
+	public OrdenTrabajoModel findByPlanId(Integer id) {
 		
-		Iterable<TrabajoModel> trabajoResult = this.trabajoRepository.findByPlanId(new PageRequest(0, Integer.MAX_VALUE), id);
+		Iterable<OrdenTrabajoModel> trabajoResult = this.trabajoRepository.findByPlanId(new PageRequest(0, Integer.MAX_VALUE), id);
 		
-		TrabajoModel trabajo = null;
+		OrdenTrabajoModel trabajo = null;
 		
-		for (TrabajoModel trabajoModel : trabajoResult) {
-			trabajo = trabajoModel;
+		for (OrdenTrabajoModel ordenTrabajoModel : trabajoResult) {
+			trabajo = ordenTrabajoModel;
 		}
 		
 		return trabajo;
@@ -119,31 +119,31 @@ public class TrabajoServiceImpl implements TrabajoService{
 	}
 
 	@Override
-	public Page<TrabajoModel> findAllBetweenPlanFecha(Date start, Date end) {
+	public Page<OrdenTrabajoModel> findAllBetweenPlanFecha(Date start, Date end) {
 		
 		return this.trabajoRepository.findAllBetweenPlanFecha(new PageRequest(0, Integer.MAX_VALUE), start, end);
 		
 	}
 
 	@Override
-	public Page<TrabajoModel> findMermaAllBetweenPlanFecha(Date start, Date end) {
+	public Page<OrdenTrabajoModel> findMermaAllBetweenPlanFecha(Date start, Date end) {
 		
 		return this.trabajoRepository.findMermaAllBetweenPlanFecha(new PageRequest(0, Integer.MAX_VALUE), start, end);
 		
 	}
 
 	@Override
-	public Page<TrabajoModel> getAll(PageRequest page) {
+	public Page<OrdenTrabajoModel> getAll(PageRequest page) {
 		return this.trabajoRepository.findAll(page);
 	}
 
 	@Override
-	public TrabajoModel getById(Integer id) {
+	public OrdenTrabajoModel getById(Integer id) {
 		return this.trabajoRepository.findById(id);
 	}
 
 	@Override
-	public Page<TrabajoModel> getAllInvalid(PageRequest page) {
+	public Page<OrdenTrabajoModel> getAllInvalid(PageRequest page) {
 		return this.trabajoRepository.findByCantidadOrHoras(page, new BigDecimal(0), 0);
 	}
 

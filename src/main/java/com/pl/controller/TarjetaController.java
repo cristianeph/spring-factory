@@ -1,9 +1,5 @@
 package com.pl.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-
 import com.pl.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -14,11 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pl.model.ActividadModel;
-import com.pl.model.MaquinaModel;
-import com.pl.model.PlanModel;
 import com.pl.model.ParteProduccionModel;
-import com.pl.model.TrabajoModel;
 
 @RestController
 public class TarjetaController {

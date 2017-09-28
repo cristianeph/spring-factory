@@ -13,13 +13,12 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.pl.repository.PruebaProduccionModel;
 
 @Entity
 @Table(
 	name="ordentrabajo"
 )
-public class TrabajoModel {
+public class OrdenTrabajoModel {
 	
 	@Transient
 	private Integer rows;
@@ -42,7 +41,7 @@ public class TrabajoModel {
 	private MermaModel merma;
 
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="idprueba")
+    @JoinColumn(name="idpruebaorden")
     private PruebaProduccionModel prueba;
 	
 	private Integer item;

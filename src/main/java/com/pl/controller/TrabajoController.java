@@ -4,7 +4,6 @@ import com.pl.model.MaquinaActividadModel;
 import com.pl.services.ActividadService;
 import com.pl.services.MaquinaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pl.model.TrabajoModel;
+import com.pl.model.OrdenTrabajoModel;
 import com.pl.services.TrabajoService;
 
 @RestController
@@ -27,38 +26,38 @@ public class TrabajoController {
 	private ActividadService actividadService;
 	
 	@RequestMapping("/production/trabajo/action/save")
-	TrabajoModel save(@RequestBody TrabajoModel trabajo){
+	OrdenTrabajoModel save(@RequestBody OrdenTrabajoModel trabajo){
 		
-		TrabajoModel trabajoModel = this.trabajoService.save(trabajo);
+		OrdenTrabajoModel ordenTrabajoModel = this.trabajoService.save(trabajo);
 		
-		return trabajoModel;
+		return ordenTrabajoModel;
 		
 	}
 	
 	@RequestMapping("/production/trabajo/action/find")
-	TrabajoModel findById(@RequestBody TrabajoModel trabajo){
+	OrdenTrabajoModel findById(@RequestBody OrdenTrabajoModel trabajo){
 		
 		System.out.println("se recibe el parametro: " + trabajo.getId());
 		
-		TrabajoModel trabajoModel = this.trabajoService.findById(trabajo);
+		OrdenTrabajoModel ordenTrabajoModel = this.trabajoService.findById(trabajo);
 		
-		return trabajoModel;
+		return ordenTrabajoModel;
 		
 	}
 	
 	@RequestMapping("/production/trabajo/action/delete")
-	TrabajoModel deleteById(@RequestBody TrabajoModel trabajo){
+	OrdenTrabajoModel deleteById(@RequestBody OrdenTrabajoModel trabajo){
 		
-		TrabajoModel trabajoModel = this.trabajoService.deleteById(trabajo);
+		OrdenTrabajoModel ordenTrabajoModel = this.trabajoService.deleteById(trabajo);
 		
-		return trabajoModel;
+		return ordenTrabajoModel;
 		
 	}
 	
 	@RequestMapping("/production/trabajo/action/all")
-	Iterable<TrabajoModel> findAll(@RequestBody TrabajoModel trabajo){
+	Iterable<OrdenTrabajoModel> findAll(@RequestBody OrdenTrabajoModel trabajo){
 		
-		Iterable<TrabajoModel> trabajoModels = this.trabajoService.findAll(trabajo);
+		Iterable<OrdenTrabajoModel> trabajoModels = this.trabajoService.findAll(trabajo);
 		
 		return trabajoModels;
 		
@@ -68,14 +67,14 @@ public class TrabajoController {
 			value = "/api/production/trabajo/invalid",
 			params = {"page", "size"},
 			method = RequestMethod.GET)
-	Iterable<TrabajoModel> getAllInvalid(@RequestParam Integer page, @RequestParam Integer size){
+	Iterable<OrdenTrabajoModel> getAllInvalid(@RequestParam Integer page, @RequestParam Integer size){
 		return this.trabajoService.getAllInvalid(new PageRequest((page - 1), size));
 	}
 
 	@RequestMapping(
 			value = "/api/production/trabajo",
 			method = RequestMethod.POST)
-	TrabajoModel saveOne(@RequestBody TrabajoModel trabajo){
+	OrdenTrabajoModel saveOne(@RequestBody OrdenTrabajoModel trabajo){
 		return this.trabajoService.save(trabajo);
 	}
 	
@@ -83,14 +82,14 @@ public class TrabajoController {
 		value = "/api/production/trabajo", 
 		params = {"page", "size"},
 		method = RequestMethod.GET)
-	Iterable<TrabajoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
+	Iterable<OrdenTrabajoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
 		return this.trabajoService.getAll(new PageRequest((page - 1), size));
 	}
 	
 	@RequestMapping(
 		value = "/api/production/trabajo/{id}",
 		method = RequestMethod.GET)
-	TrabajoModel getById(@PathVariable Integer id){
+	OrdenTrabajoModel getById(@PathVariable Integer id){
 		return this.trabajoService.getById(id);
 	}
 

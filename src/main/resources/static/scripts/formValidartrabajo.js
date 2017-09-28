@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 		beforeMount: function() {
 			if(getUrlValue().id != undefined){
-				let url = urlResource + "/" + getUrlValue().id; 
+				var url = urlResource + "/" + getUrlValue().id; 
 				getData(url).onload = function(data){
 					var response = JSON.parse(this.responseText);
 					Job.setData(response);
