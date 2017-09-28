@@ -1,11 +1,8 @@
 package com.pl.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(
@@ -15,6 +12,8 @@ public class KardexModel {
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+	@OneToMany(fetch=FetchType.EAGER, mappedBy = "kardex", orphanRemoval = true,  cascade = CascadeType.ALL)
+	private Collection<MovimientoAlmacenModel> movimiento = new ArrayList<>();
 	@Column(name="idinsumo")
 	private Integer idInsumo;
 	private Integer relacion;
@@ -26,7 +25,13 @@ public class KardexModel {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getIdInsumo() {
+    public Collection<MovimientoAlmacenModel> getMovimiento() {
+        return movimiento;
+    }
+    public void setMovimiento(Collection<MovimientoAlmacenModel> movimiento) {
+        this.movimiento = movimiento;
+    }
+    public Integer getIdInsumo() {
 		return idInsumo;
 	}
 	public void setIdInsumo(Integer idInsumo) {
