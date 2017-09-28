@@ -7,7 +7,7 @@ public class IndicadorIncidenciaModel {
 	
 	private Date inicio;
 	private Date fin;
-	private Iterable<TrabajoModel> trabajos = new ArrayList<TrabajoModel>();
+	private Iterable<OrdenTrabajoModel> trabajos = new ArrayList<OrdenTrabajoModel>();
 	
 	public Date getInicio() {
 		return inicio;
@@ -21,10 +21,10 @@ public class IndicadorIncidenciaModel {
 	public void setFin(Date fin) {
 		this.fin = fin;
 	}
-	public Iterable<TrabajoModel> getTrabajos() {
+	public Iterable<OrdenTrabajoModel> getTrabajos() {
 		return trabajos;
 	}
-	public void setTrabajos(Iterable<TrabajoModel> trabajos) {
+	public void setTrabajos(Iterable<OrdenTrabajoModel> trabajos) {
 		this.trabajos = trabajos;
 	}
 

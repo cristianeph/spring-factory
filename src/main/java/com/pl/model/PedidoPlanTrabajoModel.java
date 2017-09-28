@@ -4,7 +4,7 @@ public class PedidoPlanTrabajoModel {
 	
 	private PedidoModel pedido;
 	private PlanModel plan;
-	private TrabajoModel trabajo;
+	private OrdenTrabajoModel trabajo;
 	
 	public PedidoModel getPedido() {
 		return pedido;
@@ -18,10 +18,10 @@ public class PedidoPlanTrabajoModel {
 	public void setPlan(PlanModel plan) {
 		this.plan = plan;
 	}
-	public TrabajoModel getTrabajo() {
+	public OrdenTrabajoModel getTrabajo() {
 		return trabajo;
 	}
-	public void setTrabajo(TrabajoModel trabajo) {
+	public void setTrabajo(OrdenTrabajoModel trabajo) {
 		this.trabajo = trabajo;
 	}
 	

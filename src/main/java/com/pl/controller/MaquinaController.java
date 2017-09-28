@@ -15,7 +15,6 @@ import com.pl.services.MaquinaService;
 
 @RestController
 public class MaquinaController {
-	
 	@Autowired
 	private MaquinaService maquinaService;
 	

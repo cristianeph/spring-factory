@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(
-        name = "merma"
+        name="merma"
 )
 public class MermaModel {
 

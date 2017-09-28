@@ -9,23 +9,23 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
 
-import com.pl.model.TrabajoModel;
+import com.pl.model.OrdenTrabajoModel;
 
-public interface TrabajoRepository extends Repository<TrabajoModel, Long>{
+public interface TrabajoRepository extends Repository<OrdenTrabajoModel, Long>{
 	
-	TrabajoModel save(TrabajoModel trabajo);
-	TrabajoModel deleteById(Integer id);
-	TrabajoModel findById(Integer id);
-	Page<TrabajoModel> findAll(Pageable page);
-	Page<TrabajoModel> findByCantidadOrHoras(Pageable page, BigDecimal cantidad, Integer horas);
+	OrdenTrabajoModel save(OrdenTrabajoModel trabajo);
+	OrdenTrabajoModel deleteById(Integer id);
+	OrdenTrabajoModel findById(Integer id);
+	Page<OrdenTrabajoModel> findAll(Pageable page);
+	Page<OrdenTrabajoModel> findByCantidadOrHoras(Pageable page, BigDecimal cantidad, Integer horas);
 	
-	@Query("SELECT t FROM TrabajoModel t INNER JOIN t.plan p WHERE p.id = :id")
-	Page<TrabajoModel> findByPlanId(Pageable page, @Param("id") Integer id);
+	@Query("SELECT t FROM OrdenTrabajoModel t INNER JOIN t.plan p WHERE p.id = :id")
+	Page<OrdenTrabajoModel> findByPlanId(Pageable page, @Param("id") Integer id);
 	
-	@Query("SELECT t FROM TrabajoModel t INNER JOIN t.plan p WHERE p.fecha BETWEEN :start AND :end ORDER BY p.id DESC")
-	Page<TrabajoModel> findAllBetweenPlanFecha(Pageable page, @Param("start") Date start, @Param("end") Date end);
+	@Query("SELECT t FROM OrdenTrabajoModel t INNER JOIN t.plan p WHERE p.fecha BETWEEN :start AND :end ORDER BY p.id DESC")
+	Page<OrdenTrabajoModel> findAllBetweenPlanFecha(Pageable page, @Param("start") Date start, @Param("end") Date end);
 	
-	@Query("SELECT t FROM TrabajoModel t INNER JOIN t.plan p WHERE t.merma > 0 AND p.fecha BETWEEN :start AND :end ORDER BY p.id DESC")
-	Page<TrabajoModel> findMermaAllBetweenPlanFecha(Pageable page, @Param("start") Date start, @Param("end") Date end);
+	@Query("SELECT t FROM OrdenTrabajoModel t INNER JOIN t.plan p WHERE t.merma > 0 AND p.fecha BETWEEN :start AND :end ORDER BY p.id DESC")
+	Page<OrdenTrabajoModel> findMermaAllBetweenPlanFecha(Pageable page, @Param("start") Date start, @Param("end") Date end);
 
 }

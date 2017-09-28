@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(
-        name = "pruebaformula"
+        name="pruebaformula"
 )
 public class PruebaFormulaModel {
     @Id

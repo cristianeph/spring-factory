@@ -7,11 +7,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 @Component("pruebaFormulaService")
-public class PruebaFormularServiceImpl implements PruebaFormulaService{
+public class PruebaFormulaServiceImpl implements PruebaFormulaService{
 
     private final PruebaFormulaRepository pruebaFormulaRepository;
 
-    public PruebaFormularServiceImpl(PruebaFormulaRepository pruebaFormulaRepository) {
+    public PruebaFormulaServiceImpl(PruebaFormulaRepository pruebaFormulaRepository) {
         this.pruebaFormulaRepository = pruebaFormulaRepository;
     }
 

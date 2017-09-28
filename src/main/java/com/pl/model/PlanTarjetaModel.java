@@ -3,7 +3,7 @@ package com.pl.model;
 public class PlanTarjetaModel {
 	
 	private PlanModel plan;
-	private TrabajoModel trabajo;
+	private OrdenTrabajoModel trabajo;
 	
 	public PlanModel getPlan() {
 		return plan;
@@ -11,10 +11,10 @@ public class PlanTarjetaModel {
 	public void setPlan(PlanModel plan) {
 		this.plan = plan;
 	}
-	public TrabajoModel getTrabajo() {
+	public OrdenTrabajoModel getTrabajo() {
 		return trabajo;
 	}
-	public void setTrabajo(TrabajoModel trabajo) {
+	public void setTrabajo(OrdenTrabajoModel trabajo) {
 		this.trabajo = trabajo;
 	}
 	

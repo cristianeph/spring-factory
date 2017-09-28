@@ -1,7 +1,6 @@
 package com.pl.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,7 +13,7 @@ import com.pl.model.IndicadorRechazoModel;
 import com.pl.model.PedidoModel;
 import com.pl.model.PedidoPlanTrabajoModel;
 import com.pl.model.PlanModel;
-import com.pl.model.TrabajoModel;
+import com.pl.model.OrdenTrabajoModel;
 import com.pl.services.PedidoService;
 import com.pl.services.PlanService;
 import com.pl.services.TrabajoService;
@@ -39,16 +38,16 @@ public class IndicadorController {
 		for (PedidoModel pedidoModel : pedidoModels) {
 			
 			PlanModel planModel = this.planService.findByPedidoId(pedidoModel.getId());
-			TrabajoModel trabajoModel = null;
+			OrdenTrabajoModel ordenTrabajoModel = null;
 			
 			if(planModel != null){
-				trabajoModel = this.trabajoService.findByPlanId(planModel.getId());
+				ordenTrabajoModel = this.trabajoService.findByPlanId(planModel.getId());
 			}
 			
 			PedidoPlanTrabajoModel pedidoPlanModel = new PedidoPlanTrabajoModel();
 			pedidoPlanModel.setPedido(pedidoModel);
 			pedidoPlanModel.setPlan(planModel);
-			pedidoPlanModel.setTrabajo(trabajoModel);
+			pedidoPlanModel.setTrabajo(ordenTrabajoModel);
 			
 			indicador.getPedidoPlanes().add(pedidoPlanModel);
 			
@@ -72,7 +71,7 @@ public class IndicadorController {
 	@RequestMapping("/production/indicador/get/incidencia")
 	IndicadorIncidenciaModel get(@RequestBody IndicadorIncidenciaModel indicador){
 		
-		Iterable<TrabajoModel> trabajoModels = this.trabajoService.findAllBetweenPlanFecha(indicador.getInicio(), indicador.getFin());
+		Iterable<OrdenTrabajoModel> trabajoModels = this.trabajoService.findAllBetweenPlanFecha(indicador.getInicio(), indicador.getFin());
 		
 		indicador.setTrabajos(trabajoModels);
 		
@@ -83,7 +82,7 @@ public class IndicadorController {
 	@RequestMapping("/production/indicador/get/merma")
 	IndicadorMermaModel get(@RequestBody IndicadorMermaModel indicador){
 		
-		Iterable<TrabajoModel> trabajoModels = this.trabajoService.findMermaAllBetweenPlanFecha(indicador.getInicio(), indicador.getFin());
+		Iterable<OrdenTrabajoModel> trabajoModels = this.trabajoService.findMermaAllBetweenPlanFecha(indicador.getInicio(), indicador.getFin());
 		
 		indicador.setTrabajos(trabajoModels);
 		

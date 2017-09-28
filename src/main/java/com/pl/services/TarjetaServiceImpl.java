@@ -11,7 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import com.pl.model.TrabajoModel;
+import com.pl.model.OrdenTrabajoModel;
 import com.pl.repository.TrabajoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -42,11 +42,11 @@ public class TarjetaServiceImpl implements TarjetaService{
 
 	@Override
 	public ParteProduccionModel save(ParteProduccionModel parte) {
-		Collection<TrabajoModel> details = parte.getTarjetaTrabajos();
+		Collection<OrdenTrabajoModel> details = parte.getTarjetaTrabajos();
 		this.tarjetaRepository.save(parte);
 		ParteProduccionModel parteSaved = parte;
 		details.stream().forEach(item -> {
-			TrabajoModel trabajo = this.trabajoRepository.findById(item.getId());
+			OrdenTrabajoModel trabajo = this.trabajoRepository.findById(item.getId());
 			trabajo.setParteproduccion(parteSaved);
 			trabajo = this.trabajoRepository.save(trabajo);
 		});

@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(
-        name = "solicitudformula"
+        name="solicitudformula"
 )
 public class SolicitudFormulaModel {
     @Id

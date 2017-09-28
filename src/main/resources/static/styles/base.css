@@ -338,7 +338,7 @@
 	/*grid-row-gap: 1px;*/
     background-color: #c6c6c6;
 }
-.cont .form.made section{
+.cont .form section{
     background-color: white;
     padding: 0rem 0.5rem;
 }
@@ -350,103 +350,87 @@
 	height: auto;
 	margin: 1rem 0rem 1rem 0rem;
 }
-.form table{
+table{
 	background: #ffffff;
 	border-collapse: collapse;
     width: 100%;
 	color: #666666;
 }
-.form table caption{
+table caption{
 	background: #ffffff;
 }
-.form table caption strong{
+table caption strong{
 	display: block;
 	padding: 1rem 1rem;
 	text-align: left;
 }
-.form thead{
+thead{
 	text-transform: uppercase;
 	/*background-color: #F7E7E0;*/
 	background-color: whitesmoke;
 }
-.form table thead tr td .subt{
+table thead tr td .subt{
 	float: left;
 }
-.form table thead tr td .find{
+table thead tr td .find{
 	float: right;
 	padding: 0rem 0rem;
 	border-left: 1px solid #C7C7C7;
 }
-.form table thead tr td .find input{
+table thead tr td .find input{
 	border-bottom: 0px solid #FFF;
 	
 }
-.form table thead tr{
-}
-.form table thead tr th{
+table thead tr th{
 	cursor: pointer;
 	font-weight: bold;
 	overflow: hidden;
 }
-.form table thead tr th span{
+table thead tr th span{
 	display: block;
 	padding: 0.5rem 0.5rem;
 	float: left;
 }
-.form table thead tr td span{
+table thead tr td span{
 	display: block;
 	padding: 0.5rem 0.5rem;
 }
-.form table tbody{
-}
-.form table tbody tr{
-	
-}
-.moda .form table tbody tr{
+.moda table tbody tr{
 	cursor: pointer;
 }
-/*.main table tbody tr:nth-child(even){
-	background-color: #f8f8f8;
-}*/
-.form table tbody tr td{
+table tbody tr td{
 	
 }
-.form table tbody tr td:last-child{
+table tbody tr td:last-child{
 	text-align: center;
 } 
-.form table tbody tr:hover td span{
+table tbody tr:hover td span{
 	color: black;
 }
-.form table tbody tr td a{
+table tbody tr td a{
 	display: block;
 	overflow: hidden;
 	text-align: center;
 	overflow: hidden;
 }
-.form table tbody tr td a span{
+table tbody tr td a span{
 	margin: 0rem 0rem;
 }
-.form table tbody tr td span{
+table tbody tr td span{
 	display: block;
 	margin: 1rem 0.5rem;
 	line-height: 1.5rem;
 	height: 1.5rem;
 	float: left;
 }
-.form table tbody tr td .rowo{
+table tbody tr td .rowo{
 	display: inline-block;
 }
-.form table tfoot{
-	
-}
-.form table tfoot tr{
-	
-}
-.form table tfoot tr td{
+table tfoot tr td{
 	background: #ffffff;
 	border-top: 1px solid #C7C7C7;
 }
-.form table tfoot tr td span{
+table tfoot tr td span{
 	display: block;
 	padding: 0.5rem 0.5rem;
 }

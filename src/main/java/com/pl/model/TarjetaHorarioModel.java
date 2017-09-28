@@ -29,8 +29,8 @@ public class TarjetaHorarioModel {
 	private Integer id;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="idplan")
-	private PlanModel plan;
+	@JoinColumn(name="idparteproduccion")
+	private ParteProduccionModel parte;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idpersonal")
@@ -59,11 +59,11 @@ public class TarjetaHorarioModel {
 		this.id = id;
 	}
 	@JsonIgnore
-	public PlanModel getPlan() {
-		return plan;
+	public ParteProduccionModel getParte() {
+		return parte;
 	}
-	public void setPlan(PlanModel plan) {
-		this.plan = plan;
+	public void setParte(ParteProduccionModel parte) {
+		this.parte = parte;
 	}
 	public PersonalModel getPersonal() {
 		return personal;
@@ -88,10 +88,6 @@ public class TarjetaHorarioModel {
 	}
 	public void setItem(Integer item) {
 		this.item = item;
-	}
-	
-	public void releasePlanModel(){
-		this.plan = null;
 	}
 
 }
