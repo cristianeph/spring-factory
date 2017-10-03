@@ -3,8 +3,8 @@
  */
 
 var urlPage = location.pathname;
-var urlResource = "/api/production/insumo";
-var urlForm = "/production/insumo/form";
+var urlResource = BASE_PATH + "/api/production/insumo";
+var urlForm = BASE_PATH + "/production/insumo/form";
 var list = null;
 var listData = null;
 

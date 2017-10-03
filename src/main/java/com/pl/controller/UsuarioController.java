@@ -12,14 +12,14 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @RequestMapping(
-            value = "/api/production/usuario",
+            value = "/api/security/usuario",
             method = RequestMethod.POST)
     UsuarioModel saveOne(@RequestBody UsuarioModel usuario){
         return this.usuarioService.save(usuario);
     }
 
     @RequestMapping(
-            value = "/api/production/usuario",
+            value = "/api/security/usuario",
             params = {"page", "size"},
             method = RequestMethod.GET)
     Iterable<UsuarioModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
@@ -27,7 +27,7 @@ public class UsuarioController {
     }
 
     @RequestMapping(
-            value = "/api/production/usuario/{id}",
+            value = "/api/security/usuario/{id}",
             method = RequestMethod.GET)
     UsuarioModel getById(@PathVariable Integer id){
         return this.usuarioService.getById(id);

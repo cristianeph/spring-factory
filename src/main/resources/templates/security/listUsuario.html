@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <title>Home</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300'
+          rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" th:href="@{/styles/style.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/basic.css}"/>
+    <link rel="stylesheet" th:href="@{/styles/base.css}"/>
+    <script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/base.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/listUsuario.js}"></script>
+</head>
+<body>
+<section class="main">
+    <section class="noti" th:include="/common/notification"></section>
+    <section class="head" th:include="/common/navigation"></section>
+    <section class="body">
+        <section class="menu">
+            <article class="quic" th:include="/common/menu"></article>
+            <article class="tool">
+                <ul class="acci">
+                    <li><div>Opciones</div></li>
+                </ul>
+                <ul class="filt">
+                    <li><div>Filtro</div></li>
+                    <li><a href="#"><span class="icon-search"></span><input type="text" class="filt" placeholder="Criterio"/></a></li>
+                </ul>
+            </article>
+        </section>
+        <section class="cont">
+            <article class="titl">
+                <ul class="subt">
+                    <li><a href="#"><span class="icon-list-numbered"></span><span> Seguridad - Usuarios</span></a></li>
+                    <li><a href="#"><span class="icon-database"></span><span></span></a></li>
+                </ul>
+            </article>
+            <article class="list">
+                <table id="list">
+                    <thead>
+                    <tr>
+                        <th><span>#</span></th>
+                        <th><span>Usuario</span></th>
+                        <th><span>Correo</span></th>
+                        <th><span>Activo</span></th>
+                        <th class="qopt"><span class="icon-pencil2"></span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="item in users">
+                        <td><span>{{item.id}}</span></td>
+                        <td><span>{{item.user}}</span></td>
+                        <td><span>{{item.email}}</span></td>
+                        <td><span>{{item.active}}</span></td>
+                        <td><a v-bind:href="getEditionForm(item)"><span>Actualizar usuario</span></a></td>
+                    </tr>
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="5"><span></span></td>
+                    </tr>
+                    </tfoot>
+                </table>
+            </article>
+        </section>
+    </section>
+</section>
+</body>
+</html>

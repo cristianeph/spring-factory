@@ -3,8 +3,8 @@
  */
 var urlPage = location.pathname;
 var Requestinput = null;
-var urlResource = "/api/production/solicitudinsumo";
-var urlParametersResource = "/api/production/insumo";
+var urlResource = BASE_PATH + "/api/production/solicitudinsumo";
+var urlParametersResource = BASE_PATH + "/api/production/insumo";
 var insumoList = null;
 
 document.addEventListener("DOMContentLoaded", function () {

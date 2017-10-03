@@ -3,8 +3,8 @@
  */
 var urlPage = location.pathname;
 var Requestformula = null;
-var urlResource = "/api/production/solicitudformula";
-var urlParametersResource = "/api/production/solicitudformula/parameters";
+var urlResource = BASE_PATH + "/api/production/solicitudformula";
+var urlParametersResource = BASE_PATH + "/api/production/solicitudformula/parameters";
 var pruebaList = null;
 var muestraList = null;
 

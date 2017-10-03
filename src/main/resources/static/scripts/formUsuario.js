@@ -2,25 +2,29 @@
  * 
  */
 var urlPage = location.pathname;
-var Customer = null;
-var urlResource = BASE_PATH + "/api/production/cliente";
+var User = null;
+var urlResource = BASE_PATH + "/api/security/usuario";
 
 document.addEventListener("DOMContentLoaded", function () {
-	
-	Customer = new Vue({
-		el: "#customer",
+
+    User = new Vue({
+		el: "#loss",
 		data: {
-			id: 0,
-			razonsocial: "",
-			direccion: "",
-			ruc: ""
+            id: 0,
+            user: "",
+            password: "",
+            email: "",
+            rol: "",
+            active: 0
 		},
 		methods: {
 			setData: function(data) {
 				this.id = data.id;
-				this.razonsocial = data.razonsocial;
-				this.direccion = data.direccion;
-				this.ruc = data.ruc;
+				this.user = data.user;
+                this.password = data.password;
+                this.email = data.email;
+                this.rol = data.rol;
+                this.active = data.active;
 			},
 			getData: function() {
 				return JSON.parse(JSON.stringify(this.$data));
@@ -28,10 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		},
 		beforeMount: function() {
 			if(getUrlValue().id != undefined){
-				var url = urlResource + "/" + getUrlValue().id; 
+				var url = urlResource + "/" + getUrlValue().id;
 				getData(url).onload = function(data){
 					var response = JSON.parse(this.responseText);
-					Customer.setData(response);
+                    User.setData(response);
 				};
 			}
 		}
@@ -39,13 +43,14 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	document.querySelector("[data-operation='grabarDocumento']").onclick = function(event){
 		event.preventDefault();
-		var object = Customer.getData();
+		var object = User.getData();
+		console.log(object);
 		var url = urlResource;
 		postData(url, object).onload = function() {
 			var response = JSON.parse(this.responseText);
             if (handleHttpStatus(response) == true) {
-            		console.log(response);
-            		Customer.setData(response);
+				console.log(response);
+                User.setData(response);
                 alert("El registro ha sido grabado correctamente");
             }
 		}

@@ -22,6 +22,26 @@ public class MainController {
         return "masters/home";
     }
 
+    @RequestMapping("/security/rol/list")
+    public String securityRolList() {
+        return "security/listRol";
+    }
+
+    @RequestMapping("/security/rol/form")
+    public String securityRolForm() {
+        return "security/formRol";
+    }
+
+    @RequestMapping("/security/usuario/list")
+    public String securityUsuarioList() {
+        return "security/listUsuario";
+    }
+
+    @RequestMapping("/security/usuario/form")
+    public String securityUsuarioForm() {
+        return "security/formUsuario";
+    }
+
     @RequestMapping("/production/home")
     public String productionHome() {
         return "production/home";

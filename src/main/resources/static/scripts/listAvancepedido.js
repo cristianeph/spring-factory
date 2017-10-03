@@ -3,7 +3,7 @@
  */
 
 var urlPage = location.pathname;
-var urlResource = "/api/production/pedido";
+var urlResource = BASE_PATH + "/api/production/pedido";
 var list = null;
 var listData = null;
 

@@ -3,8 +3,8 @@
  */
 
 var urlPage = location.pathname;
-var urlResource = BASE_PATH + "/api/production/pruebaproduccion";
-var urlForm = BASE_PATH + "/production/pruebaproduccion/form";
+var urlResource = BASE_PATH + "/api/security/usuario";
+var urlForm = BASE_PATH + "/security/usuario/form";
 var list = null;
 var listData = null;
 
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
 	list = new Vue({
 		el: "#list",
 		data: {
-            tests: listData
+            users: listData
 		},
 		methods: {
 			getEditionForm: function(input){
@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function(){
 			var url = urlResource + "?page=1&size=15"
 			getData(url).onload = function(){
 				var response = JSON.parse(this.responseText);
-				console.log("valor antes de carga", that.tests);
-				that.tests = response.content;
-				console.log("valor despues de carga", that.tests);
+				console.log("valor antes de carga", that.users);
+				that.users = response.content;
+				console.log("valor despues de carga", that.users);
 			}
 		}
 	});

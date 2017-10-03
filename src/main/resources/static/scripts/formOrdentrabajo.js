@@ -3,8 +3,8 @@
  */
 var urlPage = location.pathname;
 var Job = null;
-var urlResource = "/api/production/trabajo";
-var urlParametersResource = "/api/production/trabajo/parameters";
+var urlResource = BASE_PATH + "/api/production/trabajo";
+var urlParametersResource = BASE_PATH + "/api/production/trabajo/parameters";
 var machineList = null;
 var activityList = null;
 

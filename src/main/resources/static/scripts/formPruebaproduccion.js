@@ -3,8 +3,8 @@
  */
 var urlPage = location.pathname;
 var Test = null;
-var urlResource = "/api/production/pruebaproduccion";
-var urlParametersResource = "/api/production/merma/parameters";
+var urlResource = BASE_PATH + "/api/production/pruebaproduccion";
+var urlParametersResource = BASE_PATH + "/api/production/merma/parameters";
 var ordenList = null;
 
 document.addEventListener("DOMContentLoaded", function () {

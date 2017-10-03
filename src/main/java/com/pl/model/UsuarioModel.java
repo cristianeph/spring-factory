@@ -23,6 +23,7 @@ public class UsuarioModel {
 	@Column(name = "rol")
 	@Enumerated(EnumType.STRING)
 	private RolModel rol;
+	private Boolean active;
 	
 	public UsuarioModel(){
 		
@@ -77,4 +78,11 @@ public class UsuarioModel {
 		this.rol = rol;
 	}
 
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
 }

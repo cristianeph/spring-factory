@@ -2,6 +2,8 @@
  * 
  */
 
+const BASE_PATH = "";
+
 /* Convierte los parametros de la URL en
  * parte de un objeto manipulable */
 function getUrlValue() {
