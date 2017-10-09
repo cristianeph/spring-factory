@@ -13,9 +13,6 @@ public class MovimientoAlmacenModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="idinsumo")
-    private InsumoModel insumo;
-    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="idkardex")
     private KardexModel kardex;
     private Date fecha;
@@ -27,12 +24,6 @@ public class MovimientoAlmacenModel {
     }
     public void setId(Integer id) {
         this.id = id;
-    }
-    public InsumoModel getInsumo() {
-        return insumo;
-    }
-    public void setInsumo(InsumoModel insumo) {
-        this.insumo = insumo;
     }
     public KardexModel getKardex() {
         return kardex;
