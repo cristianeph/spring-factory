@@ -42,6 +42,11 @@ public class KardexServiceImpl implements KardexService{
 	}
 
 	@Override
+	public Page<KardexModel> getAll(PageRequest page) {
+		return this.kardexRepository.findAll(page);
+	}
+
+	@Override
 	public Page<KardexRelacionModel> sumKardexByRelacion(Integer relacion) {
 		System.out.println("entro: " + relacion);
 		return this.kardexRepository.findKardexByRelacion(new PageRequest(0, Integer.MAX_VALUE), relacion);
