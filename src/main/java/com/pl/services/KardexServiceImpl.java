@@ -37,7 +37,7 @@ public class KardexServiceImpl implements KardexService{
 	@Override
 	public KardexModel findByIdInsumo(Integer id) {
 		
-		return this.kardexRepository.findByIdInsumo(id);
+		return this.kardexRepository.findByInsumoId(id);
 		
 	}
 

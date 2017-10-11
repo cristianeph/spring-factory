@@ -1,228 +1,266 @@
 @CHARSET "UTF-8";
-*{
-	margin: 0px;
-	padding: 0px;
-	font-size: 12px;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: lighter;
-	line-height: 1.5em !important;
+* {
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    line-height: 1.5em !important;
 }
-body{
-	background-color: #fff;
-	color: #000;
-	overflow: auto;
+
+body {
+    background-color: #fff;
+    color: #000;
+    overflow: auto;
 }
-body.over{
-	overflow: hidden;
+
+body.over {
+    overflow: hidden;
 }
-strong{
-	font-weight: bold !important;
+
+strong {
+    font-weight: bold !important;
 }
-a{
-	font-size: inherit;
-	font-family: inherit;
-	text-decoration: none;
-	color: #BEC5AD;
-	transition: all 0.6s;
+
+a {
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: none;
+    color: #BEC5AD;
+    transition: all 0.6s;
 }
-a:hover{
-	color: #BEC5AD;
+
+a:hover {
+    color: #BEC5AD;
 }
-a.sele{
-	color: #BEC5AD;
-	text-shadow: 0em 0em 1.0em #F7E7E0;
+
+a.sele {
+    color: #BEC5AD;
+    text-shadow: 0em 0em 1.0em #F7E7E0;
 }
-.main{
-	width: 100%;
-	min-height: 100vh;
-	top: 0;
-	position: absolute;
+
+input {
+    font-size: inherit;
+    font-family: inherit;
+    outline: 0px;
 }
-.main .noti{
-	opacity: 0;
-	position: fixed;
-	z-index: -9999;
-	width: 100%;
-	height: 100vh;
-	background-color: rgba(255,255,255,0.5);
-	transition: all .5s;
+
+input[type="radio"] {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0.5rem 0rem;
 }
-.noti article{
-	width: 400px;
-	background-color: #ffffff;
-	color: #666666;
-	margin: 5em auto;
-	position: relative;
-	box-shadow: 0em 0em 10em 0.1em rgba(0, 0, 0, 0.6);
-	opacity: 1;
+
+input[type="submit"], input[type="file"] {
+    font-family: inherit;
+    font-weight: 400;
+    background-color: #53B853;
+    padding: 0.4rem 0.6rem;
+    border: solid 0px #dddddd;
+    color: inherit;
+    border-radius: 0.3rem 0.3rem;
+    box-shadow: 0rem 0rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
-.noti h1{
-	display: block;
-	font-size: 1em;
-	font-weight: bold;
-	padding: 1em;
+
+input[type="text"] {
+    min-width: 12rem;
+    line-height: 1.5rem;
+    padding: 0.5rem 0.5rem;
+    border-top: 0px solid #FFF;
+    border-left: 0px solid #FFF;
+    border-right: 0px solid #FFF;
+    border-bottom: 1px dotted #BEBEBE;
+    transition: all 1s;
 }
-.noti p{
-	display: block;
-	padding: 1em;
+
+input[type="text"]:focus {
+    border-bottom: 1px dotted #EA774D;
+    background-color: #F7E7E0;
 }
-.noti p:after{
-	overflow: hidden;
-	display: inline-block;
-	vertical-align: bottom;     
-	animation: ellipsis steps(4,end) 1.2s infinite;
-	content: "\2026";
-	width: 0px;
+
+input[disabled="disabled"] {
+    background-color: whitesmoke;
 }
-.noti a{
-	display: block;
-	padding: 1em;
-	width: 1.5em;
-	text-align: center;
-	position: absolute;
-	top: 0em;
-	right: 0;
+
+select {
+    border: none;
+    font-size: inherit;
+    color: inherit;
+    background-color: transparent;
+    margin: 0rem;
+    padding: 0rem;
+    height: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
-.main .noti.show{
-	opacity: 1;
-	z-index: 9998;
+
+ul {
+    list-style: none;
+    padding: 0rem 0rem;
+    margin: 0rem 0rem;
+    overflow: hidden;
 }
-.main .noti.show article{
-	animation: notification 0.8s linear;
+
+ul li {
+    display: flex;
 }
-.main .head{
-	overflow: hidden;
-	background-color: #26A96C;
-	position: fixed;
-	width: 100%;
-	top: 0;
-	z-index: 9999;
+
+table {
+    background: #ffffff;
+    border-collapse: collapse;
+    width: 100%;
+    color: #666666;
 }
-.head a{
-	display: block;
-	padding: 1em 1em;
-	text-align: center;
-	line-height: 1.5em;
+
+table caption {
+    background: #ffffff;
 }
-.head .logo{
-	float: left;
+
+table caption strong {
+    display: block;
+    padding: 1rem 1rem;
+    text-align: left;
 }
-.head .logo img{
-	width: 3em;
-	height: 3em;
+
+thead {
+    text-transform: uppercase;
+    /*background-color: #F7E7E0;*/
+    background-color: whitesmoke;
 }
-.head .logo a{
-	display: block;
-	padding: 1em 1em;
+
+table thead tr td .subt {
+    float: left;
 }
-.head .navi{
-	float: right;
+
+table thead tr td .find {
+    float: right;
+    padding: 0rem 0rem;
+    border-left: 1px solid #C7C7C7;
 }
-.head ul{
-	list-style: none;
-	overflow: hidden;
+
+table thead tr td .find input {
+    border-bottom: 0px solid #FFF;
+
 }
-.head ul li{
-	float: right;
+
+table thead tr th {
+    cursor: pointer;
+    font-weight: bold;
+    overflow: hidden;
 }
-.head ul li a{
-	display: block;
-	padding: 1em 1em;
+
+table thead tr th span {
+    display: block;
+    padding: 0.5rem 0.5rem;
+    float: left;
 }
-.main .body{
-	overflow: hidden;
-	margin-top: 3.5em;
-	color: #000;
+
+table thead tr td span {
+    display: block;
+    padding: 0.5rem 0.5rem;
 }
-.body .menu{
-	width: 250px;
-	float: left;
-	position: fixed;
+
+.moda table tbody tr {
+    cursor: pointer;
 }
-.menu ul, 
-.cont ul{
-	display: block;
-	list-style: none;
-	overflow: hidden;
-	transition: all 1s;
-	padding: 0.5rem;
+
+table tbody tr td {
+
 }
-.body .menu li{
-	display: block;
+
+table tbody tr td:last-child {
+    text-align: center;
 }
-.menu .quic a{
-	display: block;
-	overflow: hidden;
-	height: 3.5em;
-	width: 3.5em;
-	text-align: center;
+
+table tbody tr:hover td span {
+    color: black;
 }
-.menu .quic:hover a{
-	width: 19em;
-	text-align: left;
+
+table tbody tr td a {
+    display: block;
+    overflow: hidden;
+    text-align: center;
+    overflow: hidden;
 }
-.menu .quic a span{
-	padding: 1em;
+
+table tbody tr td a span {
+    margin: 0rem 0rem;
 }
-.menu .quic a span:nth-child(1){
-	display: block;
-	float: left;
+
+table tbody tr td span {
+    display: block;
+    margin: 1rem 0.5rem;
+    line-height: 1.5rem;
+    height: 1.5rem;
+    float: left;
 }
-.menu .quic a span:nth-child(2){
-	display: block;
-	float: left;
-	padding-left: 1.5em;
+
+table tbody tr td .rowo {
+    display: inline-block;
 }
-/*.menu .quic a span:first-child{
-	display: block;
-	float: left;
+
+table tfoot tr td {
+    background: #ffffff;
+    border-top: 1px solid #C7C7C7;
 }
-.menu .quic a span{
-	display: none;
-	float: left;
-	line-height: 1.5em;
+
+table tfoot tr td span {
+    display: block;
+    padding: 0.5rem 0.5rem;
 }
-.menu .quic:hover a span:first-child{
-	display: none;
-	float: left;
+
+@media print {
+    .main .body .menu {
+        display: none;
+    }
+
+    .main .head {
+        display: none;
+    }
+
+    .body {
+        margin-top: 0rem;
+    }
+
+    .body .cont {
+        width: 100%;
+        margin-left: 0rem;
+    }
+
+    .cont .titl:nth-child(3) {
+        display: none;
+    }
+
+    .body .menu {
+        display: none;
+    }
+
+    .body .prin {
+        display: block;
+    }
+
 }
-.menu .quic:hover a span{
-	display: block;
-	float: left;
-}*/
-.menu .quic a{
-	-webkit-border-start: 0.5em solid transparent;
+
+@keyframes notification {
+    0% {
+        margin-top: -100%;
+        opacity: 0;
+    }
+    100% {
+        margin-top: 5em;
+        opacity: 1;
+    }
 }
-.menu .quic a:hover{
-	-webkit-border-start: 0.5em solid white;
+
+@keyframes ellipsis {
+    to {
+        width: 1em;
+    }
 }
-.menu .quic .sele{
-	-webkit-border-start: 0.5em solid #EAF1F9;
-	background-color: #124E78;
-}
-.body .hidd{
-	display: none;
-}
-.body .cont{
-	width: calc(100% - 250px);
-	float: left;
-	margin-left: 250px;
-}
-@keyframes notification{
-	0%{
-		margin-top: -100%;
-		opacity: 0;
-	}
-	100%{
-		margin-top: 5em;
-		opacity: 1;
-	}
-}
-@keyframes ellipsis{
-	to{
-		width: 1em;    
-	}
-}
+
+/*
 .ui-datepicker-month{
 	background-color: white;
 	cursor: pointer;
@@ -232,4 +270,4 @@ a.sele{
 	background-color: white;
 	cursor: pointer;
 	border-radius: 0px;
-}
+}*/

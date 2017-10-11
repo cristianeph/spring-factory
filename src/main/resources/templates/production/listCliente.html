@@ -23,15 +23,11 @@
 					<article class="quic" th:include="/common/menu"></article>
 					<article class="tool">
 						<ul class="acci">
-							<li><div>Opciones</div></li>
-							<li>
-								<a th:href="@{/production/producto/form}">
-									<span class="icon-plus"></span><span>Nuevo Producto</span>
-								</a>
-							</li>
+							<li><span>Opciones</span></li>
+							<li><a th:href="@{/production/producto/form}"><span class="icon-plus"></span><span>Nuevo Producto</span></a></li>
 						</ul>
 						<ul class="reco">
-							<li><div>Registros</div></li>
+							<li><span>Registros</span></li>
 							<li>
 								<a th:href="@{/production/producto/action/all}" data-operation="getAll" data-quantity="1">
 									<span class="icon-search"></span>
@@ -47,7 +43,7 @@
 							</li>
 						</ul>
 						<ul class="filt">
-							<li><div>Filtro</div></li>
+							<li><span>Filtro</span></li>
 							<li>
 								<a href="#">
 									<span class="icon-search"></span>
