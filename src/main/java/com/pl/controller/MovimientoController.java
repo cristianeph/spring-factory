@@ -1,7 +1,10 @@
 package com.pl.controller;
 
+import com.pl.model.InsumoKardexProjection;
+import com.pl.model.InsumoModel;
 import com.pl.model.KardexModel;
 import com.pl.model.MovimientoAlmacenModel;
+import com.pl.services.InsumoService;
 import com.pl.services.KardexService;
 import com.pl.services.MovimientoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,8 @@ public class MovimientoController {
     private MovimientoService movimientoService;
     @Autowired
     private KardexService kardexService;
+    @Autowired
+    private InsumoService insumoService;
 
     @RequestMapping(
             value = "/api/production/movimiento",
@@ -31,16 +36,17 @@ public class MovimientoController {
     }
 
     @RequestMapping(
-            value = "/api/production/movimiento/parameters",
-            method = RequestMethod.GET)
-    Iterable<KardexModel> getAll() {
-        return this.kardexService.getAll(new PageRequest(0, Integer.MAX_VALUE));
-    }
-
-    @RequestMapping(
             value = "/api/production/movimiento/{id}",
             method = RequestMethod.GET)
     MovimientoAlmacenModel getById(@PathVariable Integer id) {
         return this.movimientoService.getById(id);
+    }
+
+    @RequestMapping(
+            value = "/api/production/movimiento/parameters",
+            method = RequestMethod.GET)
+    Iterable<InsumoKardexProjection> getAll() {
+        return this.kardexService.getAsParameters(new PageRequest(0, Integer.MAX_VALUE));
+        /*return this.insumoService.getAsParameters(new PageRequest(0, Integer.MAX_VALUE));*/
     }
 }

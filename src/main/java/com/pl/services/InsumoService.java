@@ -11,7 +11,9 @@ public interface InsumoService {
 	Page<InsumoModel> findByRelacion(Integer relacion);
 	InsumoModel findById(Integer id);
 	Page<InsumoModel> findAll(InsumoModel insumo);
+
 	Page<InsumoModel> getAll(PageRequest page);
+	Page<InsumoModel> getAsParameters(PageRequest page);
 	InsumoModel getById(Integer id);
 
 }

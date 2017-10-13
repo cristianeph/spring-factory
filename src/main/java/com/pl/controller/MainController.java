@@ -117,6 +117,16 @@ public class MainController {
         return "production/listOrdentrabajo";
     }
 
+    @RequestMapping("/production/movimientoalmacen/form")
+    public String productionMovimientoAlmacenForm() {
+        return "production/formMovimiento";
+    }
+
+    @RequestMapping("/production/movimientoalmacen/list")
+    public String productionMovimientoAlmacenList() {
+        return "production/listMovimiento";
+    }
+
     @RequestMapping("/production/formula/list")
     public String productionFormulaList() {
         return "production/listFormula";

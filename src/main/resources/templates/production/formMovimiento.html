@@ -12,7 +12,7 @@
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/formMerma.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formMovimiento.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -53,15 +53,15 @@
 								</div>
 								<div>
 									<label for="tipo_ingreso">Ingreso: </label>
-									<input type="radio" name="tipo" id="tipo_ingreso" v-model="tipo" />
+									<input type="radio" name="tipo" id="tipo_ingreso" v-model="tipo" value="true" />
 									<label for="tipo_salida">Salida: </label>
-									<input type="radio" name="tipo" id="tipo_salida" v-model="tipo" />
+									<input type="radio" name="tipo" id="tipo_salida" v-model="tipo" value="false" />
 								</div>
 								<div>
-									<label for="insumo">Orden de Trabajo: </label>
-									<select name="insumo" id="insumo" v-model="insumo.selected">
+									<label for="kardex">Orden de Trabajo: </label>
+									<select name="kardex" id="kardex" v-model="kardex.selected">
 										<option value="">Seleccione un Insumo</option>
-										<option v-for="option in insumo.options" v-bind:value="option.id">{{option.id + ' - ' + option.descripcion}}</option>
+										<option v-for="option in kardex.options" v-bind:value="option.id">{{option.id + ' - ' + option.insumo.descripcion}}</option>
 									</select>
 								</div>
 							</form>
