@@ -55,8 +55,8 @@
 								<tr v-for="item in jobs">
 									<td><span>{{item.id}}</span></td>
 									<td><span>{{item.plan.codigo}}</span></td>
-									<td><span>{{item.maquina.descripcion}}</span></td>
-									<td><span>{{item.actividad.descripcion}}</span></td>
+									<td><span>{{(item.maquina) ? item.maquina.descripcion : null}}</span></td>
+									<td><span>{{(item.actividad) ? item.actividad.descripcion : null}}</span></td>
 									<td><a v-bind:href="getEditionForm(item)"><span>Ver detalle</span></a></td>
 								</tr>
 							</tbody>
