@@ -14,8 +14,9 @@ public class KardexModel {
 	private Integer id;
 	@OneToMany(fetch=FetchType.EAGER, mappedBy = "kardex", orphanRemoval = true,  cascade = CascadeType.ALL)
 	private Collection<MovimientoAlmacenModel> movimiento = new ArrayList<>();
-	@Column(name="idinsumo")
-	private Integer idInsumo;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="idinsumo")
+	private InsumoModel insumo;
 	private Integer relacion;
 	private Integer stock;
 	
@@ -31,11 +32,11 @@ public class KardexModel {
     public void setMovimiento(Collection<MovimientoAlmacenModel> movimiento) {
         this.movimiento = movimiento;
     }
-    public Integer getIdInsumo() {
-		return idInsumo;
+	public InsumoModel getInsumo() {
+		return insumo;
 	}
-	public void setIdInsumo(Integer idInsumo) {
-		this.idInsumo = idInsumo;
+	public void setInsumo(InsumoModel insumo) {
+		this.insumo = insumo;
 	}
 	public Integer getRelacion() {
 		return relacion;
