@@ -44,7 +44,7 @@ public class OrdenTrabajoModel {
     @JoinColumn(name="idpruebaorden")
     private PruebaProduccionModel prueba;
 	
-	private Integer item;
+	private String codigo;
 	private Integer horas;
 	private BigDecimal cantidad;
 	/*private BigDecimal merma;*/
@@ -94,11 +94,11 @@ public class OrdenTrabajoModel {
     public void setPrueba(PruebaProduccionModel prueba) {
         this.prueba = prueba;
     }
-    public Integer getItem() {
-		return item;
+	public String getCodigo() {
+		return codigo;
 	}
-	public void setItem(Integer item) {
-		this.item = item;
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 	public Integer getHoras() {
 		return horas;

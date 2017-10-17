@@ -3,8 +3,8 @@
  */
 var urlPage = location.pathname;
 var Warehouse = null;
-var urlResource = BASE_PATH + "/api/production/movimiento";
-var urlParametersResource = BASE_PATH + "/api/production/movimiento/parameters";
+var urlResource = BASE_PATH + "/api/production/movimientoalmacen";
+var urlParametersResource = BASE_PATH + "/api/production/movimientoalmacen/parameters";
 var kardexList = null;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -29,9 +29,12 @@ document.addEventListener("DOMContentLoaded", function () {
 				this.fecha = data.fecha;
                 this.tipo = data.tipo;
                 this.cantidad = data.cantidad;
+                this.kardex.selected = data.kardex.id;
 			},
 			getData: function() {
-				return JSON.parse(JSON.stringify(this.$data));
+			    var object = JSON.parse(JSON.stringify(this.$data))
+                object.kardex = {"id" : document.querySelector("select[name='kardex']").value};
+				return object;
 			}
 		},
 		beforeMount: function() {
@@ -56,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		var object = Warehouse.getData();
 		console.log(object);
 		var url = urlResource;
-		postData(url + "/compositesave", object).onload = function() {
+		postData(url, object).onload = function() {
 			var response = JSON.parse(this.responseText);
             if (handleHttpStatus(response) == true) {
 				console.log(response);

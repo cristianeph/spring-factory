@@ -1,5 +1,7 @@
 package com.pl.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,6 +28,7 @@ public class KardexModel {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	@JsonIgnore
     public Collection<MovimientoAlmacenModel> getMovimiento() {
         return movimiento;
     }

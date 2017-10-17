@@ -51,8 +51,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.master.fecha = data.fecha;
                 this.master.inicio = data.inicio;
                 this.master.fin = data.fin;
+                console.log("maquinas => ", Production.master.maquina.options);
+                console.log("maquina => ", data.maquina);
                 this.master.maquina.selected = (data.maquina) ? data.maquina.id : "";
-                this.master.actividad.selected = (data.maquina) ? data.actividad.id: "";
+                console.log("actividades => ", Production.master.actividad.options);
+                console.log("actividad => ", data.actividad);
+                this.master.actividad.selected = (data.actividad) ? data.actividad.id: "";
                 this.master.tarjetaTrabajos = data.tarjetaTrabajos;
             },
             getData: function() {

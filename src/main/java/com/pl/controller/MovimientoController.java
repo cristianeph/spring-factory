@@ -21,14 +21,14 @@ public class MovimientoController {
     private InsumoService insumoService;
 
     @RequestMapping(
-            value = "/api/production/movimiento",
+            value = "/api/production/movimientoalmacen",
             method = RequestMethod.POST)
     MovimientoAlmacenModel saveOne(@RequestBody MovimientoAlmacenModel movimiento) {
         return this.movimientoService.save(movimiento);
     }
 
     @RequestMapping(
-            value = "/api/production/movimiento",
+            value = "/api/production/movimientoalmacen",
             params = {"page", "size"},
             method = RequestMethod.GET)
     Iterable<MovimientoAlmacenModel> getAll(@RequestParam Integer page, @RequestParam Integer size) {
@@ -36,14 +36,14 @@ public class MovimientoController {
     }
 
     @RequestMapping(
-            value = "/api/production/movimiento/{id}",
+            value = "/api/production/movimientoalmacen/{id}",
             method = RequestMethod.GET)
     MovimientoAlmacenModel getById(@PathVariable Integer id) {
         return this.movimientoService.getById(id);
     }
 
     @RequestMapping(
-            value = "/api/production/movimiento/parameters",
+            value = "/api/production/movimientoalmacen/parameters",
             method = RequestMethod.GET)
     Iterable<InsumoKardexProjection> getAll() {
         return this.kardexService.getAsParameters(new PageRequest(0, Integer.MAX_VALUE));

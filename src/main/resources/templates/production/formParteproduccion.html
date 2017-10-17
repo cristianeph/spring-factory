@@ -38,9 +38,9 @@
 					</article>
 					<article class="form made" id="production">
 						<section class="mast">
-                            <h1><strong>Datos del Parte</strong></h1>
-							<form>
-								<div>
+                            <form>
+                                <h1><strong>Datos del Parte</strong></h1>
+                                <div>
 									<label for="id">Id: </label>
 									<input type="text" name="id" id="id" v-model="master.id" readonly="readonly" />
 								</div>
@@ -75,10 +75,12 @@
 									</select>
 								</div>
 							</form>
-						</section>
-						<section class="deta">
-                            <h1><strong>Detalles</strong></h1>
-							<table>
+                        </section>
+                        <section class="deta">
+                            <table>
+                                <caption>
+                                    <h1><strong>Detalles</strong></h1>
+                                </caption>
 								<thead>
 									<tr>
 										<th><span>#</span></th>
@@ -108,6 +110,7 @@
 								</tfoot>
 							</table>
                             <form>
+                                <h1><strong>Datos del detalle</strong></h1>
                                 <div>
                                     <label for="id">Id: </label>
                                     <input type="text" name="id" id="id" v-model="detail.id" readonly="readonly" />

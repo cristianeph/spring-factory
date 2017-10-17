@@ -224,7 +224,7 @@ MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
 MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $@"
 export MAVEN_CMD_LINE_ARGS
 
-WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrappercMain
 
 exec "$JAVACMD" \
   $MAVEN_OPTS \
