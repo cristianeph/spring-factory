@@ -10,13 +10,9 @@
 		<link rel="stylesheet" th:href="@{/styles/style.css}" />
 		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
-		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/jquery.tablesorter.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/listTarjeta.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listParteproduccion.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -28,52 +24,19 @@
 					<article class="tool">
 						<ul class="acci">
 							<li><span>Opciones</span></li>
-							<li>
-								<a th:href="@{/production/parteproduccion/form}">
-									<span class="icon-plus"></span><span>Nuevo Parte producción</span>
-								</a>
-							</li>
-						</ul>
-						<ul class="reco">
-							<li><span>Registros</span></li>
-							<li>
-								<a th:href="@{/production/card/action/all}" data-operation="getAll" data-quantity="1">
-									<span class="icon-search"></span>
-									<select>
-										<option value="">Registros</option>
-										<option value="1">Ultimo registro</option>
-										<option value="25">25 registros</option>
-										<option value="50">50 registros</option>
-										<option value="100">100 registros</option>
-										<option value="0">Todos</option>
-									</select> 
-								</a>
-							</li>
+							<li><a th:href="@{/production/parteproduccion/form}"><span class="icon-plus"></span><span>Nuevo Parte producción</span></a></li>
 						</ul>
 						<ul class="filt">
 							<li><span>Filtro</span></li>
-							<li>
-								<a href="#">
-									<span class="icon-search"></span>
-									<input type="text" class="filt" placeholder="Criterio" />
-								</a>
-							</li>
+							<li><a href="#"><span class="icon-search"></span><input type="text" class="filt" placeholder="Criterio" /></a></li>
 						</ul>
 					</article>
 				</section>
 				<section class="cont">
 					<article class="titl">
 						<ul class="subt">
-							<li>
-								<a href="#">
-									<span class="icon-list-numbered"></span><span> Modulos - Parte de producción</span>
-								</a>
-							</li>
-							<li>
-								<a href="#">
-									<span class="icon-database"></span><span></span>
-								</a>
-							</li>
+							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Parte de producción</span></a></li>
+							<li><a href="#"><span class="icon-database"></span><span></span></a></li>
 						</ul>
 					</article>
 					<article class="list">
@@ -87,7 +50,14 @@
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
-							<tbody></tbody>
+							<tbody>
+							<tr v-for="item in productions">
+								<td><span>{{item.id}}</span></td>
+								<td><span>{{item.cantidad}}</span></td>
+								<td><span>{{item.cantidad}}</span></td>
+								<td><a v-bind:href="getEditionForm(item)"><span>Actualizar merma</span></a></td>
+							</tr>
+							</tbody>
 							<tfoot>
 								<tr>
 									<td colspan="5"><span></span></td>

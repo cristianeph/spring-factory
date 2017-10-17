@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pl.model.ParteProduccionModel;
 
 @RestController
-public class TarjetaController {
+public class ParteProduccionController {
 	
 	@Autowired
 	private TarjetaService tarjetaService;

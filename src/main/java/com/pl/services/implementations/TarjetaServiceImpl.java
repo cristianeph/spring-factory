@@ -23,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.pl.model.ParteProduccionModel;
 import com.pl.model.metamodel.ParteProduccionModel_;
-import com.pl.repository.TarjetaRepository;
+import com.pl.repository.ParteProduccionRepository;
 
 @Transactional
 @Component("tarjetaService")
@@ -32,19 +32,19 @@ public class TarjetaServiceImpl implements TarjetaService {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	private final TarjetaRepository tarjetaRepository;
+	private final ParteProduccionRepository parteProduccionRepository;
 	private final TrabajoRepository trabajoRepository;
 	
-	public TarjetaServiceImpl(TarjetaRepository tarjetaRepository,
+	public TarjetaServiceImpl(ParteProduccionRepository parteProduccionRepository,
 							  TrabajoRepository trabajoRepository){
 		this.trabajoRepository = trabajoRepository;
-		this.tarjetaRepository = tarjetaRepository;
+		this.parteProduccionRepository = parteProduccionRepository;
 	}
 
 	@Override
 	public ParteProduccionModel save(ParteProduccionModel parte) {
 		Collection<OrdenTrabajoModel> details = parte.getTarjetaTrabajos();
-		this.tarjetaRepository.save(parte);
+		this.parteProduccionRepository.save(parte);
 		ParteProduccionModel parteSaved = parte;
 		details.stream().forEach(item -> {
 			OrdenTrabajoModel trabajo = this.trabajoRepository.findById(item.getId());
@@ -59,14 +59,14 @@ public class TarjetaServiceImpl implements TarjetaService {
 		
 		System.out.println("entro: " + tarjeta.getId());
 		
-		this.tarjetaRepository.deleteById(tarjeta.getId());
+		this.parteProduccionRepository.deleteById(tarjeta.getId());
 		
 	}
 
 	@Override
 	public ParteProduccionModel findById(ParteProduccionModel tarjeta) {
 		
-		return this.tarjetaRepository.findById(tarjeta.getId());
+		return this.parteProduccionRepository.findById(tarjeta.getId());
 		
 	}
 
@@ -95,9 +95,9 @@ public class TarjetaServiceImpl implements TarjetaService {
 			System.out.println("CANTIDAD de resultados: " + tarjeta.getRows());
 			
 			if(tarjeta.getRows() > 0){
-				return (Page<ParteProduccionModel>) this.tarjetaRepository.findAll(new PageRequest(0, tarjeta.getRows(), Direction.DESC, "id"));
+				return (Page<ParteProduccionModel>) this.parteProduccionRepository.findAll(new PageRequest(0, tarjeta.getRows(), Direction.DESC, "id"));
 			}else{
-				return (Page<ParteProduccionModel>) this.tarjetaRepository.findAll(new PageRequest(0, Integer.MAX_VALUE, Direction.DESC, "id"));
+				return (Page<ParteProduccionModel>) this.parteProduccionRepository.findAll(new PageRequest(0, Integer.MAX_VALUE, Direction.DESC, "id"));
 			}
 			
 		}else{
@@ -113,12 +113,12 @@ public class TarjetaServiceImpl implements TarjetaService {
 
 	@Override
 	public Page<ParteProduccionModel> getAll(PageRequest page) {
-		return this.tarjetaRepository.findAll(page);
+		return this.parteProduccionRepository.findAll(page);
 	}
 
 	@Override
 	public ParteProduccionModel getById(Integer id) {
-		return this.tarjetaRepository.findById(id);
+		return this.parteProduccionRepository.findById(id);
 	}
 
 }

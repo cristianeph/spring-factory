@@ -42,24 +42,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plpr`.`stock`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plpr`.`stock` (
-  `id` INT NOT NULL,
-  `idInsumo` INT NULL,
-  `stock` DECIMAL(20,4) NULL,
-  `relacion` INT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `stockIdInsumo_idx` (`idInsumo` ASC),
-  CONSTRAINT `stockIdInsumo`
-    FOREIGN KEY (`idInsumo`)
-    REFERENCES `plpr`.`insumo` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `plpr`.`formula`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `plpr`.`formula` (
@@ -393,9 +375,10 @@ ENGINE = InnoDB;
 -- Table `plpr`.`kardex`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `plpr`.`kardex` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `idInsumo` INT NULL,
-  `cantidad` VARCHAR(45) NULL,
+  `stock` DECIMAL(20,4) NULL DEFAULT 0,
+  `relacion` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `kardexIdInsumo_idx` (`idInsumo` ASC),
   CONSTRAINT `kardexIdInsumo`
@@ -407,10 +390,10 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plpr`.`movimiento`
+-- Table `plpr`.`movimientoalmacen`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plpr`.`movimiento` (
-  `id` INT NOT NULL,
+CREATE TABLE IF NOT EXISTS `plpr`.`movimientoalmacen` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `codigo` VARCHAR(45) NULL,
   `fecha` VARCHAR(45) NULL,
   `idKardex` INT NULL,
@@ -539,27 +522,6 @@ INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscaliz
 INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (10, 'Insumo C 2', 4, 6, NULL);
 INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (11, 'Insumo C 3', 5, 4.5, NULL);
 INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (12, 'Insumo C 4', 6, 5.9, NULL);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `plpr`.`stock`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `plpr`;
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (1, 1, 1200, 1);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (2, 2, 800, 2);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (3, 3, 23, 1);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (4, 4, 2000, 2);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (5, 5, 8000, 1);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (6, 6, 1000, 2);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (7, 7, 2000, 1);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (8, 8, 400, 2);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (9, 9, 1000, 3);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (10, 10, 4000, 4);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (11, 11, 3000, 5);
-INSERT INTO `plpr`.`stock` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (12, 12, 1500, 6);
 
 COMMIT;
 
@@ -773,6 +735,28 @@ INSERT INTO `plpr`.`tarjetahorario` (`id`, `idParteproduccion`, `idPersonal`, `h
 INSERT INTO `plpr`.`tarjetahorario` (`id`, `idParteproduccion`, `idPersonal`, `horas`, `total`, `item`) VALUES (4, 2, 2, 10, 30, 2);
 INSERT INTO `plpr`.`tarjetahorario` (`id`, `idParteproduccion`, `idPersonal`, `horas`, `total`, `item`) VALUES (5, 3, 3, 10, 27, 1);
 INSERT INTO `plpr`.`tarjetahorario` (`id`, `idParteproduccion`, `idPersonal`, `horas`, `total`, `item`) VALUES (6, 3, 4, 10, 30, 2);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `plpr`.`kardex`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `plpr`;
+INSERT INTO `plpr`.`kardex` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (1, 1, 1000, 1);
+INSERT INTO `plpr`.`kardex` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (2, 2, 199, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `plpr`.`movimientoalmacen`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `plpr`;
+INSERT INTO `plpr`.`movimientoalmacen` (`id`, `codigo`, `fecha`, `idKardex`, `tipo`, `cantidad`) VALUES (1, '1', '2017-10-13 14:13:59', 1, 1, 100);
+INSERT INTO `plpr`.`movimientoalmacen` (`id`, `codigo`, `fecha`, `idKardex`, `tipo`, `cantidad`) VALUES (2, '2', '2017-10-13 14:13:59', 2, 0, 90);
 
 COMMIT;
 
