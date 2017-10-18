@@ -16,7 +16,7 @@ import com.pl.model.OrdenTrabajoModel;
 import com.pl.services.TrabajoService;
 
 @RestController
-public class TrabajoController {
+public class OrdenTrabajoController {
 	
 	@Autowired
 	private TrabajoService trabajoService;
@@ -91,16 +91,6 @@ public class TrabajoController {
 		method = RequestMethod.GET)
 	OrdenTrabajoModel getById(@PathVariable Integer id){
 		return this.trabajoService.getById(id);
-	}
-
-	@RequestMapping(
-			value = "/api/production/trabajo/parameters",
-			method = RequestMethod.GET)
-	MaquinaActividadModel getParameters(){
-		MaquinaActividadModel maquinaActividad = new MaquinaActividadModel();
-		maquinaActividad.setActividades(this.actividadService.getAll(new PageRequest((0), Integer.MAX_VALUE)));
-		maquinaActividad.setMaquinas(this.maquinaService.getAll(new PageRequest((0), Integer.MAX_VALUE)));
-		return maquinaActividad;
 	}
 
 }

@@ -227,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `plpr`.`ordentrabajo` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `idParteproduccion` INT NULL,
   `idPlan` INT NULL,
-  `item` INT NULL,
+  `codigo` VARCHAR(50) NULL,
   `horas` INT NULL DEFAULT 0,
   `cantidad` DECIMAL(20,4) NULL DEFAULT 0,
   `comentarios` VARCHAR(500) NULL,
@@ -597,15 +597,15 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `plpr`;
-INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (1, 'PED001', '2016-10-01 14:13:59', 1, 1, 1000, NULL);
-INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (2, 'PED002', '2016-10-02 14:13:59', 1, 1, 2000, NULL);
-INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (3, 'PED003', '2016-10-02 14:13:59', 1, 1, 100, NULL);
-INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (4, 'PED004', '2016-10-02 14:13:59', 2, 1, 1000, NULL);
-INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (5, 'PED005', '2016-10-02 14:13:59', 3, 1, 2000, NULL);
-INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (6, 'PED006', '2016-10-03 14:13:59', 1, 1, 100, NULL);
-INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (7, 'PED007', '2016-10-03 14:13:59', 2, 1, 1000, NULL);
-INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (8, 'PED008', '2016-10-03 14:13:59', 1, 1, 200, NULL);
-INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (9, 'PED009', '2016-10-03 14:13:59', 2, 1, 200, NULL);
+INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (1, 'PED-2017090001', '2016-10-01 14:13:59', 1, 1, 1000, NULL);
+INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (2, 'PED-2017090002', '2016-10-02 14:13:59', 1, 1, 2000, NULL);
+INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (3, 'PED-2017090003', '2016-10-02 14:13:59', 1, 1, 100, NULL);
+INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (4, 'PED-2017090004', '2016-10-02 14:13:59', 2, 1, 1000, NULL);
+INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (5, 'PED-2017090005', '2016-10-02 14:13:59', 3, 1, 2000, NULL);
+INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (6, 'PED-2017090006', '2016-10-03 14:13:59', 1, 1, 100, NULL);
+INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (7, 'PED-2017090007', '2016-10-03 14:13:59', 2, 1, 1000, NULL);
+INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (8, 'PED-2017090008', '2016-10-03 14:13:59', 1, 1, 200, NULL);
+INSERT INTO `plpr`.`pedido` (`id`, `codigo`, `fecha`, `idProducto`, `idCliente`, `cantidad`, `idPeriodo`) VALUES (9, 'PED-2017090009', '2016-10-03 14:13:59', 2, 1, 200, NULL);
 
 COMMIT;
 
@@ -615,12 +615,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `plpr`;
-INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (1, 'OT001', 1, '2016-10-02 14:13:59', 'No validado', NULL, NULL);
-INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (2, 'OT002', 2, '2016-10-02 14:13:59', 'No validado', NULL, NULL);
-INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (3, 'OT003', 3, '2016-10-03 14:13:59', 'No validado', NULL, NULL);
-INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (4, 'OT004', 4, '2016-11-03 14:13:59', 'Rechazado', NULL, NULL);
-INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (5, 'OT005', 5, '2016-11-03 14:13:59', 'No validado', NULL, NULL);
-INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (6, 'OT006', 6, '2016-11-04 14:13:59', 'No validado', NULL, NULL);
+INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (1, 'PLP-2017090001', 1, '2016-10-02 14:13:59', 'No validado', NULL, NULL);
+INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (2, 'PLP-2017090002', 2, '2016-10-02 14:13:59', 'No validado', NULL, NULL);
+INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (3, 'PLP-2017090003', 3, '2016-10-03 14:13:59', 'No validado', NULL, NULL);
+INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (4, 'PLP-2017090004', 4, '2016-11-03 14:13:59', 'Rechazado', NULL, NULL);
+INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (5, 'PLP-2017090005', 5, '2016-11-03 14:13:59', 'No validado', NULL, NULL);
+INSERT INTO `plpr`.`plan` (`id`, `codigo`, `idPedido`, `fecha`, `estado`, `solicitud`, `lote`) VALUES (6, 'PLP-2017090006', 6, '2016-11-04 14:13:59', 'No validado', NULL, NULL);
 
 COMMIT;
 
@@ -661,12 +661,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `plpr`;
-INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (1, 'PED-2017090001', '2017-09-24 10:13:59', '2017-09-24 10:13:59', '2017-09-24 10:13:59', NULL, NULL);
-INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (2, 'PED-2017090002', '2017-09-24 11:13:59', '2017-09-24 11:13:59', '2017-09-24 11:13:59', NULL, NULL);
-INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (3, 'PED-2017090003', '2017-09-24 12:13:59', '2017-09-24 12:13:59', '2017-09-24 12:13:59', NULL, NULL);
-INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (4, 'PED-2017090004', '2017-09-24 13:13:59', '2017-09-24 13:13:59', '2017-09-24 13:13:59', NULL, NULL);
-INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (5, 'PED-2017090005', '2017-09-24 14:13:59', '2017-09-24 14:13:59', '2017-09-24 14:13:59', NULL, NULL);
-INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (6, 'PED-2017090006', '2017-09-24 15:13:59', '2017-09-24 15:13:59', '2017-09-24 15:13:59', NULL, NULL);
+INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (1, 'PED-2017090001', '2017-09-24 10:13:59', '2017-09-24 10:13:59', '2017-09-24 10:13:59', 1, 1);
+INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (2, 'PED-2017090002', '2017-09-24 11:13:59', '2017-09-24 11:13:59', '2017-09-24 11:13:59', 1, 1);
+INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (3, 'PED-2017090003', '2017-09-24 12:13:59', '2017-09-24 12:13:59', '2017-09-24 12:13:59', 1, 1);
+INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (4, 'PED-2017090004', '2017-09-24 13:13:59', '2017-09-24 13:13:59', '2017-09-24 13:13:59', 1, 1);
+INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (5, 'PED-2017090005', '2017-09-24 14:13:59', '2017-09-24 14:13:59', '2017-09-24 14:13:59', 1, 1);
+INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (6, 'PED-2017090006', '2017-09-24 15:13:59', '2017-09-24 15:13:59', '2017-09-24 15:13:59', 1, 1);
 
 COMMIT;
 
@@ -676,12 +676,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `plpr`;
-INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `item`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (1, 1, 1, 1, 10, 0, ' ', 'maquinas no disponibles', 0, NULL, NULL);
-INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `item`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (2, 1, 2, 2, 2, 0, ' ', NULL, 0, NULL, NULL);
-INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `item`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (3, 2, 3, 1, 7, 0, ' ', '', 2, NULL, NULL);
-INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `item`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (4, 2, 4, 2, 4, 0, ' ', '', 5, NULL, NULL);
-INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `item`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (5, 3, 5, 1, 12, 0, ' ', '', 0, NULL, NULL);
-INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `item`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (6, 3, 6, 2, 6, 0, ' ', '', 1.2, NULL, NULL);
+INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `codigo`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (1, 1, 1, 'OTR-2017090001', 10, 0, ' ', 'maquinas no disponibles', 0, NULL, NULL);
+INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `codigo`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (2, 1, 2, 'OTR-2017090004', 2, 0, ' ', NULL, 0, NULL, NULL);
+INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `codigo`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (3, 2, 3, 'OTR-2017090002', 7, 0, ' ', '', 2, NULL, NULL);
+INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `codigo`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (4, 2, 4, 'OTR-2017090005', 4, 0, ' ', '', 5, NULL, NULL);
+INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `codigo`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (5, 3, 5, 'OTR-2017090003', 12, 0, ' ', '', 0, NULL, NULL);
+INSERT INTO `plpr`.`ordentrabajo` (`id`, `idParteproduccion`, `idPlan`, `codigo`, `horas`, `cantidad`, `comentarios`, `incidencias`, `merma`, `idMerma`, `idPruebaorden`) VALUES (6, 3, 6, 'OTR-2017090006', 6, 0, ' ', '', 1.2, NULL, NULL);
 
 COMMIT;
 

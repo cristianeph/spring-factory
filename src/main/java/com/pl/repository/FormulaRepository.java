@@ -8,7 +8,7 @@ import com.pl.model.FormulaModel;
 
 public interface FormulaRepository extends Repository<FormulaModel, Long>{
 	
-	FormulaModel save(FormulaModel tarjeta);
+	FormulaModel save(FormulaModel formula);
 	void deleteById(Integer id);
 	FormulaModel findById(Integer id);
 	Page<FormulaModel> findAll(Pageable page);

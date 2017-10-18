@@ -8,7 +8,7 @@ import com.pl.model.ParteProduccionModel;
 
 public interface ParteProduccionRepository extends Repository<ParteProduccionModel, Long>{
 	
-	ParteProduccionModel save(ParteProduccionModel tarjeta);
+	ParteProduccionModel save(ParteProduccionModel parte);
 	void deleteById(Integer id);
 	ParteProduccionModel findById(Integer id);
 	Page<ParteProduccionModel> findAll(Pageable page);

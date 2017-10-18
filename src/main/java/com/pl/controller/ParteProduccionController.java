@@ -1,5 +1,7 @@
 package com.pl.controller;
 
+import com.pl.model.MaquinaActividadModel;
+import com.pl.model.ParteProduccionParametersModel;
 import com.pl.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -80,6 +82,17 @@ public class ParteProduccionController {
 		method = RequestMethod.GET)
     ParteProduccionModel getById(@PathVariable Integer id){
 		return this.tarjetaService.getById(id);
+	}
+
+	@RequestMapping(
+			value = "/api/production/parteproduccion/parameters",
+			method = RequestMethod.GET)
+    ParteProduccionParametersModel getParameters() {
+        ParteProduccionParametersModel parameters = new ParteProduccionParametersModel();
+		parameters.setActividades(this.actividadService.getAll(new PageRequest(0, Integer.MAX_VALUE)));
+		parameters.setMaquinas(this.maquinaService.getAll(new PageRequest(0, Integer.MAX_VALUE)));
+		parameters.setTrabajos(this.trabajoService.getAll(new PageRequest(0, Integer.MAX_VALUE)));
+		return parameters;
 	}
 
 }

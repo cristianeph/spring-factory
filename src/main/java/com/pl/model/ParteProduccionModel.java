@@ -34,7 +34,7 @@ public class ParteProduccionModel {
 	private ActividadModel actividad;
 	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "parteproduccion", orphanRemoval=true, cascade = CascadeType.ALL)
-	private Collection<OrdenTrabajoModel> tarjetaTrabajos = new ArrayList<>();
+	private Collection<OrdenTrabajoModel> ordenTrabajos = new ArrayList<>();
 	
 	public Integer getRows() {
 		return rows;
@@ -108,12 +108,11 @@ public class ParteProduccionModel {
 		this.actividad = actividad;
 	}
 
-	public Collection<OrdenTrabajoModel> getTarjetaTrabajos() {
-		return tarjetaTrabajos;
+	public Collection<OrdenTrabajoModel> getOrdenTrabajos() {
+		return ordenTrabajos;
 	}
 
-	public void setTarjetaTrabajos(Collection<OrdenTrabajoModel> tarjetaTrabajos) {
-		this.tarjetaTrabajos = tarjetaTrabajos;
+	public void setOrdenTrabajos(Collection<OrdenTrabajoModel> ordenTrabajos) {
+		this.ordenTrabajos = ordenTrabajos;
 	}
-
 }

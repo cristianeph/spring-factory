@@ -43,7 +43,7 @@ public class TarjetaServiceImpl implements TarjetaService {
 
 	@Override
 	public ParteProduccionModel save(ParteProduccionModel parte) {
-		Collection<OrdenTrabajoModel> details = parte.getTarjetaTrabajos();
+		Collection<OrdenTrabajoModel> details = parte.getOrdenTrabajos();
 		this.parteProduccionRepository.save(parte);
 		ParteProduccionModel parteSaved = parte;
 		details.stream().forEach(item -> {

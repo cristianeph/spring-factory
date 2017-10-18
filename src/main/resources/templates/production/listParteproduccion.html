@@ -44,18 +44,17 @@
 							<thead>
 								<tr>
 									<th><span>#</span></th>
-									<th><span>Plan de produccion</span></th>
-									<th><span>Horas trabajadas</span></th>
-									<th class="qopt"><span class="icon-pencil2"></span></th>
+									<th><span>Código</span></th>
+									<th><span>Fecha</span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
 							<tbody>
 							<tr v-for="item in productions">
 								<td><span>{{item.id}}</span></td>
-								<td><span>{{item.cantidad}}</span></td>
-								<td><span>{{item.cantidad}}</span></td>
-								<td><a v-bind:href="getEditionForm(item)"><span>Actualizar merma</span></a></td>
+								<td><span>{{item.codigo}}</span></td>
+								<td><span>{{item.fecha}}</span></td>
+								<td><a v-bind:href="getEditionForm(item)"><span>Actualizar parte</span></a></td>
 							</tr>
 							</tbody>
 							<tfoot>
