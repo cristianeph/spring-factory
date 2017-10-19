@@ -85,22 +85,22 @@
 									<tr>
 										<th><span>#</span></th>
 										<th><span>Orden de trabajo</span></th>
-										<th><span>Horas trabajadas</span></th>
-										<th><span>Unidades producidas</span></th>
-										<th><span>Merma producida</span></th>
-										<th class="qopt"><span class="icon-pencil2"></span></th>
-										<th class="qopt"><span class="icon-pencil2"></span></th>
+										<th><span>Horas trab.</span></th>
+										<th><span>Unidades prod.</span></th>
+										<th><span>Merma prod.</span></th>
+										<th><span></span></th>
+										<th><span></span></th>
 									</tr>
 								</thead>
 								<tbody>
-                                    <tr v-for="item in master.tarjetaTrabajos">
+                                    <tr v-for="item in master.ordenTrabajos">
                                         <td><span>{{item.id}}</span></td>
-                                        <td><span>{{item.plan.codigo}}</span></td>
+                                        <td><span>{{item.codigo}}</span></td>
                                         <td><span>{{item.horas}}</span></td>
                                         <td><span>{{item.cantidad}}</span></td>
                                         <td><span>{{item.merma}}</span></td>
-                                        <td class="qopt"><span class="icon-pencil2"></span></td>
-                                        <td class="qopt"><span class="icon-pencil2"></span></td>
+                                        <td><a href="#" v-on:click="editDetail(item)"><span>editar</span><span class="icon-pencil2"></span></a></td>
+                                        <td><a href="#" v-on:click="deleteDetail(item)"><span>eliminar</span><span class="icon-bin"></span></a></td>
                                     </tr>
                                 </tbody>
 								<tfoot>
@@ -140,10 +140,10 @@
                                     <input type="text" name="incidencias" id="incidencias" v-model="detail.incidencias" />
                                 </div>
                                 <div>
-                                    <label for="plan">Plan: </label>
-                                    <select name="plan" id="plan" v-model="detail.plan.selected">
+                                    <label for="trabajo">Orden de trabajo: </label>
+                                    <select name="trabajo" id="trabajo" v-model="detail.trabajo.selected">
                                         <option value="">Seleccione un plan</option>
-                                        <option v-for="option in detail.plan.options" v-bind:value="option.id">{{option.codigo}}</option>
+                                        <option v-for="option in detail.trabajo.options" v-bind:value="option.id">{{option.codigo}}</option>
                                     </select>
                                 </div>
                             </form>
