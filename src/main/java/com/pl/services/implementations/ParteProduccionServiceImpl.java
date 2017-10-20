@@ -13,7 +13,7 @@ import javax.persistence.criteria.Root;
 
 import com.pl.model.OrdenTrabajoModel;
 import com.pl.repository.TrabajoRepository;
-import com.pl.services.TarjetaService;
+import com.pl.services.ParteProduccionService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -26,8 +26,8 @@ import com.pl.model.metamodel.ParteProduccionModel_;
 import com.pl.repository.ParteProduccionRepository;
 
 @Transactional
-@Component("tarjetaService")
-public class TarjetaServiceImpl implements TarjetaService {
+@Component("parteService")
+public class ParteProduccionServiceImpl implements ParteProduccionService {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -35,8 +35,8 @@ public class TarjetaServiceImpl implements TarjetaService {
 	private final ParteProduccionRepository parteProduccionRepository;
 	private final TrabajoRepository trabajoRepository;
 	
-	public TarjetaServiceImpl(ParteProduccionRepository parteProduccionRepository,
-							  TrabajoRepository trabajoRepository){
+	public ParteProduccionServiceImpl(ParteProduccionRepository parteProduccionRepository,
+                                      TrabajoRepository trabajoRepository){
 		this.trabajoRepository = trabajoRepository;
 		this.parteProduccionRepository = parteProduccionRepository;
 	}

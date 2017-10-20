@@ -89,18 +89,16 @@
 										<th><span>Unidades prod.</span></th>
 										<th><span>Merma prod.</span></th>
 										<th><span></span></th>
-										<th><span></span></th>
 									</tr>
 								</thead>
 								<tbody>
                                     <tr v-for="item in master.ordenTrabajos">
                                         <td><span>{{item.id}}</span></td>
-                                        <td><span>{{item.codigo}}</span></td>
+                                        <td><a v-bind:href="getUlrDetail(item)"><span>{{item.codigo}}</span></a></td>
                                         <td><span>{{item.horas}}</span></td>
                                         <td><span>{{item.cantidad}}</span></td>
                                         <td><span>{{item.merma}}</span></td>
-                                        <td><a href="#" v-on:click="editDetail(item)"><span>editar</span><span class="icon-pencil2"></span></a></td>
-                                        <td><a href="#" v-on:click="deleteDetail(item)"><span>eliminar</span><span class="icon-bin"></span></a></td>
+                                        <td><a href="#" v-on:click="deleteDetail(item)"><span class="icon-bin"></span><span>eliminar </span></a></td>
                                     </tr>
                                 </tbody>
 								<tfoot>

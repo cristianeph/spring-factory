@@ -17,14 +17,17 @@ document.addEventListener("DOMContentLoaded", function () {
 			item: 0,
 			horas: 0,
 			cantidad: 0,
-			merma: 0,
 			comentarios: "",
 			incidencias: "",
-            maquina: {
+            merma: {
 			    selected: "",
                 options: machineList
             },
-            actividad: {
+            parte: {
+                selected: "",
+                options: activityList
+            },
+            prueba: {
                 selected: "",
                 options: activityList
             }
@@ -35,26 +38,29 @@ document.addEventListener("DOMContentLoaded", function () {
 				this.item = data.item;
 				this.horas = data.horas;
                 this.cantidad = data.cantidad;
-                this.merma = data.merma;
                 this.comentarios = data.comentarios;
                 this.incidencias = data.incidencias;
-                this.maquina.selected = data.maquina.id;
-                this.actividad.selected = data.actividad.id;
+                this.merma.selected = data.merma.id;
+                this.parte.selected = data.parte.id;
+                this.prueba.selected = data.prueba.id;
 			},
 			getData: function() {
 			    var object = JSON.parse(JSON.stringify(this.$data));
-                object.maquina = {"id" : document.querySelector("select[name='maquina']").value};
-                object.actividad = {"id" : document.querySelector("select[name='actividad']").value};
+                object.merma = {"id" : document.querySelector("select[name='merma']").value};
+                object.parte = {"id" : document.querySelector("select[name='parte']").value};
+                object.prueba = {"id" : document.querySelector("select[name='prueba']").value};
 				return object;
 			}
 		},
 		beforeMount: function() {
 			getData(urlParametersResource).onload = function() {
 			    var response = JSON.parse(this.responseText);
-			    Job.actividad.options = response.maquinas.content;
-			    Job.actividad.selected = "";
-                Job.maquina.options = response.actividades.content;
-                Job.maquina.selected = "";
+			    Job.merma.options = response.merma.content;
+			    Job.merma.selected = "";
+                Job.parte.options = response.parte.content;
+                Job.parte.selected = "";
+                Job.prueba.options = response.prueba.content;
+                Job.prueba.selected = "";
 
                 if(getUrlValue().id != undefined){
                     var url = urlResource + "/" + getUrlValue().id;

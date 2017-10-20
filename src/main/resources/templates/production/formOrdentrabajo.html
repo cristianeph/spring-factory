@@ -56,10 +56,6 @@
 									<input type="text" name="cantidad" id="cantidad" v-model="cantidad" />
 								</div>
 								<div>
-									<label for="merma">Merma</label>
-									<input type="text" name="merma" id="merma" v-model="merma" />
-								</div>
-								<div>
 									<label for="comentarios">Comentarios</label>
 									<input type="text" name="comentarios" id="comentarios" v-model="comentarios" />
 								</div>
@@ -68,19 +64,26 @@
 									<input type="text" name="incidencias" id="incidencias" v-model="incidencias" />
 								</div>
                                 <div>
-                                    <label for="maquina">Maquina</label>
-                                    <select name="maquina" id="maquina" v-model="maquina.selected">
-                                        <option value="">Seleccione una maquina</option>
-                                        <option v-for="option in maquina.options" v-bind:value="option.id">{{option.descripcion}}</option>
+                                    <label for="merma">Merma</label>
+                                    <select name="merma" id="merma" v-model="merma.selected">
+                                        <option value="">Seleccione una merma</option>
+                                        <option v-for="option in merma.options" v-bind:value="option.id">{{option.descripcion}}</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label for="actividad">Actividad</label>
-                                    <select name="actividad" id="actividad" v-model="actividad.selected">
-                                        <option value="">Seleccione una maquina</option>
-                                        <option v-for="option in actividad.options" v-bind:value="option.id">{{option.descripcion}}</option>
+                                    <label for="parte">Parte de producción</label>
+                                    <select name="parte" id="parte" v-model="parte.selected">
+                                        <option value="">Seleccione un parte</option>
+                                        <option v-for="option in parte.options" v-bind:value="option.id">{{option.codigo}}</option>
                                     </select>
                                 </div>
+								<div>
+									<label for="prueba">Prueba de producción</label>
+									<select name="prueba" id="prueba" v-model="prueba.selected">
+										<option value="">Seleccione un prueba</option>
+										<option v-for="option in prueba.options" v-bind:value="option.id">{{option.descripcion}}</option>
+									</select>
+								</div>
 							</form>
 						</section>
 					</article>

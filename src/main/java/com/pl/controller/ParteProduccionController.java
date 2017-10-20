@@ -1,6 +1,5 @@
 package com.pl.controller;
 
-import com.pl.model.MaquinaActividadModel;
 import com.pl.model.ParteProduccionParametersModel;
 import com.pl.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import com.pl.model.ParteProduccionModel;
 public class ParteProduccionController {
 	
 	@Autowired
-	private TarjetaService tarjetaService;
+	private ParteProduccionService parteProduccionService;
 
     @Autowired
     private TrabajoService trabajoService;
@@ -34,17 +33,17 @@ public class ParteProduccionController {
 	
 	@RequestMapping("/production/parteproduccion/action/save")
     ParteProduccionModel save(@RequestBody ParteProduccionModel parteproduccion){
-		return this.tarjetaService.save(parteproduccion);
+		return this.parteProduccionService.save(parteproduccion);
 	}
 
 	@RequestMapping("/production/parteproduccion/action/find")
 	ParteProduccionModel findById(@RequestBody ParteProduccionModel tarjeta){
-		return this.tarjetaService.findById(tarjeta);
+		return this.parteProduccionService.findById(tarjeta);
 	}
 
 	@RequestMapping("/production/card/action/delete")
     ParteProduccionModel deleteById(@RequestBody ParteProduccionModel tarjeta){
-		this.tarjetaService.deleteById(tarjeta);
+		this.parteProduccionService.deleteById(tarjeta);
 		return null;
 	}
 
@@ -52,13 +51,13 @@ public class ParteProduccionController {
     ParteProduccionModel deleteByDocument(@PathVariable Integer id){
 		ParteProduccionModel tarjeta = new ParteProduccionModel();
 		tarjeta.setId(id);
-		this.tarjetaService.deleteById(tarjeta);
+		this.parteProduccionService.deleteById(tarjeta);
 		return null;
 	}
 
 	@RequestMapping("/production/card/action/all")
 	Iterable<ParteProduccionModel> findAll(@RequestBody ParteProduccionModel tarjeta){
-		Iterable<ParteProduccionModel> tarjetaModels = this.tarjetaService.findAll(tarjeta);
+		Iterable<ParteProduccionModel> tarjetaModels = this.parteProduccionService.findAll(tarjeta);
 		return tarjetaModels;
 	}
 
@@ -66,7 +65,7 @@ public class ParteProduccionController {
 		value = "/api/production/parteproduccion",
 		method = RequestMethod.POST)
     ParteProduccionModel saveOne(@RequestBody ParteProduccionModel parte){
-        return this.tarjetaService.save(parte);
+        return this.parteProduccionService.save(parte);
 	}
 	
 	@RequestMapping(
@@ -74,14 +73,14 @@ public class ParteProduccionController {
 		params = {"page", "size"},
 		method = RequestMethod.GET)
 	Iterable<ParteProduccionModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
-		return this.tarjetaService.getAll(new PageRequest((page - 1), size));
+		return this.parteProduccionService.getAll(new PageRequest((page - 1), size));
 	}
 	
 	@RequestMapping(
 		value = "/api/production/parteproduccion/{id}",
 		method = RequestMethod.GET)
     ParteProduccionModel getById(@PathVariable Integer id){
-		return this.tarjetaService.getById(id);
+		return this.parteProduccionService.getById(id);
 	}
 
 	@RequestMapping(

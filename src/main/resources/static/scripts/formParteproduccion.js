@@ -5,6 +5,7 @@ var urlPage = location.pathname;
 var Production = null;
 var urlResource = BASE_PATH + "/api/production/parteproduccion";
 var urlParametersResource = BASE_PATH + "/api/production/parteproduccion/parameters";
+var urlReferenceResource = BASE_PATH + "/production/ordentrabajo/form"
 var machineList = null;
 var activityList = null;
 var trabajoList = null;
@@ -60,6 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 object.maquina = {"id" : document.querySelector("select[name='maquina']").value};
                 object.actividad = {"id" : document.querySelector("select[name='actividad']").value};
                 return object;
+            },
+            getUlrDetail: function (item) {
+                return urlReferenceResource + "?id=" + item.id;
             },
             setDetailData: function (data) {
                 this.detail.id = data.id;

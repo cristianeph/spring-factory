@@ -1,8 +1,9 @@
 package com.pl.controller;
 
 import com.pl.model.MaquinaActividadModel;
-import com.pl.services.ActividadService;
-import com.pl.services.MaquinaService;
+import com.pl.model.OrdenTrabajoParametersModel;
+import com.pl.model.PruebaProduccionModel;
+import com.pl.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pl.model.OrdenTrabajoModel;
-import com.pl.services.TrabajoService;
 
 @RestController
 public class OrdenTrabajoController {
@@ -21,9 +21,11 @@ public class OrdenTrabajoController {
 	@Autowired
 	private TrabajoService trabajoService;
 	@Autowired
-	private MaquinaService maquinaService;
+	private MermaService mermaService;
 	@Autowired
-	private ActividadService actividadService;
+    private ParteProduccionService parteProduccionService;
+	@Autowired
+    private PruebaProduccionService pruebaProduccionService;
 	
 	@RequestMapping("/production/trabajo/action/save")
 	OrdenTrabajoModel save(@RequestBody OrdenTrabajoModel trabajo){
@@ -91,6 +93,17 @@ public class OrdenTrabajoController {
 		method = RequestMethod.GET)
 	OrdenTrabajoModel getById(@PathVariable Integer id){
 		return this.trabajoService.getById(id);
+	}
+
+	@RequestMapping(
+			value = "/api/production/trabajo/parameters",
+			method = RequestMethod.GET)
+	OrdenTrabajoParametersModel getParameters() {
+		OrdenTrabajoParametersModel parameters = new OrdenTrabajoParametersModel();
+		parameters.setMerma(this.mermaService.getAll(new PageRequest(0, Integer.MAX_VALUE)));
+		parameters.setParte(this.parteProduccionService.getAll(new PageRequest(0, Integer.MAX_VALUE)));
+		parameters.setPrueba(this.pruebaProduccionService.getAll(new PageRequest(0, Integer.MAX_VALUE)));
+		return parameters;
 	}
 
 }

@@ -107,6 +107,10 @@ ul li {
     display: flex;
 }
 
+span[class] + span:not([class]) {
+    padding-left: 0rem;
+}
+
 table {
     background: #ffffff;
     border-collapse: collapse;

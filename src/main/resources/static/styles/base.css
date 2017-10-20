@@ -354,7 +354,7 @@
     height: auto;
     /*margin: 1rem 0rem;*/
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     grid-column-gap: 1px;
     /*grid-row-gap: 1px;*/
     background-color: #c6c6c6;

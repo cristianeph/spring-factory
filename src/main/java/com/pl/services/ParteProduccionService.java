@@ -5,7 +5,7 @@ import org.springframework.data.domain.PageRequest;
 
 import com.pl.model.ParteProduccionModel;
 
-public interface TarjetaService {
+public interface ParteProduccionService {
 	
 	ParteProduccionModel save(ParteProduccionModel tarjeta);
 	void deleteById(ParteProduccionModel tarjeta);
