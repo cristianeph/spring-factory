@@ -32,7 +32,7 @@ ENGINE = InnoDB;
 -- Table `plpr`.`insumo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `plpr`.`insumo` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(200) NULL,
   `relacion` INT NULL,
   `costo` DECIMAL(20,4) NULL,
@@ -76,7 +76,7 @@ ENGINE = InnoDB;
 -- Table `plpr`.`cliente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `plpr`.`cliente` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `razonsocial` VARCHAR(500) NULL,
   `ruc` VARCHAR(45) NULL,
   `direccion` VARCHAR(500) NULL,
@@ -155,7 +155,7 @@ ENGINE = InnoDB;
 -- Table `plpr`.`maquina`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `plpr`.`maquina` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(45) NULL,
   `costo` DECIMAL(20,2) NULL,
   PRIMARY KEY (`id`))
@@ -273,6 +273,7 @@ CREATE TABLE IF NOT EXISTS `plpr`.`solicitudinsumo` (
   `cantidad` DECIMAL(20,4) NULL,
   `codigo` VARCHAR(45) NULL,
   `estado` VARCHAR(45) NULL DEFAULT 'generado',
+  `fecha` DATETIME NULL,
   PRIMARY KEY (`id`),
   INDEX `solicitudIdInsumo_idx` (`idInsumo` ASC),
   CONSTRAINT `solicitudinsumoIdInsumo`
@@ -395,7 +396,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `plpr`.`movimientoalmacen` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `codigo` VARCHAR(45) NULL,
-  `fecha` VARCHAR(45) NULL,
+  `fecha` DATETIME NULL,
   `idKardex` INT NULL,
   `tipo` TINYINT(1) NULL DEFAULT 1,
   `cantidad` DECIMAL(20,4) NULL,
@@ -434,7 +435,7 @@ ENGINE = InnoDB;
 -- Table `plpr`.`control`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `plpr`.`control` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `idProducto` INT NULL,
   `estado` VARCHAR(45) NULL,
   `observaciones` VARCHAR(45) NULL,
@@ -486,6 +487,31 @@ CREATE TABLE IF NOT EXISTS `plpr`.`solicitudformula` (
   CONSTRAINT `solicitudformulaIdPrueba`
     FOREIGN KEY (`idPrueba`)
     REFERENCES `plpr`.`pruebaformula` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `plpr`.`conformidadrecepcion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `plpr`.`conformidadrecepcion` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `fecha` DATETIME NULL,
+  `idMovimientoAlmacen` INT NULL,
+  `idSolicitudInsumo` INT NULL,
+  `observaciones` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  INDEX `conformidadrecepcionIdSolicitudInsumo_idx` (`idSolicitudInsumo` ASC),
+  INDEX `conformidadrecepcionIdMovimientoAlmacen_idx` (`idMovimientoAlmacen` ASC),
+  CONSTRAINT `conformidadrecepcionIdMovimientoAlmacen`
+    FOREIGN KEY (`idMovimientoAlmacen`)
+    REFERENCES `plpr`.`movimientoalmacen` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `conformidadrecepcionIdSolicitudInsumo`
+    FOREIGN KEY (`idSolicitudInsumo`)
+    REFERENCES `plpr`.`solicitudinsumo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -667,6 +693,21 @@ INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, 
 INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (4, 'PED-2017090004', '2017-09-24 13:13:59', '2017-09-24 13:13:59', '2017-09-24 13:13:59', 1, 1);
 INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (5, 'PED-2017090005', '2017-09-24 14:13:59', '2017-09-24 14:13:59', '2017-09-24 14:13:59', 1, 1);
 INSERT INTO `plpr`.`parteproduccion` (`id`, `codigo`, `fecha`, `inicio`, `fin`, `idMaquina`, `idActividad`) VALUES (6, 'PED-2017090006', '2017-09-24 15:13:59', '2017-09-24 15:13:59', '2017-09-24 15:13:59', 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `plpr`.`pruebaorden`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `plpr`;
+INSERT INTO `plpr`.`pruebaorden` (`id`, `descripcion`, `observaciones`) VALUES (1, NULL, NULL);
+INSERT INTO `plpr`.`pruebaorden` (`id`, `descripcion`, `observaciones`) VALUES (2, NULL, NULL);
+INSERT INTO `plpr`.`pruebaorden` (`id`, `descripcion`, `observaciones`) VALUES (3, NULL, NULL);
+INSERT INTO `plpr`.`pruebaorden` (`id`, `descripcion`, `observaciones`) VALUES (4, NULL, NULL);
+INSERT INTO `plpr`.`pruebaorden` (`id`, `descripcion`, `observaciones`) VALUES (5, NULL, NULL);
+INSERT INTO `plpr`.`pruebaorden` (`id`, `descripcion`, `observaciones`) VALUES (6, NULL, NULL);
 
 COMMIT;
 

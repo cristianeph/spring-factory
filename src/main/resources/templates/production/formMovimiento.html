@@ -58,7 +58,7 @@
 									<input type="radio" name="tipo" id="tipo_salida" v-model="tipo" value="false" />
 								</div>
 								<div>
-									<label for="kardex">Orden de Trabajo: </label>
+									<label for="kardex">Insumo: </label>
 									<select name="kardex" id="kardex" v-model="kardex.selected">
 										<option value="">Seleccione un Insumo</option>
 										<option v-for="option in kardex.options" v-bind:value="option.id">{{option.id + ' - ' + option.insumo.descripcion}}</option>
