@@ -1,5 +1,7 @@
 package com.pl.controller;
 
+import com.pl.model.*;
+import com.pl.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,15 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.pl.model.PedidoModel;
-import com.pl.model.PlanInsumoModel;
-import com.pl.model.PlanModel;
-import com.pl.model.SolicitudModel;
-import com.pl.services.PedidoService;
-import com.pl.services.PersonalService;
-import com.pl.services.PlanService;
-import com.pl.services.SolicitudService;
 
 @RestController
 public class PlanController {
@@ -28,10 +21,10 @@ public class PlanController {
     private PedidoService pedidoService;
 
     @Autowired
-    private PersonalService personalService;
+    private SolicitudService solicitudService;
 
     @Autowired
-    private SolicitudService solicitudService;
+    private MovimientoDetalleService movimientoDetalleService;
 
     @RequestMapping("/production/plan/action/save")
     PlanModel save(@RequestBody PlanModel plan) {
@@ -58,17 +51,19 @@ public class PlanController {
 
     @RequestMapping("/production/plan/action/request/resources")
     PlanModel requestResources(@RequestBody PlanInsumoModel planInsumo) {
-        System.out.println("se recibio: " + planInsumo.getPlan().getId());
-        System.out.println("se recibio: " + planInsumo.getInsumo().getId());
         PlanModel planEncontrado = this.planService.findById(planInsumo.getPlan());
         planEncontrado.setEstado("Pendiente de solicitud");
         this.planService.save(planEncontrado);
         System.out.println("se cambia el estado del plan");
-        SolicitudModel solicitud = new SolicitudModel();
-        solicitud.setInsumo(planInsumo.getInsumo());
+        SolicitudInsumoModel solicitud = new SolicitudInsumoModel();
         solicitud.setIdPlan(planInsumo.getPlan().getId());
-        this.solicitudService.save(solicitud);
-        System.out.println("se crea la solicitud");
+        /*solicitud.setCantidad(planInsumo.getPlan().get);*/
+        solicitud = this.solicitudService.save(solicitud);
+        MovimientoDetalleModel movimiento = new MovimientoDetalleModel();
+        movimiento.setInsumo(planInsumo.getInsumo());
+        movimiento.setSolicitud(solicitud);
+        movimiento = this.movimientoDetalleService.save(movimiento);
+        System.out.println("se crea la solicitud: " + solicitud.getId());
         return planEncontrado;
     }
 

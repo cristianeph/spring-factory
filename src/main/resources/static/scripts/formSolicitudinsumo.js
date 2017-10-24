@@ -5,7 +5,6 @@ var urlPage = location.pathname;
 var Requestinput = null;
 var urlResource = BASE_PATH + "/api/production/solicitudinsumo";
 var urlParametersResource = BASE_PATH + "/api/production/insumo";
-var insumoList = null;
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -15,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             id: 0,
             insumo: {
                 selected: "",
-                options: insumoList
+                options: []
             },
             idPlan: 0,
             cantidad: 0,
@@ -24,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         methods: {
             setData: function(data) {
+                this.insumo.selected = data.movimientoDetalle.insumo.id;
                 this.id = data.id;
-                this.insumo.selected = data.insumo.id;
                 this.idPlan = data.idPlan;
                 this.cantidad = data.cantidad;
                 this.codigo = data.codigo;

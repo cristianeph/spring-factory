@@ -1,13 +1,13 @@
 package com.pl.services;
 
-import com.pl.model.SolicitudModel;
+import com.pl.model.SolicitudInsumoModel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 public interface SolicitudService {
 
-	SolicitudModel save(SolicitudModel solicitud);
-	Page<SolicitudModel> findAll(PageRequest page);
-	SolicitudModel findById(Integer id);
+	SolicitudInsumoModel save(SolicitudInsumoModel solicitud);
+	Page<SolicitudInsumoModel> findAll(PageRequest page);
+	SolicitudInsumoModel findById(Integer id);
 
 }

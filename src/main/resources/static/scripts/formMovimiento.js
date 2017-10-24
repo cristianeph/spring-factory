@@ -5,7 +5,6 @@ var urlPage = location.pathname;
 var Warehouse = null;
 var urlResource = BASE_PATH + "/api/production/movimientoalmacen";
 var urlParametersResource = BASE_PATH + "/api/production/movimientoalmacen/parameters";
-var kardexList = null;
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -17,31 +16,35 @@ document.addEventListener("DOMContentLoaded", function () {
             fecha: "",
             tipo: 0,
             cantidad: 0,
-            kardex: {
-                selected: "",
-                options: kardexList
+            movimientoDetalle: {
+                id: 0,
+                insumo: {
+                    selected: "",
+                    options: []
+                }
             }
 		},
 		methods: {
 			setData: function(data) {
+                this.movimientoDetalle.insumo.selected = data.movimientoDetalle.insumo.id;
+                this.movimientoDetalle.id = data.movimientoDetalle.id;
 				this.id = data.id;
 				this.codigo = data.codigo;
 				this.fecha = data.fecha;
                 this.tipo = data.tipo;
                 this.cantidad = data.cantidad;
-                this.kardex.selected = data.kardex.id;
 			},
 			getData: function() {
 			    var object = JSON.parse(JSON.stringify(this.$data))
-                object.kardex = {"id" : document.querySelector("select[name='kardex']").value};
+                object.movimientoDetalle.insumo = {"id" : document.querySelector("select[name='insumo']").value};
 				return object;
 			}
 		},
 		beforeMount: function() {
             getData(urlParametersResource).onload = function() {
                 var response = JSON.parse(this.responseText);
-                Warehouse.kardex.options = response.content;
-                Warehouse.kardex.selected = "";
+                Warehouse.movimientoDetalle.insumo.options = response.content;
+                Warehouse.movimientoDetalle.insumo.selected = "";
 
                 if(getUrlValue().id != undefined){
                     var url = urlResource + "/" + getUrlValue().id;

@@ -1,6 +1,6 @@
 package com.pl.controller;
 
-import com.pl.model.SolicitudModel;
+import com.pl.model.SolicitudInsumoModel;
 import com.pl.services.SolicitudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -15,7 +15,7 @@ public class SolicitudInsumoController {
             value = "/api/production/solicitudinsumo",
             method = RequestMethod.POST
     )
-    SolicitudModel save(@RequestBody SolicitudModel prueba) {
+    SolicitudInsumoModel save(@RequestBody SolicitudInsumoModel prueba) {
         return this.solicitudService.save(prueba);
     }
 
@@ -23,7 +23,7 @@ public class SolicitudInsumoController {
             value = "/api/production/solicitudinsumo/{id}",
             method = RequestMethod.GET
     )
-    SolicitudModel get(@PathVariable Integer id) {
+    SolicitudInsumoModel get(@PathVariable Integer id) {
         return this.solicitudService.findById(id);
     }
 
@@ -32,7 +32,7 @@ public class SolicitudInsumoController {
             params = {"page", "size"},
             method = RequestMethod.GET
     )
-    Iterable<SolicitudModel> all(@RequestParam Integer page, @RequestParam Integer size) {
+    Iterable<SolicitudInsumoModel> all(@RequestParam Integer page, @RequestParam Integer size) {
         return this.solicitudService.findAll(new PageRequest((page - 1), size));
     }
 }

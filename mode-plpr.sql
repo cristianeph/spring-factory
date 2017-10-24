@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `plpr`.`insumo` (
   `descripcion` VARCHAR(200) NULL,
   `relacion` INT NULL,
   `costo` DECIMAL(20,4) NULL,
-  `fiscalizado` BINARY NULL,
+  `fiscalizado` TINYINT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -268,19 +268,12 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `plpr`.`solicitudinsumo` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `idInsumo` INT NULL,
   `idPlan` INT NULL,
   `cantidad` DECIMAL(20,4) NULL,
   `codigo` VARCHAR(45) NULL,
   `estado` VARCHAR(45) NULL DEFAULT 'generado',
   `fecha` DATETIME NULL,
-  PRIMARY KEY (`id`),
-  INDEX `solicitudIdInsumo_idx` (`idInsumo` ASC),
-  CONSTRAINT `solicitudinsumoIdInsumo`
-    FOREIGN KEY (`idInsumo`)
-    REFERENCES `plpr`.`insumo` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -373,6 +366,19 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `plpr`.`movimientoalmacen`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `plpr`.`movimientoalmacen` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `codigo` VARCHAR(45) NULL,
+  `fecha` DATETIME NULL,
+  `tipo` TINYINT(1) NOT NULL DEFAULT 1,
+  `cantidad` DECIMAL(20,4) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `plpr`.`kardex`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `plpr`.`kardex` (
@@ -385,26 +391,6 @@ CREATE TABLE IF NOT EXISTS `plpr`.`kardex` (
   CONSTRAINT `kardexIdInsumo`
     FOREIGN KEY (`idInsumo`)
     REFERENCES `plpr`.`insumo` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `plpr`.`movimientoalmacen`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plpr`.`movimientoalmacen` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `codigo` VARCHAR(45) NULL,
-  `fecha` DATETIME NULL,
-  `idKardex` INT NULL,
-  `tipo` TINYINT(1) NULL DEFAULT 1,
-  `cantidad` DECIMAL(20,4) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `movimientoIdKardex_idx` (`idKardex` ASC),
-  CONSTRAINT `movimientoIdKardex`
-    FOREIGN KEY (`idKardex`)
-    REFERENCES `plpr`.`kardex` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -493,25 +479,32 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `plpr`.`conformidadrecepcion`
+-- Table `plpr`.`movimientodetalle`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `plpr`.`conformidadrecepcion` (
+CREATE TABLE IF NOT EXISTS `plpr`.`movimientodetalle` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `fecha` DATETIME NULL,
-  `idMovimientoAlmacen` INT NULL,
   `idSolicitudInsumo` INT NULL,
-  `observaciones` VARCHAR(45) NULL,
+  `idMovimientoAlmacen` INT NULL,
+  `idInsumo` INT NULL,
+  `tipo` VARCHAR(45) NULL,
+  `cantidad` DECIMAL(20,4) NULL,
   PRIMARY KEY (`id`),
-  INDEX `conformidadrecepcionIdSolicitudInsumo_idx` (`idSolicitudInsumo` ASC),
-  INDEX `conformidadrecepcionIdMovimientoAlmacen_idx` (`idMovimientoAlmacen` ASC),
-  CONSTRAINT `conformidadrecepcionIdMovimientoAlmacen`
+  INDEX `movimientoDetalleIdSolicitudInsumo_idx` (`idSolicitudInsumo` ASC),
+  INDEX `movimientoDetalleIdMovimientoAlmacen_idx` (`idMovimientoAlmacen` ASC),
+  INDEX `movimientoDetalleIdInsumo_idx` (`idInsumo` ASC),
+  CONSTRAINT `movimientoDetalleIdSolicitudInsumo`
+    FOREIGN KEY (`idSolicitudInsumo`)
+    REFERENCES `plpr`.`solicitudinsumo` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `movimientoDetalleIdMovimientoAlmacen`
     FOREIGN KEY (`idMovimientoAlmacen`)
     REFERENCES `plpr`.`movimientoalmacen` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `conformidadrecepcionIdSolicitudInsumo`
-    FOREIGN KEY (`idSolicitudInsumo`)
-    REFERENCES `plpr`.`solicitudinsumo` (`id`)
+  CONSTRAINT `movimientoDetalleIdInsumo`
+    FOREIGN KEY (`idInsumo`)
+    REFERENCES `plpr`.`insumo` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -536,18 +529,18 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `plpr`;
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (1, 'Insumo A', 1, 2.5, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (2, 'Insumo B', 2, 3.2, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (3, 'Insumo C', 1, 2.5, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (4, 'Insumo D', 2, 4, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (5, 'Insumo E', 1, 2, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (6, 'Insumo F', 2, 3, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (7, 'Insumo G', 1, 4, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (8, 'Insumo H', 2, 2.2, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (9, 'Insumo C 1', 3, 7, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (10, 'Insumo C 2', 4, 6, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (11, 'Insumo C 3', 5, 4.5, NULL);
-INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (12, 'Insumo C 4', 6, 5.9, NULL);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (1, 'Insumo A', 1, 2.5, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (2, 'Insumo B', 2, 3.2, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (3, 'Insumo C', 1, 2.5, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (4, 'Insumo D', 2, 4, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (5, 'Insumo E', 1, 2, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (6, 'Insumo F', 2, 3, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (7, 'Insumo G', 1, 4, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (8, 'Insumo H', 2, 2.2, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (9, 'Insumo C 1', 3, 7, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (10, 'Insumo C 2', 4, 6, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (11, 'Insumo C 3', 5, 4.5, 0);
+INSERT INTO `plpr`.`insumo` (`id`, `descripcion`, `relacion`, `costo`, `fiscalizado`) VALUES (12, 'Insumo C 4', 6, 5.9, 0);
 
 COMMIT;
 
@@ -728,6 +721,17 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `plpr`.`solicitudinsumo`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `plpr`;
+INSERT INTO `plpr`.`solicitudinsumo` (`id`, `idPlan`, `cantidad`, `codigo`, `estado`, `fecha`) VALUES (1, 1, 1000, 'SOL-2017090001', 'GENERADO', '2016-10-02 14:13:59');
+INSERT INTO `plpr`.`solicitudinsumo` (`id`, `idPlan`, `cantidad`, `codigo`, `estado`, `fecha`) VALUES (2, 1, 1000, 'SOL-2017090001', 'GENERADO', '2016-10-02 14:13:59');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `plpr`.`ingrediente`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -781,23 +785,23 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `plpr`.`movimientoalmacen`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `plpr`;
+INSERT INTO `plpr`.`movimientoalmacen` (`id`, `codigo`, `fecha`, `tipo`, `cantidad`) VALUES (1, '1', '2017-10-13 14:13:59', 1, 100);
+INSERT INTO `plpr`.`movimientoalmacen` (`id`, `codigo`, `fecha`, `tipo`, `cantidad`) VALUES (2, '2', '2017-10-13 14:13:59', 0, 90);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `plpr`.`kardex`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `plpr`;
 INSERT INTO `plpr`.`kardex` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (1, 1, 1000, 1);
 INSERT INTO `plpr`.`kardex` (`id`, `idInsumo`, `stock`, `relacion`) VALUES (2, 2, 199, 1);
-
-COMMIT;
-
-
--- -----------------------------------------------------
--- Data for table `plpr`.`movimientoalmacen`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `plpr`;
-INSERT INTO `plpr`.`movimientoalmacen` (`id`, `codigo`, `fecha`, `idKardex`, `tipo`, `cantidad`) VALUES (1, '1', '2017-10-13 14:13:59', 1, 1, 100);
-INSERT INTO `plpr`.`movimientoalmacen` (`id`, `codigo`, `fecha`, `idKardex`, `tipo`, `cantidad`) VALUES (2, '2', '2017-10-13 14:13:59', 2, 0, 90);
 
 COMMIT;
 
@@ -830,6 +834,17 @@ COMMIT;
 START TRANSACTION;
 USE `plpr`;
 INSERT INTO `plpr`.`solicitudformula` (`id`, `fecha`, `observacion`, `idMuestra`, `idPrueba`) VALUES (1, '2016-10-02 14:13:59', 'test', 1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `plpr`.`movimientodetalle`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `plpr`;
+INSERT INTO `plpr`.`movimientodetalle` (`id`, `idSolicitudInsumo`, `idMovimientoAlmacen`, `idInsumo`, `tipo`, `cantidad`) VALUES (1, 1, 1, 1, 'PROGRAMADO', 1500);
+INSERT INTO `plpr`.`movimientodetalle` (`id`, `idSolicitudInsumo`, `idMovimientoAlmacen`, `idInsumo`, `tipo`, `cantidad`) VALUES (2, NULL, 2, 2, 'NO PROGRAMADO', 1500);
 
 COMMIT;
 

@@ -14,8 +14,8 @@ public class KardexModel {
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	@OneToMany(fetch=FetchType.EAGER, mappedBy = "kardex", orphanRemoval = true,  cascade = CascadeType.ALL)
-	private Collection<MovimientoAlmacenModel> movimiento = new ArrayList<>();
+	/*@OneToMany(fetch=FetchType.EAGER, mappedBy = "kardex", orphanRemoval = true,  cascade = CascadeType.ALL)
+	private Collection<MovimientoAlmacenModel> movimiento = new ArrayList<>();*/
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idinsumo")
 	private InsumoModel insumo;
@@ -28,13 +28,13 @@ public class KardexModel {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	@JsonIgnore
+	/*@JsonIgnore
     public Collection<MovimientoAlmacenModel> getMovimiento() {
         return movimiento;
     }
     public void setMovimiento(Collection<MovimientoAlmacenModel> movimiento) {
         this.movimiento = movimiento;
-    }
+    }*/
 	public InsumoModel getInsumo() {
 		return insumo;
 	}

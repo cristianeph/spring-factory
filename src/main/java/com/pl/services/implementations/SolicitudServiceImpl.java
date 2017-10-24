@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
-import com.pl.model.SolicitudModel;
+import com.pl.model.SolicitudInsumoModel;
 import com.pl.repository.SolicitudRepository;
 
 @Component("solicitudService")
@@ -26,17 +26,17 @@ public class SolicitudServiceImpl implements SolicitudService {
 	}
 
 	@Override
-	public SolicitudModel save(SolicitudModel solicitud) {
+	public SolicitudInsumoModel save(SolicitudInsumoModel solicitud) {
 		return this.solicitudRepository.save(solicitud);
 	}
 
 	@Override
-	public Page<SolicitudModel> findAll(PageRequest page) {
+	public Page<SolicitudInsumoModel> findAll(PageRequest page) {
 		return this.solicitudRepository.findAll(page);
 	}
 
 	@Override
-	public SolicitudModel findById(Integer id) {
+	public SolicitudInsumoModel findById(Integer id) {
 		return this.solicitudRepository.findById(id);
 	}
 

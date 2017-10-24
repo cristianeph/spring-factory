@@ -45,8 +45,8 @@ public class MovimientoController {
     @RequestMapping(
             value = "/api/production/movimientoalmacen/parameters",
             method = RequestMethod.GET)
-    Iterable<InsumoKardexProjection> getAll() {
-        return this.kardexService.getAsParameters(new PageRequest(0, Integer.MAX_VALUE));
-        /*return this.insumoService.getAsParameters(new PageRequest(0, Integer.MAX_VALUE));*/
+    Iterable<InsumoModel> getAll() {
+        /*return this.kardexService.getAsParameters(new PageRequest(0, Integer.MAX_VALUE));*/
+        return this.insumoService.getAsParameters(new PageRequest(0, Integer.MAX_VALUE));
     }
 }

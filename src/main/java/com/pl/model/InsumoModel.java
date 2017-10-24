@@ -28,7 +28,7 @@ public class InsumoModel {
 	private Integer relacion;
 	private BigDecimal costo;
 	
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="insumo")
+	/*@OneToMany(fetch=FetchType.EAGER, mappedBy="insumo")*/
 
 	public Integer getRows() {
 		return rows;
