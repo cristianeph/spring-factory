@@ -13,7 +13,7 @@ public class MovimientoAlmacenModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "movimiento")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "movimiento", cascade = CascadeType.ALL)
     private MovimientoDetalleModel movimientoDetalle;
 
     private Date fecha;
@@ -21,6 +21,18 @@ public class MovimientoAlmacenModel {
     private Boolean tipo;
 
     private BigDecimal cantidad;
+
+    public MovimientoAlmacenModel() {
+    }
+
+    public MovimientoAlmacenModel(
+            Date fecha,
+            Boolean tipo,
+            BigDecimal cantidad) {
+        this.fecha = fecha;
+        this.tipo = tipo;
+        this.cantidad = cantidad;
+    }
 
     public Integer getId() {
         return id;

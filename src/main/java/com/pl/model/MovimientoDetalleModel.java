@@ -22,11 +22,27 @@ public class MovimientoDetalleModel {
     @JoinColumn(name="idsolicitudinsumo", nullable = true)
     private SolicitudInsumoModel solicitud;
 
-    @OneToOne(fetch=FetchType.EAGER)
+    @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="idmovimientoalmacen", nullable = true)
     private MovimientoAlmacenModel movimiento;
     private String tipo;
     private BigDecimal cantidad;
+
+    public MovimientoDetalleModel() {
+    }
+
+    public MovimientoDetalleModel(
+            InsumoModel insumo,
+            SolicitudInsumoModel solicitud,
+            MovimientoAlmacenModel movimiento,
+            String tipo,
+            BigDecimal cantidad) {
+        this.insumo = insumo;
+        this.solicitud = solicitud;
+        this.movimiento = movimiento;
+        this.tipo = tipo;
+        this.cantidad = cantidad;
+    }
 
     public Integer getId() {
         return id;

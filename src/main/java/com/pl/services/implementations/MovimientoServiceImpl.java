@@ -29,46 +29,28 @@ public class MovimientoServiceImpl implements MovimientoService {
 
     @Override
     public MovimientoAlmacenModel save(MovimientoAlmacenModel movimiento) {
-        /*movimiento.set*/
-        this.movimientoRepository.save(movimiento);
-
-        /*MovimientoDetalleModel detalle = new MovimientoDetalleModel();
-        detalle.setInsumo(movimiento.getMovimientoDetalle().getInsumo());
-        detalle.setSolicitud(null);
-        detalle.setMovimiento(null);
-        detalle.setCantidad(movimiento.getCantidad());
-        detalle.setTipo("TEST");
-        detalle = this.movimientoDetalleRepository.save(detalle);
-        System.out.println("El id del detalle es => " + detalle.getId());
-        System.out.println("El id del detalle movimiento es => " + detalle.getMovimiento());
-        System.out.println("El id del detalle solicitud es => " + detalle.getSolicitud());
-        System.out.println("El id del detalle insumo es => " + detalle.getInsumo());
-        movimiento.setMovimientoDetalle(detalle);
-        return this.movimientoRepository.save(movimiento);*/
-
-        /*System.out.println("WTF?");
-        MovimientoDetalleModel movimientoDetalle = new MovimientoDetalleModel();
-        if (movimiento.getId() == 0) {
-            System.out.println("Este movimiento NO existía");
-            movimientoDetalle.setInsumo(movimiento.getMovimientoDetalle().getInsumo());
-            movimientoDetalle.setMovimiento(null);
-            movimientoDetalle.setCantidad(movimiento.getCantidad());
+        System.out.println("el id detalle es => " + movimiento.getMovimientoDetalle().getId());
+        if (movimiento.getMovimientoDetalle().getId() == 0) {
+            System.out.println("nuevo registro");
+            MovimientoDetalleModel movimientoDetalle = new MovimientoDetalleModel(
+                    movimiento.getMovimientoDetalle().getInsumo(),
+                    movimiento.getMovimientoDetalle().getSolicitud(),
+                    new MovimientoAlmacenModel(
+                            movimiento.getFecha(),
+                            movimiento.getTipo(),
+                            movimiento.getCantidad()
+                    ),
+                    "TEST",
+                    movimiento.getCantidad());
             movimientoDetalle = this.movimientoDetalleRepository.save(movimientoDetalle);
-            movimientoDetalle.setMovimiento(movimiento);
-            movimiento.setMovimientoDetalle(movimientoDetalle);
-            movimiento = this.movimientoRepository.save(movimiento);
-            movimientoDetalle = this.movimientoDetalleRepository.save(movimientoDetalle);
+            MovimientoAlmacenModel respuesta = this.movimientoRepository.findById(movimientoDetalle.getMovimiento().getId());
+            respuesta.setMovimientoDetalle(movimientoDetalle);
+            return respuesta;
         } else {
-            System.out.println("Este movimiento SI existía");
-            movimientoDetalle = this.movimientoDetalleRepository.findByInsumoIdAndMovimientoId(
-                    movimiento.getMovimientoDetalle().getInsumo().getId(),
-                    movimiento.getId()
-            );
-            if (movimientoDetalle != null) {
-                movimiento.setMovimientoDetalle(movimientoDetalle);
-            }
+            System.out.println("ya existia registro");
+            movimiento.getMovimientoDetalle().setMovimiento(movimiento);
+            return this.movimientoRepository.save(movimiento);
         }
-        return this.movimientoRepository.save(movimiento);*/
     }
 
     @Override

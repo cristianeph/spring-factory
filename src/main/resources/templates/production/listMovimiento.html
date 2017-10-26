@@ -55,7 +55,7 @@
                     <tr v-for="item in warehouse">
                         <td><span>{{item.id}}</span></td>
                         <td><span>{{item.fecha}}</span></td>
-                        <td><span>{{item.kardex.insumo.descripcion}}</span></td>
+                        <td><span>{{item.movimientoDetalle.insumo.descripcion}}</span></td>
                         <td><span>{{(item.tipo) ? 'Ingreso' : 'Salida'}}</span></td>
                         <td><span>{{item.cantidad}}</span></td>
                         <td><a v-bind:href="getEditionForm(item)"><span>Actualizar movimiento</span></a></td>
