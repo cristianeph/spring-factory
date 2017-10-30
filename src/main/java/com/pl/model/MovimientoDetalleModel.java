@@ -18,7 +18,7 @@ public class MovimientoDetalleModel {
     @JoinColumn(name="idinsumo")
     private InsumoModel insumo;
 
-    @OneToOne(fetch=FetchType.EAGER)
+    @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="idsolicitudinsumo", nullable = true)
     private SolicitudInsumoModel solicitud;
 

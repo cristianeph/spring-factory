@@ -40,7 +40,7 @@ public class MovimientoServiceImpl implements MovimientoService {
                             movimiento.getTipo(),
                             movimiento.getCantidad()
                     ),
-                    "TEST",
+                    "SOLICITADO",
                     movimiento.getCantidad());
             movimientoDetalle = this.movimientoDetalleRepository.save(movimientoDetalle);
             MovimientoAlmacenModel respuesta = this.movimientoRepository.findById(movimientoDetalle.getMovimiento().getId());

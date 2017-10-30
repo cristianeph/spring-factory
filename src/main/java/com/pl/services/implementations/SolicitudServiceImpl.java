@@ -14,30 +14,28 @@ import com.pl.repository.SolicitudRepository;
 @Component("solicitudService")
 public class SolicitudServiceImpl implements SolicitudService {
 
-	@PersistenceContext
-	private EntityManager entityManager;
-	
-	private final SolicitudRepository solicitudRepository;
-	
-	public SolicitudServiceImpl(SolicitudRepository solicitudRepository){
-		
-		this.solicitudRepository = solicitudRepository;
-		
-	}
+    @PersistenceContext
+    private EntityManager entityManager;
 
-	@Override
-	public SolicitudInsumoModel save(SolicitudInsumoModel solicitud) {
-		return this.solicitudRepository.save(solicitud);
-	}
+    private final SolicitudRepository solicitudRepository;
 
-	@Override
-	public Page<SolicitudInsumoModel> findAll(PageRequest page) {
-		return this.solicitudRepository.findAll(page);
-	}
+    public SolicitudServiceImpl(SolicitudRepository solicitudRepository) {
+        this.solicitudRepository = solicitudRepository;
+    }
 
-	@Override
-	public SolicitudInsumoModel findById(Integer id) {
-		return this.solicitudRepository.findById(id);
-	}
+    @Override
+    public SolicitudInsumoModel save(SolicitudInsumoModel solicitud) {
+        return this.solicitudRepository.save(solicitud);
+    }
+
+    @Override
+    public Page<SolicitudInsumoModel> findAll(PageRequest page) {
+        return this.solicitudRepository.findAll(page);
+    }
+
+    @Override
+    public SolicitudInsumoModel findById(Integer id) {
+        return this.solicitudRepository.findById(id);
+    }
 
 }

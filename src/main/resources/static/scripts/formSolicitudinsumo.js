@@ -4,8 +4,8 @@
 var urlPage = location.pathname;
 var Requestinput = null;
 var urlResource = BASE_PATH + "/api/production/solicitudinsumo";
-var urlParametersResource = BASE_PATH + "/api/production/insumo";
-
+var urlParametersResource = BASE_PATH + "/api/production/solicitudinsumo/parameters";
+/*var urlParametersResource = BASE_PATH + "/api/production/insumo";*/
 document.addEventListener("DOMContentLoaded", function () {
 
     Requestinput = new Vue({

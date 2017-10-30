@@ -12,7 +12,7 @@ public class SolicitudInsumoModel {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "solicitud")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "solicitud", cascade = CascadeType.ALL)
 	private MovimientoDetalleModel movimientoDetalle;
 	
 	@Column(name="idplan")
@@ -23,6 +23,16 @@ public class SolicitudInsumoModel {
 	private String codigo;
 
 	private String estado;
+
+    public SolicitudInsumoModel() {
+    }
+
+    public SolicitudInsumoModel(Integer idPlan, BigDecimal cantidad, String codigo, String estado) {
+        this.idPlan = idPlan;
+        this.cantidad = cantidad;
+        this.codigo = codigo;
+        this.estado = estado;
+    }
 
     public Integer getId() {
         return id;

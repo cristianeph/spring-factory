@@ -59,7 +59,7 @@
                     <tr v-for="item in requests">
                         <td><span>{{item.id}}</span></td>
                         <td><span>{{item.codigo}}</span></td>
-                        <td><span>{{item.insumo.descripcion}}</span></td>
+                        <td><span>{{(item.movimientoDetalle) ? item.movimientoDetalle.insumo.descripcion : ''}}</span></td>
                         <td><span>{{item.cantidad}}</span></td>
                         <td><a v-bind:href="getEditionForm(item)"><span>Actualizar insumo</span></a></td>
                     </tr>
