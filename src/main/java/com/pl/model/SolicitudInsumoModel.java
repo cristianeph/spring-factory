@@ -2,6 +2,7 @@ package com.pl.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 @Entity
 @Table(
@@ -14,6 +15,8 @@ public class SolicitudInsumoModel {
 
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "solicitud", cascade = CascadeType.ALL)
 	private MovimientoDetalleModel movimientoDetalle;
+
+    private Date fecha;
 	
 	@Column(name="idplan")
 	private Integer idPlan;
@@ -48,6 +51,14 @@ public class SolicitudInsumoModel {
 
     public void setMovimientoDetalle(MovimientoDetalleModel movimientoDetalle) {
         this.movimientoDetalle = movimientoDetalle;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public Integer getIdPlan() {
