@@ -9,9 +9,11 @@ import java.util.Date;
         name="movimientoalmacen"
 )
 public class MovimientoAlmacenModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    private String codigo;
 
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "movimiento", cascade = CascadeType.ALL)
     private MovimientoDetalleModel movimientoDetalle;
@@ -40,6 +42,14 @@ public class MovimientoAlmacenModel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public MovimientoDetalleModel getMovimientoDetalle() {

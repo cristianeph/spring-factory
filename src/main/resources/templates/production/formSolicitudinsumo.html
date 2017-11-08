@@ -16,58 +16,62 @@
     <script type="text/javascript" th:src="@{/scripts/formSolicitudinsumo.js}"></script>
 </head>
 <body>
-<section class="main">
-    <section class="noti" th:include="/common/notification"></section>
-    <section class="head" th:include="/common/navigation"></section>
-    <section class="moda" th:include="/common/modal"></section>
-    <section class="body">
-        <section class="menu">
-            <article class="quic" th:include="/common/menu"></article>
-            <article class="tool">
-                <ul class="acci">
-                    <li><span>Opciones</span></li>
-                    <li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Grabar Solicitud de Insumo</span></a></li>
-                </ul>
-            </article>
-        </section>
-        <section class="cont">
-            <article class="titl">
-                <ul class="subt">
-                    <li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Maquina</span></a></li>
-                </ul>
-            </article>
-            <article class="form">
-                <section class="mast">
-                    <h1><strong>Datos de la Maquina</strong></h1>
-                    <form id="request">
-                        <div>
-                            <label for="id">Id</label>
-                            <input type="text" name="id" id="id" v-model="id" readonly="readonly"/>
-                        </div>
-                        <div>
-                            <label for="codigo">Código</label>
-                            <input type="text" name="codigo" id="codigo" v-model="codigo"/>
-                        </div>
-                        <div>
-                            <label for="estado">Estado</label>
-                            <input type="text" name="estado" id="estado" v-model="estado"/>
-                        </div>
-                        <div>
-                            <label for="insumo">Insumo</label>
-                            <select name="insumo" id="insumo" v-model="insumo.selected">
-                                <option value="">Seleccione una prueba</option>
-                                <option v-for="option in insumo.options" v-bind:value="option.id">{{option.descripcion}}</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="cantidad">Cantidad</label>
-                            <input type="text" name="cantidad" id="cantidad" v-model="cantidad"/>
-                        </div>
-                    </form>
-                </section>
-            </article>
+    <section class="main">
+        <section class="noti" th:include="/common/notification"></section>
+        <section class="head" th:include="/common/navigation"></section>
+        <section class="moda" th:include="/common/modal"></section>
+        <section class="body">
+            <section class="menu">
+                <article class="quic" th:include="/common/menu"></article>
+                <article class="tool">
+                    <ul class="acci">
+                        <li><span>Opciones</span></li>
+                        <li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Grabar Solicitud de Insumo</span></a></li>
+                    </ul>
+                </article>
+            </section>
+            <section class="cont">
+                <article class="titl">
+                    <ul class="subt">
+                        <li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Maquina</span></a></li>
+                    </ul>
+                </article>
+                <article class="form">
+                    <section class="mast">
+                        <h1><strong>Datos de la Solicitud de Insumos</strong></h1>
+                        <form id="request">
+                            <div>
+                                <label for="id">Id</label>
+                                <input type="text" name="id" id="id" v-model="id" readonly="readonly"/>
+                            </div>
+                            <div>
+                                <label for="codigo">Código</label>
+                                <input type="text" name="codigo" id="codigo" v-model="codigo"/>
+                            </div>
+                            <div>
+                                <label for="fecha">Fecha</label>
+                                <input type="text" name="fecha" id="fecha" v-model="fecha"/>
+                            </div>
+                            <div>
+                                <label for="estado">Estado</label>
+                                <input type="text" name="estado" id="estado" v-model="estado"/>
+                            </div>
+                            <div>
+                                <label for="insumo">Insumo</label>
+                                <select name="insumo" id="insumo" v-model="movimientoDetalle.insumo.selected">
+                                    <option value="">Seleccione una prueba</option>
+                                    <option v-for="option in movimientoDetalle.insumo.options" v-bind:value="option.id">{{option.id + ' - ' + option.descripcion}}</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="cantidad">Cantidad</label>
+                                <input type="text" name="cantidad" id="cantidad" v-model="cantidad"/>
+                            </div>
+                        </form>
+                    </section>
+                </article>
+            </section>
         </section>
     </section>
-</section>
 </body>
 </html>

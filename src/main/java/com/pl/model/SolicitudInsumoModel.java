@@ -6,34 +6,35 @@ import java.util.Date;
 
 @Entity
 @Table(
-	name="solicitudinsumo"
+        name="solicitudinsumo"
 )
 public class SolicitudInsumoModel {
 
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
+	private String codigo;
+
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "solicitud", cascade = CascadeType.ALL)
 	private MovimientoDetalleModel movimientoDetalle;
 
     private Date fecha;
-	
+
 	@Column(name="idplan")
 	private Integer idPlan;
 
 	private BigDecimal cantidad;
-
-	private String codigo;
 
 	private String estado;
 
     public SolicitudInsumoModel() {
     }
 
-    public SolicitudInsumoModel(Integer idPlan, BigDecimal cantidad, String codigo, String estado) {
+    public SolicitudInsumoModel(String codigo, Date fecha, Integer idPlan, BigDecimal cantidad, String estado) {
+        this.codigo = codigo;
+        this.fecha = fecha;
         this.idPlan = idPlan;
         this.cantidad = cantidad;
-        this.codigo = codigo;
         this.estado = estado;
     }
 
@@ -43,6 +44,14 @@ public class SolicitudInsumoModel {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public MovimientoDetalleModel getMovimientoDetalle() {
@@ -75,14 +84,6 @@ public class SolicitudInsumoModel {
 
     public void setCantidad(BigDecimal cantidad) {
         this.cantidad = cantidad;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public String getEstado() {

@@ -15,6 +15,7 @@ import javax.persistence.PersistenceContext;
 
 @Component("movimientoService")
 public class MovimientoServiceImpl implements MovimientoService {
+
     @PersistenceContext
     private EntityManager entityManager;
     private final MovimientoRepository movimientoRepository;
@@ -41,7 +42,8 @@ public class MovimientoServiceImpl implements MovimientoService {
                             movimiento.getCantidad()
                     ),
                     "SOLICITADO",
-                    movimiento.getCantidad());
+                    movimiento.getCantidad()
+            );
             movimientoDetalle = this.movimientoDetalleRepository.save(movimientoDetalle);
             MovimientoAlmacenModel respuesta = this.movimientoRepository.findById(movimientoDetalle.getMovimiento().getId());
             respuesta.setMovimientoDetalle(movimientoDetalle);

@@ -5,42 +5,48 @@ var urlPage = location.pathname;
 var Requestinput = null;
 var urlResource = BASE_PATH + "/api/production/solicitudinsumo";
 var urlParametersResource = BASE_PATH + "/api/production/solicitudinsumo/parameters";
-/*var urlParametersResource = BASE_PATH + "/api/production/insumo";*/
+
 document.addEventListener("DOMContentLoaded", function () {
 
     Requestinput = new Vue({
         el: "#request",
         data: {
             id: 0,
-            insumo: {
-                selected: "",
-                options: []
-            },
+            codigo: 0,
+            fecha: "",
             idPlan: 0,
             cantidad: 0,
-            codigo: "",
+            movimientoDetalle: {
+                id: 0,
+                insumo: {
+                    selected: "",
+                    options: []
+                }
+            },
             estado: "",
         },
         methods: {
             setData: function(data) {
-                this.insumo.selected = data.movimientoDetalle.insumo.id;
+                this.movimientoDetalle.insumo.selected = data.movimientoDetalle.insumo.id;
+                this.movimientoDetalle.id = data.movimientoDetalle.id;
                 this.id = data.id;
+                this.codigo = data.codigo;
+                this.fecha = data.fecha;
                 this.idPlan = data.idPlan;
                 this.cantidad = data.cantidad;
-                this.codigo = data.codigo;
                 this.estado = data.estado;
             },
             getData: function() {
                 var object = JSON.parse(JSON.stringify(this.$data));
-                object.insumo = {"id" : document.querySelector("select[name='insumo']").value};
+                object.movimientoDetalle.insumo = {"id" : document.querySelector("select[name='insumo']").value};
                 return object;
             }
         },
         beforeMount: function() {
             getData(urlParametersResource).onload = function() {
                 var response = JSON.parse(this.responseText);
-                Requestinput.insumo.options = response.content;
-                Requestinput.insumo.selected = "";
+                Requestinput.movimientoDetalle.insumo.options = response.content;
+                Requestinput.movimientoDetalle.insumo.selected = "";
                 if(getUrlValue().id != undefined){
                     var url = urlResource + "/" + getUrlValue().id;
                     getData(url).onload = function(data){
@@ -55,6 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("[data-operation='grabarDocumento']").onclick = function(event){
         event.preventDefault();
         var object = Requestinput.getData();
+        console.log(object);
         var url = urlResource;
         postData(url, object).onload = function() {
             var response = JSON.parse(this.responseText);

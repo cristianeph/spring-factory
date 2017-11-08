@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 var response = JSON.parse(this.responseText);
                 Warehouse.movimientoDetalle.insumo.options = response.content;
                 Warehouse.movimientoDetalle.insumo.selected = "";
-
                 if(getUrlValue().id != undefined){
                     var url = urlResource + "/" + getUrlValue().id;
                     getData(url).onload = function(data){
