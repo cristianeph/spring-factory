@@ -3,8 +3,8 @@
  */
 
 var urlPage = location.pathname;
-var urlResource = BASE_PATH + "/api/production/merma";
-var urlForm = BASE_PATH + "/production/merma/form";
+var urlResource = BASE_PATH + "/api/produccion/merma";
+var urlForm = BASE_PATH + "/produccion/merma/form";
 var list = null;
 var listData = null;
 

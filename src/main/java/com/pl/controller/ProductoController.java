@@ -16,7 +16,7 @@ public class ProductoController {
 	@Autowired
 	private ProductoService productoService;
 	
-	@RequestMapping("/production/producto/action/save")
+	@RequestMapping("/produccion/producto/action/save")
 	ProductoModel save(@RequestBody ProductoModel producto){
 		
 		ProductoModel productoModel = this.productoService.save(producto);
@@ -25,19 +25,19 @@ public class ProductoController {
 		
 	}
 	
-	@RequestMapping("/production/producto/action/find")
+	@RequestMapping("/produccion/producto/action/find")
 	ProductoModel findById(@RequestBody ProductoModel producto){
 		System.out.println("se recibe el parametro: " + producto.getId());
 		ProductoModel productoModel = this.productoService.findById(producto.getId());
 		return productoModel;
 	}
 	
-	@RequestMapping("/production/producto/{id}")
+	@RequestMapping("/produccion/producto/{id}")
 	ProductoModel findWithId(@PathVariable Integer id){
 		return this.productoService.findById(id);
 	}
 	
-	@RequestMapping("/production/producto/action/delete/document/{id}")
+	@RequestMapping("/produccion/producto/action/delete/document/{id}")
 	ProductoModel deleteById(@PathVariable Integer id){
 		
 		ProductoModel producto = new ProductoModel();
@@ -49,7 +49,7 @@ public class ProductoController {
 		
 	}
 	
-	@RequestMapping("/production/producto/action/all")
+	@RequestMapping("/produccion/producto/action/all")
 	Iterable<ProductoModel> findAll(@RequestBody ProductoModel producto){
 		
 		Iterable<ProductoModel> productoModels = this.productoService.findAll(producto);

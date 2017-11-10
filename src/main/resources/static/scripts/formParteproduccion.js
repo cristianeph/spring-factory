@@ -3,9 +3,9 @@
  */
 var urlPage = location.pathname;
 var Production = null;
-var urlResource = BASE_PATH + "/api/production/parteproduccion";
-var urlParametersResource = BASE_PATH + "/api/production/parteproduccion/parameters";
-var urlReferenceResource = BASE_PATH + "/production/ordentrabajo/form"
+var urlResource = BASE_PATH + "/api/produccion/parteproduccion";
+var urlParametersResource = BASE_PATH + "/api/produccion/parteproduccion/parameters";
+var urlReferenceResource = BASE_PATH + "/produccion/ordentrabajo/form"
 var machineList = null;
 var activityList = null;
 var trabajoList = null;
@@ -13,7 +13,7 @@ var trabajoList = null;
 document.addEventListener("DOMContentLoaded", function () {
 
     Production = new Vue({
-        el: "#production",
+        el: "#produccion",
         data: {
             master: {
                 id: 0,

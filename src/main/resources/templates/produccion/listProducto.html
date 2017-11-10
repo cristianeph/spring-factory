@@ -10,9 +10,13 @@
 		<link rel="stylesheet" th:href="@{/styles/style.css}" />
 		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
-		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/listOrdentrabajo.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.tablesorter.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listProducto.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -25,15 +29,15 @@
 						<ul class="acci">
 							<li><span>Opciones</span></li>
 							<li>
-								<!-- <a th:href="@{/production/producto/form}">
+								<a th:href="@{/produccion/producto/form}">
 									<span class="icon-plus"></span><span>Nuevo Producto</span>
-								</a> -->
+								</a>
 							</li>
 						</ul>
 						<ul class="reco">
 							<li><span>Registros</span></li>
 							<li>
-								<a th:href="@{/production/producto/action/all}" data-operation="getAll" data-quantity="1">
+								<a th:href="@{/produccion/producto/action/all}" data-operation="getAll" data-quantity="1">
 									<span class="icon-search"></span>
 									<select>
 										<option value="">Registros</option>
@@ -62,7 +66,7 @@
 						<ul class="subt">
 							<li>
 								<a href="#">
-									<span class="icon-list-numbered"></span><span> Modulos - Orden de trabajo</span>
+									<span class="icon-list-numbered"></span><span> Modulos - Producto</span>
 								</a>
 							</li>
 							<li>
@@ -77,21 +81,12 @@
 							<thead>
 								<tr>
 									<th><span>#</span></th>
-									<th><span>Horas</span></th>
-									<th><span>Cantidad</span></th>
-									<th><span>Incidencias</span></th>
+									<th><span>Descripcion</span></th>
+									<th class="qopt"><span class="icon-pencil2"></span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr v-for="item in jobs">
-									<td><span>{{item.id}}</span></td>
-									<td><span>{{item.horas}}</span></td>
-									<td><span>{{item.cantidad}}</span></td>
-									<td><span>{{item.incidencias}}</span></td>
-									<td><a v-bind:href="getEditionForm(item)"><span>Editar orden de trabajo</span></a></td>
-								</tr>
-							</tbody>
+							<tbody></tbody>
 							<tfoot>
 								<tr>
 									<td colspan="6"><span></span></td>
@@ -101,8 +96,8 @@
 					</article>
 				</section>
 				<section class="hidd">
-					<a th:href="@{/production/producto/form}" id="documentView" >fallback</a>
-					<a th:href="@{/production/producto/action/delete/document}" id="documentDelete" >fallback</a>
+					<a th:href="@{/produccion/producto/form}" id="documentView" >fallback</a>
+					<a th:href="@{/produccion/producto/action/delete/document}" id="documentDelete" >fallback</a>
 				</section>
 			</section>
 		</section>

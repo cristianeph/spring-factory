@@ -3,7 +3,7 @@
  */
 var urlPage = location.pathname;
 var Testformula = null;
-var urlResource = BASE_PATH + "/api/production/pruebaformula";
+var urlResource = BASE_PATH + "/api/produccion/pruebaformula";
 
 document.addEventListener("DOMContentLoaded", function () {
 	

@@ -14,7 +14,7 @@ import com.pl.model.ClienteModel;
 import com.pl.services.ClienteService;
 
 @RestController
-@RequestMapping("/api/production")
+@RequestMapping("/api/produccion")
 public class ClienteController {
 	
 	@Autowired

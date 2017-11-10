@@ -17,7 +17,7 @@ public class MovimientoAlmacenController {
     private InsumoService insumoService;
 
     @RequestMapping(
-            value = "/api/production/movimientoalmacen",
+            value = "/api/produccion/movimientoalmacen",
             method = RequestMethod.POST
     )
     MovimientoAlmacenModel save(@RequestBody MovimientoAlmacenModel movimiento) {
@@ -25,7 +25,7 @@ public class MovimientoAlmacenController {
     }
 
     @RequestMapping(
-            value = "/api/production/movimientoalmacen",
+            value = "/api/produccion/movimientoalmacen",
             params = {"page", "size"},
             method = RequestMethod.GET
     )
@@ -34,7 +34,7 @@ public class MovimientoAlmacenController {
     }
 
     @RequestMapping(
-            value = "/api/production/movimientoalmacen/{id}",
+            value = "/api/produccion/movimientoalmacen/{id}",
             method = RequestMethod.GET
     )
     MovimientoAlmacenModel getById(@PathVariable Integer id) {
@@ -42,7 +42,7 @@ public class MovimientoAlmacenController {
     }
 
     @RequestMapping(
-            value = "/api/production/movimientoalmacen/parameters",
+            value = "/api/produccion/movimientoalmacen/parameters",
             method = RequestMethod.GET)
     Iterable<InsumoModel> getAllParameters() {
         return this.insumoService.getAsParameters(new PageRequest(0, Integer.MAX_VALUE));

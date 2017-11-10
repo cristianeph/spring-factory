@@ -24,12 +24,12 @@ public class InsumoController {
 	@Autowired
 	private KardexService kardexService;
 	
-	@RequestMapping("/production/insumo/{id}/{usuario}")
+	@RequestMapping("/produccion/insumo/{id}/{usuario}")
 	InsumoModel findWithId(@PathVariable Integer id){
 		return this.insumoService.findById(id);
 	}
 	
-	@RequestMapping("/production/insumo/action/find")
+	@RequestMapping("/produccion/insumo/action/find")
 	Iterable<KardexInsumoModel> findByRelacion(@RequestBody InsumoModel insumo){
 		
 		System.out.println("recibio: " + insumo.getId());
@@ -40,28 +40,28 @@ public class InsumoController {
 		
 	}
 	
-	@RequestMapping("/production/insumo/action/all")
+	@RequestMapping("/produccion/insumo/action/all")
 	Iterable<InsumoModel> findAll(@RequestBody InsumoModel insumo){
 		Iterable<InsumoModel> insumoModels = this.insumoService.findAll(insumo);
 		return insumoModels;
 	}
 	
 	@RequestMapping(
-		value = "/api/production/insumo", 
+		value = "/api/produccion/insumo",
 		method = RequestMethod.POST)
 	InsumoModel saveOne(@RequestBody InsumoModel insumo){
 		return this.insumoService.save(insumo);
 	}
 
 	@RequestMapping(
-			value = "/api/production/insumo",
+			value = "/api/produccion/insumo",
 			method = RequestMethod.GET)
 	Iterable<InsumoModel> all(){
 		return this.insumoService.getAll(new PageRequest(0, Integer.MAX_VALUE));
 	}
 	
 	@RequestMapping(
-		value = "/api/production/insumo", 
+		value = "/api/produccion/insumo",
 		params = {"page", "size"},
 		method = RequestMethod.GET)
 	Iterable<InsumoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
@@ -69,7 +69,7 @@ public class InsumoController {
 	}
 	
 	@RequestMapping(
-		value = "/api/production/insumo/{id}",
+		value = "/api/produccion/insumo/{id}",
 		method = RequestMethod.GET)
 	InsumoModel getById(@PathVariable Integer id){
 		return this.insumoService.getById(id);

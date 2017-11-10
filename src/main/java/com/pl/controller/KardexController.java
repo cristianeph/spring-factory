@@ -22,7 +22,7 @@ public class KardexController {
 	@Autowired
 	private KardexService kardexService;
 	
-	@RequestMapping("/production/kardex/action/find/sum")
+	@RequestMapping("/produccion/kardex/action/find/sum")
 	Iterable<KardexRelacionModel> sumKardexByRelacion(@RequestBody InsumoModel insumo){
 		
 		System.out.println("recibio: " + insumo.getId());
@@ -34,7 +34,7 @@ public class KardexController {
 		
 	}
 	
-	@RequestMapping("/production/kardex/action/find")
+	@RequestMapping("/produccion/kardex/action/find")
 	Iterable<KardexModel> findByCodigoInsumo(@RequestBody PlanModel plan){
 		
 		System.out.println("recibio: " + plan.getEstado());

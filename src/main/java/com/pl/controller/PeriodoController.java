@@ -15,7 +15,7 @@ public class PeriodoController {
 	@Autowired
 	private PeriodoService periodoService;
 	
-	@RequestMapping("/production/periodo/action/save")
+	@RequestMapping("/produccion/periodo/action/save")
 	PeriodoModel save(@RequestBody PeriodoModel periodo){
 		
 		PeriodoModel periodoModel = this.periodoService.save(periodo);
@@ -24,7 +24,7 @@ public class PeriodoController {
 		
 	}
 	
-	@RequestMapping("/production/periodo/action/find")
+	@RequestMapping("/produccion/periodo/action/find")
 	PeriodoModel findById(@RequestBody PeriodoModel periodo){
 		
 		System.out.println("se recibe el parametro: " + periodo.getId());
@@ -35,7 +35,7 @@ public class PeriodoController {
 		
 	}
 	
-	@RequestMapping("/production/periodo/action/delete")
+	@RequestMapping("/produccion/periodo/action/delete")
 	PeriodoModel deleteById(@RequestBody PeriodoModel periodo){
 		
 		PeriodoModel periodoModel = this.periodoService.deleteById(periodo);
@@ -44,7 +44,7 @@ public class PeriodoController {
 		
 	}
 	
-	@RequestMapping("/production/periodo/action/all")
+	@RequestMapping("/produccion/periodo/action/all")
 	Iterable<PeriodoModel> findAll(@RequestBody PeriodoModel periodo){
 		
 		Iterable<PeriodoModel> periodoModels = this.periodoService.findAll(periodo);

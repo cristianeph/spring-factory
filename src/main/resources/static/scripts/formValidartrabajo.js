@@ -3,7 +3,7 @@
  */
 var urlPage = location.pathname;
 var Job = null;
-var urlResource = BASE_PATH + "/api/production/trabajo";
+var urlResource = BASE_PATH + "/api/produccion/trabajo";
 
 document.addEventListener("DOMContentLoaded", function () {
 	

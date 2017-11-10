@@ -23,7 +23,7 @@ public class PedidoController {
 	@Autowired
 	private PedidoService pedidoService;
 	
-	@RequestMapping("/production/pedido/action/save/details")
+	@RequestMapping("/produccion/pedido/action/save/details")
 	PedidoModel saveDetails(@RequestBody PedidoModel pedido){
 		
 		System.out.println("se reciben detalles: " + pedido.getPedidoPreparados().size());
@@ -78,7 +78,7 @@ public class PedidoController {
 		
 	}
 	
-	@RequestMapping("/production/pedido/action/save")
+	@RequestMapping("/produccion/pedido/action/save")
 	PedidoModel save(@RequestBody PedidoModel pedido){
 		
 		PedidoModel pedidoModel = this.pedidoService.save(pedido);
@@ -111,7 +111,7 @@ public class PedidoController {
 		
 	}
 	
-	@RequestMapping("/production/pedido/action/find")
+	@RequestMapping("/produccion/pedido/action/find")
 	PedidoModel findById(@RequestBody PedidoModel pedido){
 		
 		System.out.println("se recibe el parametro: " + pedido.getId());
@@ -122,7 +122,7 @@ public class PedidoController {
 		
 	}
 	
-	@RequestMapping("/production/pedido/action/delete")
+	@RequestMapping("/produccion/pedido/action/delete")
 	PedidoModel deleteById(@RequestBody PedidoModel pedido){
 		
 		PedidoModel pedidoModel = this.pedidoService.deleteById(pedido);
@@ -131,14 +131,14 @@ public class PedidoController {
 		
 	}
 	
-	@RequestMapping("/production/pedido/action/all")
+	@RequestMapping("/produccion/pedido/action/all")
 	Iterable<PedidoModel> findAll(@RequestBody PedidoModel pedido){
 		Iterable<PedidoModel> pedidoModels = this.pedidoService.findAll(pedido);
 		return pedidoModels;
 	}
 	
 	@RequestMapping(
-			value = "/api/production/pedido", 
+			value = "/api/produccion/pedido",
 			params = {"page", "size"},
 			method = RequestMethod.POST)
 	Iterable<PedidoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){

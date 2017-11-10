@@ -42,223 +42,257 @@ public class MainController {
         return "security/formUsuario";
     }
 
-    @RequestMapping("/production/home")
+    @RequestMapping("/produccion/home")
     public String productionHome() {
-        return "production/home";
+        return "produccion/home";
     }
 
-    @RequestMapping("/production/plan/validate/list")
+    @RequestMapping("/produccion/plan/validate/list")
     public String productionValPlanList() {
-        return "production/listValidatePlan";
+        return "produccion/listValidatePlan";
     }
 
-    @RequestMapping("/production/plan/validate/form")
+    @RequestMapping("/produccion/plan/validate/form")
     public String productionValPlanForm() {
-        return "production/formValidatePlan";
+        return "produccion/formValidatePlan";
     }
 
-    @RequestMapping("/production/plan/list")
+    @RequestMapping("/produccion/plan/list")
     public String productionPlanList() {
-        return "production/listPlan";
+        return "produccion/listPlan";
     }
 
-    @RequestMapping("/production/plan/form")
+    @RequestMapping("/produccion/plan/form")
     public String productionPlanForm() {
-        return "production/formPlan";
+        return "produccion/formPlan";
     }
 
-    @RequestMapping("/production/merma/list")
+    @RequestMapping("/produccion/merma/list")
     public String productionMermaList() {
-        return "production/listMerma";
+        return "produccion/listMerma";
     }
 
-    @RequestMapping("/production/merma/form")
+    @RequestMapping("/produccion/merma/form")
     public String productionMermaForm() {
-        return "production/formMerma";
+        return "produccion/formMerma";
     }
 
-    @RequestMapping("/production/pruebaproduccion/list")
+    @RequestMapping("/produccion/pruebaproduccion/list")
     public String productionPruebaproduccionList() {
-        return "production/listPruebaproduccion";
+        return "produccion/listPruebaproduccion";
     }
 
-    @RequestMapping("/production/pruebaproduccion/form")
+    @RequestMapping("/produccion/pruebaproduccion/form")
     public String productionPruebaproduccionForm() {
-        return "production/formPruebaproduccion";
+        return "produccion/formPruebaproduccion";
     }
 
-    @RequestMapping("/production/parteproduccion/list")
+    @RequestMapping("/produccion/parteproduccion/list")
     public String productionParteproduccionList() {
-        return "production/listParteproduccion";
+        return "produccion/listParteproduccion";
     }
 
-    @RequestMapping("/production/parteproduccion/form")
+    @RequestMapping("/produccion/parteproduccion/form")
     public String productionParteproduccionForm() {
-        return "production/formParteproduccion";
+        return "produccion/formParteproduccion";
     }
 
-    @RequestMapping("/production/validartrabajo/list")
+    @RequestMapping("/produccion/validartrabajo/list")
     public String productionTrabajoList() {
-        return "production/listValidartrabajo";
+        return "produccion/listValidartrabajo";
     }
 
-    @RequestMapping("/production/validartrabajo/form")
+    @RequestMapping("/produccion/validartrabajo/form")
     public String productionTrabajoForm() {
-        return "production/formValidartrabajo";
+        return "produccion/formValidartrabajo";
     }
 
-    @RequestMapping("/production/ordentrabajo/form")
+    @RequestMapping("/produccion/ordentrabajo/form")
     public String productionOrdenTrabajoForm() {
-        return "production/formOrdentrabajo";
+        return "produccion/formOrdentrabajo";
     }
 
-    @RequestMapping("/production/ordentrabajo/list")
+    @RequestMapping("/produccion/ordentrabajo/list")
     public String productionOrdenTrabajoList() {
-        return "production/listOrdentrabajo";
+        return "produccion/listOrdentrabajo";
     }
 
-    @RequestMapping("/production/movimientoalmacen/form")
+    @RequestMapping("/produccion/movimientoalmacen/form")
     public String productionMovimientoAlmacenForm() {
-        return "production/formMovimiento";
+        return "produccion/formMovimiento";
     }
 
-    @RequestMapping("/production/movimientoalmacen/list")
+    @RequestMapping("/produccion/movimientoalmacen/list")
     public String productionMovimientoAlmacenList() {
-        return "production/listMovimiento";
+        return "produccion/listMovimiento";
     }
 
-    @RequestMapping("/production/formula/list")
+    @RequestMapping("/produccion/formula/list")
     public String productionFormulaList() {
-        return "production/listFormula";
+        return "produccion/listFormula";
     }
 
-    @RequestMapping("/production/formula/form")
+    @RequestMapping("/produccion/formula/form")
     public String productionFormulaForm() {
-        return "production/formFormula";
+        return "produccion/formFormula";
     }
 
-    @RequestMapping("/production/actividad/form")
+    @RequestMapping("/produccion/actividad/form")
     public String productionActividadForm() {
-        return "production/formActividad";
+        return "produccion/formActividad";
     }
 
-    @RequestMapping("/production/actividad/list")
+    @RequestMapping("/produccion/actividad/list")
     public String productionActividadList() {
-        return "production/listActividad";
+        return "produccion/listActividad";
     }
 
-    @RequestMapping("/production/pruebaformula/form")
+    @RequestMapping("/produccion/pruebaformula/form")
     public String productionPruebaFormulaForm() {
-        return "production/formPruebaformula";
+        return "produccion/formPruebaformula";
     }
 
-    @RequestMapping("/production/pruebaformula/list")
+    @RequestMapping("/produccion/pruebaformula/list")
     public String productionPruebaFormulaList() {
-        return "production/listPruebaformula";
+        return "produccion/listPruebaformula";
     }
 
-    @RequestMapping("/production/solicitudformula/form")
+    @RequestMapping("/produccion/solicitudformula/form")
     public String productionSolicitudFormulaForm() {
-        return "production/formSolicitudformula";
+        return "produccion/formSolicitudformula";
     }
 
-    @RequestMapping("/production/solicitudformula/list")
+    @RequestMapping("/produccion/solicitudformula/list")
     public String productionSolicitudFormulaList() {
-        return "production/listSolicitudformula";
+        return "produccion/listSolicitudformula";
     }
 
-    @RequestMapping("/production/producto/form")
+    @RequestMapping("/produccion/producto/form")
     public String productionProductForm() {
-        return "production/formProducto";
+        return "produccion/formProducto";
     }
 
-    @RequestMapping("/production/producto/list")
+    @RequestMapping("/produccion/producto/list")
     public String productionProductList() {
-        return "production/listProducto";
+        return "produccion/listProducto";
     }
 
-    @RequestMapping("/production/maquina/form")
+    @RequestMapping("/produccion/maquina/form")
     public String productionMachineForm() {
-        return "production/formMaquina";
+        return "produccion/formMaquina";
     }
 
-    @RequestMapping("/production/maquina/list")
+    @RequestMapping("/produccion/maquina/list")
     public String productionMachineList() {
-        return "production/listMaquina";
+        return "produccion/listMaquina";
     }
 
-    @RequestMapping("/production/cliente/form")
+    @RequestMapping("/produccion/cliente/form")
     public String productionCustomerForm() {
-        return "production/formCliente";
+        return "produccion/formCliente";
     }
 
-    @RequestMapping("/production/cliente/list")
+    @RequestMapping("/produccion/cliente/list")
     public String productionCustomerList() {
-        return "production/listCliente";
+        return "produccion/listCliente";
     }
 
-    @RequestMapping("/production/insumo/form")
+    @RequestMapping("/produccion/insumo/form")
     public String productionInsumoForm() {
-        return "production/formInsumo";
+        return "produccion/formInsumo";
     }
 
-    @RequestMapping("/production/insumo/list")
+    @RequestMapping("/produccion/insumo/list")
     public String productionInsumoList() {
-        return "production/listInsumo";
+        return "produccion/listInsumo";
     }
 
-    @RequestMapping("/production/solicitudinsumo/list")
+    @RequestMapping("/produccion/solicitudinsumo/list")
     public String productionSolicitudList() {
-        return "production/listSolicitudinsumo";
+        return "produccion/listSolicitudinsumo";
     }
 
-    @RequestMapping("/production/solicitudinsumo/form")
+    @RequestMapping("/produccion/solicitudinsumo/form")
     public String productionSolicitudForm() {
-        return "production/formSolicitudinsumo";
+        return "produccion/formSolicitudinsumo";
     }
 
-    @RequestMapping("/production/avancepedido/list")
+    @RequestMapping("/produccion/avancepedido/list")
     public String productionAvanceList() {
-        return "production/listAvancepedido";
+        return "produccion/listAvancepedido";
     }
 
-    @RequestMapping("/production/muestra/list")
+    @RequestMapping("/produccion/muestra/list")
     public String productionMuestraList() {
-        return "production/listMuestra";
+        return "produccion/listMuestra";
     }
 
-    @RequestMapping("/production/muestra/form")
+    @RequestMapping("/produccion/muestra/form")
     public String productionMuestraForm() {
-        return "production/formMuestra";
+        return "produccion/formMuestra";
     }
 
-    @RequestMapping("/production/pedido/list")
+    @RequestMapping("/produccion/pedido/list")
     public String productionPedidoList() {
-        return "production/listPedido";
+        return "produccion/listPedido";
     }
 
-    @RequestMapping("/production/pedido/form")
+    @RequestMapping("/produccion/pedido/form")
     public String productionPedidoForm() {
-        return "production/formPedido";
+        return "produccion/formPedido";
     }
 
-    @RequestMapping("/production/costo/list")
+    @RequestMapping("/produccion/costo/list")
     public String productionCostoList() {
-        return "production/listCosto";
+        return "produccion/listCosto";
     }
 
-    @RequestMapping("/production/indicador/list")
+    @RequestMapping("/produccion/indicador/list")
     public String productionIndicadorList() {
-        return "production/listIndicador";
+        return "produccion/listIndicador";
     }
 
-    @RequestMapping("/production/periodo/send/list")
+    @RequestMapping("/produccion/periodo/send/list")
     public String productionSendPeriodoList() {
-        return "production/listSendCosto";
+        return "produccion/listSendCosto";
     }
 
-    @RequestMapping("/production/periodo/send/form")
+    @RequestMapping("/produccion/periodo/send/form")
     public String productionSendPeriodoForm() {
-        return "production/formSendCosto";
+        return "produccion/formSendCosto";
     }
+
+    /*Añadiendo nuevo juego de
+    homesites para el proyecto*/
+
+    @RequestMapping("produccion/almacen")
+    public String produccionAlmacen() {
+        return "produccion/almacen/home";
+    }
+
+    @RequestMapping("produccion/contabilidad")
+    public String produccionContabilidad() {
+        return "produccion/contabilidad/home";
+    }
+
+    @RequestMapping("produccion/operario")
+    public String produccionOperario() {
+        return "produccion/operario/home";
+    }
+
+    @RequestMapping("produccion/produccion")
+    public String produccionProduccion() {
+        return "produccion/produccion/home";
+    }
+
+    @RequestMapping("produccion/quimico")
+    public String produccionQuimico() {
+        return "produccion/quimico/home";
+    }
+
+    @RequestMapping("produccion/ventas")
+    public String produccionVentas() {
+        return "produccion/ventas/home";
+    }
+
 }

@@ -3,7 +3,7 @@
  */
 var urlPage = location.pathname;
 var Actividad = null;
-var urlResource = BASE_PATH + "/api/production/actividad";
+var urlResource = BASE_PATH + "/api/produccion/actividad";
 
 document.addEventListener("DOMContentLoaded", function () {
 	

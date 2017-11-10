@@ -3,8 +3,8 @@
  */
 
 var urlPage = location.pathname;
-var urlResource = BASE_PATH + "/api/production/trabajo/invalid";
-var urlForm = BASE_PATH + "/production/validartrabajo/form";
+var urlResource = BASE_PATH + "/api/produccion/trabajo/invalid";
+var urlForm = BASE_PATH + "/produccion/validartrabajo/form";
 var list = null;
 var listData = null;
 

@@ -12,14 +12,14 @@ public class PruebaProduccionController {
     private PruebaProduccionService pruebaProduccionService;
 
     @RequestMapping(
-            value = "/api/production/pruebaproduccion",
+            value = "/api/produccion/pruebaproduccion",
             method = RequestMethod.POST)
     PruebaProduccionModel saveOne(@RequestBody PruebaProduccionModel prueba){
         return this.pruebaProduccionService.save(prueba);
     }
 
     @RequestMapping(
-            value = "/api/production/pruebaproduccion",
+            value = "/api/produccion/pruebaproduccion",
             params = {"page", "size"},
             method = RequestMethod.GET)
     Iterable<PruebaProduccionModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
@@ -27,7 +27,7 @@ public class PruebaProduccionController {
     }
 
     @RequestMapping(
-            value = "/api/production/pruebaproduccion/{id}",
+            value = "/api/produccion/pruebaproduccion/{id}",
             method = RequestMethod.GET)
     PruebaProduccionModel getById(@PathVariable Integer id){
         return this.pruebaProduccionService.getById(id);

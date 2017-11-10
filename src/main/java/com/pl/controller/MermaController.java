@@ -17,14 +17,14 @@ public class MermaController {
     private TrabajoService trabajoService;
 
     @RequestMapping(
-            value = "/api/production/merma",
+            value = "/api/produccion/merma",
             method = RequestMethod.POST)
     MermaModel saveOne(@RequestBody MermaModel merma){
         return this.mermaService.save(merma);
     }
 
     @RequestMapping(
-            value = "/api/production/merma/compositesave",
+            value = "/api/produccion/merma/compositesave",
             method = RequestMethod.POST)
     MermaTrabajoModel saveComposite(@RequestBody MermaTrabajoModel mermaTrabajo){
         System.out.println("Se recibe");
@@ -34,7 +34,7 @@ public class MermaController {
     }
 
     @RequestMapping(
-            value = "/api/production/merma",
+            value = "/api/produccion/merma",
             params = {"page", "size"},
             method = RequestMethod.GET)
     Iterable<MermaModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
@@ -42,14 +42,14 @@ public class MermaController {
     }
 
     @RequestMapping(
-            value = "/api/production/merma/{id}",
+            value = "/api/produccion/merma/{id}",
             method = RequestMethod.GET)
     MermaModel getById(@PathVariable Integer id){
         return this.mermaService.getById(id);
     }
 
     @RequestMapping(
-            value = "/api/production/merma/parameters",
+            value = "/api/produccion/merma/parameters",
             method = RequestMethod.GET)
     Iterable<OrdenTrabajoModel> getParameters(){
         return this.trabajoService.getAll(new PageRequest((0), Integer.MAX_VALUE));

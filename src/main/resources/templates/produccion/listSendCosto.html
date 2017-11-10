@@ -10,9 +10,13 @@
 		<link rel="stylesheet" th:href="@{/styles/style.css}" />
 		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
-		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/listInsumo.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/jquery.tablesorter.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listSendCosto.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -22,14 +26,10 @@
 				<section class="menu">
 					<article class="quic" th:include="/common/menu"></article>
 					<article class="tool">
-						<ul class="acci">
-							<li><span>Opciones</span></li>
-							<!-- <li><a th:href="@{/production/producto/form}"><span class="icon-plus"></span><span>Nuevo Insumo</span></a></li> -->
-						</ul>
 						<ul class="reco">
 							<li><span>Registros</span></li>
 							<li>
-								<a th:href="@{/production/producto/action/all}" data-operation="getAll" data-quantity="1">
+								<a th:href="@{/produccion/periodo/action/all}" data-operation="getAll" data-quantity="1">
 									<span class="icon-search"></span>
 									<select>
 										<option value="">Registros</option>
@@ -58,7 +58,7 @@
 						<ul class="subt">
 							<li>
 								<a href="#">
-									<span class="icon-list-numbered"></span><span> Modulos - Insumos</span>
+									<span class="icon-list-numbered"></span><span> Modulos - Periodos</span>
 								</a>
 							</li>
 							<li>
@@ -73,24 +73,22 @@
 							<thead>
 								<tr>
 									<th><span>#</span></th>
-									<th><span>Descripcion</span></th>
+									<th><span>Periodo</span></th>
+									<th><span>Estado</span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr v-for="item in inputs">
-									<td><span>{{item.id}}</span></td>
-									<td><span>{{item.descripcion}}</span></td>
-									<td><a v-bind:href="getEditionForm(item)"><span>Actualizar insumo</span></a></td>
-								</tr>
-							</tbody>
+							<tbody></tbody>
 							<tfoot>
 								<tr>
-									<td colspan="6"><span></span></td>
+									<td colspan="4"><span></span></td>
 								</tr>
 							</tfoot>
 						</table>
 					</article>
+				</section>
+				<section class="hidd">
+					<a th:href="@{/produccion/periodo/send/form}" id="documentView" >fallback</a>
 				</section>
 			</section>
 		</section>

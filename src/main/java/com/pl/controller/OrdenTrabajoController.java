@@ -27,7 +27,7 @@ public class OrdenTrabajoController {
 	@Autowired
     private PruebaProduccionService pruebaProduccionService;
 	
-	@RequestMapping("/production/trabajo/action/save")
+	@RequestMapping("/produccion/trabajo/action/save")
 	OrdenTrabajoModel save(@RequestBody OrdenTrabajoModel trabajo){
 		
 		OrdenTrabajoModel ordenTrabajoModel = this.trabajoService.save(trabajo);
@@ -36,7 +36,7 @@ public class OrdenTrabajoController {
 		
 	}
 	
-	@RequestMapping("/production/trabajo/action/find")
+	@RequestMapping("/produccion/trabajo/action/find")
 	OrdenTrabajoModel findById(@RequestBody OrdenTrabajoModel trabajo){
 		
 		System.out.println("se recibe el parametro: " + trabajo.getId());
@@ -47,7 +47,7 @@ public class OrdenTrabajoController {
 		
 	}
 	
-	@RequestMapping("/production/trabajo/action/delete")
+	@RequestMapping("/produccion/trabajo/action/delete")
 	OrdenTrabajoModel deleteById(@RequestBody OrdenTrabajoModel trabajo){
 		
 		OrdenTrabajoModel ordenTrabajoModel = this.trabajoService.deleteById(trabajo);
@@ -56,7 +56,7 @@ public class OrdenTrabajoController {
 		
 	}
 	
-	@RequestMapping("/production/trabajo/action/all")
+	@RequestMapping("/produccion/trabajo/action/all")
 	Iterable<OrdenTrabajoModel> findAll(@RequestBody OrdenTrabajoModel trabajo){
 		
 		Iterable<OrdenTrabajoModel> trabajoModels = this.trabajoService.findAll(trabajo);
@@ -66,7 +66,7 @@ public class OrdenTrabajoController {
 	}
 
 	@RequestMapping(
-			value = "/api/production/trabajo/invalid",
+			value = "/api/produccion/trabajo/invalid",
 			params = {"page", "size"},
 			method = RequestMethod.GET)
 	Iterable<OrdenTrabajoModel> getAllInvalid(@RequestParam Integer page, @RequestParam Integer size){
@@ -74,14 +74,14 @@ public class OrdenTrabajoController {
 	}
 
 	@RequestMapping(
-			value = "/api/production/trabajo",
+			value = "/api/produccion/trabajo",
 			method = RequestMethod.POST)
 	OrdenTrabajoModel saveOne(@RequestBody OrdenTrabajoModel trabajo){
 		return this.trabajoService.save(trabajo);
 	}
 	
 	@RequestMapping(
-		value = "/api/production/trabajo", 
+		value = "/api/produccion/trabajo",
 		params = {"page", "size"},
 		method = RequestMethod.GET)
 	Iterable<OrdenTrabajoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
@@ -89,14 +89,14 @@ public class OrdenTrabajoController {
 	}
 	
 	@RequestMapping(
-		value = "/api/production/trabajo/{id}",
+		value = "/api/produccion/trabajo/{id}",
 		method = RequestMethod.GET)
 	OrdenTrabajoModel getById(@PathVariable Integer id){
 		return this.trabajoService.getById(id);
 	}
 
 	@RequestMapping(
-			value = "/api/production/trabajo/parameters",
+			value = "/api/produccion/trabajo/parameters",
 			method = RequestMethod.GET)
 	OrdenTrabajoParametersModel getParameters() {
 		OrdenTrabajoParametersModel parameters = new OrdenTrabajoParametersModel();

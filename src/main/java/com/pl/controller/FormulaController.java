@@ -28,7 +28,7 @@ public class FormulaController {
 	@Autowired
 	private InsumoService insumoService;
 	
-	@RequestMapping("/production/formula/action/save")
+	@RequestMapping("/produccion/formula/action/save")
 	FormulaModel save(@RequestBody FormulaModel formula){
 		
 		System.out.println(formula.getId());
@@ -87,7 +87,7 @@ public class FormulaController {
 		
 	}
 	
-	@RequestMapping("/production/formula/action/find")
+	@RequestMapping("/produccion/formula/action/find")
 	FormulaModel findById(@RequestBody FormulaModel formula){
 		
 		System.out.println("se recibe el parametro: " + formula.getId());
@@ -98,7 +98,7 @@ public class FormulaController {
 		
 	}
 	
-	@RequestMapping("/production/formula/action/delete")
+	@RequestMapping("/produccion/formula/action/delete")
 	FormulaModel deleteById(@RequestBody FormulaModel formula){
 		
 		this.formulaService.deleteById(formula);
@@ -107,7 +107,7 @@ public class FormulaController {
 		
 	}
 	
-	@RequestMapping("/production/formula/action/delete/document/{id}")
+	@RequestMapping("/produccion/formula/action/delete/document/{id}")
 	FormulaModel deleteByDocument(@PathVariable Integer id){
 		
 		FormulaModel formula = new FormulaModel();
@@ -119,13 +119,13 @@ public class FormulaController {
 		
 	}
 	
-	@RequestMapping("/production/formula/action/all")
+	@RequestMapping("/produccion/formula/action/all")
 	Iterable<FormulaModel> findAll(@RequestBody FormulaModel formula){
 		return this.formulaService.findAll(formula);
 	}
 	
 	@RequestMapping(
-		value = "/api/production/formula", 
+		value = "/api/produccion/formula",
 		params = {"page", "size"},
 		method = RequestMethod.POST)
 	Iterable<FormulaModel> getAll(@RequestParam Integer page, @RequestParam Integer size){

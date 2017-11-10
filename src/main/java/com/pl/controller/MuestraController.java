@@ -14,7 +14,7 @@ public class MuestraController {
     private MuestraService muestraService;
 
     @RequestMapping(
-            value = "/api/production/muestra",
+            value = "/api/produccion/muestra",
             method = RequestMethod.POST
     )
     MuestraModel save(@RequestBody MuestraModel muestra) {
@@ -22,7 +22,7 @@ public class MuestraController {
     }
 
     @RequestMapping(
-            value = "/api/production/muestra/{id}",
+            value = "/api/produccion/muestra/{id}",
             method = RequestMethod.GET
     )
     MuestraModel get(@PathVariable Integer id) {
@@ -30,7 +30,7 @@ public class MuestraController {
     }
 
     @RequestMapping(
-            value = "/api/production/muestra",
+            value = "/api/produccion/muestra",
             params = {"page", "size"},
             method = RequestMethod.GET
     )

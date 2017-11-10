@@ -30,7 +30,7 @@ public class IndicadorController {
 	@Autowired
 	private TrabajoService trabajoService;
 	
-	@RequestMapping("/production/indicador/get/avance")
+	@RequestMapping("/produccion/indicador/get/avance")
 	IndicadorAvanceModel get(@RequestBody IndicadorAvanceModel indicador){
 		
 		Iterable<PedidoModel> pedidoModels = this.pedidoService.findAllBetweenFecha(indicador.getInicio(), indicador.getFin());
@@ -57,7 +57,7 @@ public class IndicadorController {
 		
 	}
 
-	@RequestMapping("/production/indicador/get/productividad")
+	@RequestMapping("/produccion/indicador/get/productividad")
 	IndicadorProductividadModel get(@RequestBody IndicadorProductividadModel indicador){
 		
 		Iterable<PlanModel> planModels = this.planService.findAllBetweenFecha(indicador.getInicio(), indicador.getFin());
@@ -68,7 +68,7 @@ public class IndicadorController {
 		
 	}
 
-	@RequestMapping("/production/indicador/get/incidencia")
+	@RequestMapping("/produccion/indicador/get/incidencia")
 	IndicadorIncidenciaModel get(@RequestBody IndicadorIncidenciaModel indicador){
 		
 		Iterable<OrdenTrabajoModel> trabajoModels = this.trabajoService.findAllBetweenPlanFecha(indicador.getInicio(), indicador.getFin());
@@ -79,7 +79,7 @@ public class IndicadorController {
 		
 	}
 
-	@RequestMapping("/production/indicador/get/merma")
+	@RequestMapping("/produccion/indicador/get/merma")
 	IndicadorMermaModel get(@RequestBody IndicadorMermaModel indicador){
 		
 		Iterable<OrdenTrabajoModel> trabajoModels = this.trabajoService.findMermaAllBetweenPlanFecha(indicador.getInicio(), indicador.getFin());
@@ -90,7 +90,7 @@ public class IndicadorController {
 		
 	}
 
-	@RequestMapping("/production/indicador/get/rechazo")
+	@RequestMapping("/produccion/indicador/get/rechazo")
 	IndicadorRechazoModel get(@RequestBody IndicadorRechazoModel indicador){
 		
 		Iterable<PlanModel> planModels = this.planService.findEstadoAllBetweenFecha("Rechazado", indicador.getInicio(), indicador.getFin());

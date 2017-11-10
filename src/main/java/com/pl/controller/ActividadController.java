@@ -19,7 +19,7 @@ public class ActividadController {
 	@Autowired
 	private ActividadService actividadService;
 	
-	@RequestMapping("/production/actividad/action/save")
+	@RequestMapping("/produccion/actividad/action/save")
 	ActividadModel save(@RequestBody ActividadModel actividad){
 		
 		ActividadModel actividadModel = this.actividadService.save(actividad);
@@ -28,7 +28,7 @@ public class ActividadController {
 		
 	}
 	
-	@RequestMapping("/production/actividad/action/find")
+	@RequestMapping("/produccion/actividad/action/find")
 	ActividadModel findById(@RequestBody ActividadModel actividad){
 		
 		System.out.println("se recibe el parametro: " + actividad.getId());
@@ -39,7 +39,7 @@ public class ActividadController {
 		
 	}
 	
-	@RequestMapping("/production/actividad/action/delete")
+	@RequestMapping("/produccion/actividad/action/delete")
 	ActividadModel deleteById(@RequestBody ActividadModel actividad){
 		
 		ActividadModel actividadModel = this.actividadService.deleteById(actividad);
@@ -48,7 +48,7 @@ public class ActividadController {
 		
 	}
 	
-	@RequestMapping("/production/actividad/action/all")
+	@RequestMapping("/produccion/actividad/action/all")
 	Iterable<ActividadModel> findAll(@RequestBody ActividadModel actividad){
 		
 		Iterable<ActividadModel> actividadModels = this.actividadService.findAll(actividad);
@@ -58,14 +58,14 @@ public class ActividadController {
 	}
 	
 	@RequestMapping(
-		value = "/api/production/actividad",
+		value = "/api/produccion/actividad",
 		method = RequestMethod.POST)
 	ActividadModel getAll(@RequestBody ActividadModel actividad){
 		return this.actividadService.save(actividad);
 	}
 	
 	@RequestMapping(
-		value = "/api/production/actividad", 
+		value = "/api/produccion/actividad",
 		params = {"page", "size"},
 		method = RequestMethod.GET)
 	Iterable<ActividadModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
@@ -73,7 +73,7 @@ public class ActividadController {
 	}
 	
 	@RequestMapping(
-		value = "/api/production/actividad/{id}",
+		value = "/api/produccion/actividad/{id}",
 		method = RequestMethod.GET)
 	ActividadModel getById(@PathVariable Integer id){
 		return this.actividadService.getById(id);

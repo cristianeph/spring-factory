@@ -18,7 +18,7 @@ public class MaquinaController {
 	@Autowired
 	private MaquinaService maquinaService;
 	
-	@RequestMapping("/production/maquina/action/save")
+	@RequestMapping("/produccion/maquina/action/save")
 	MaquinaModel save(@RequestBody MaquinaModel maquina){
 		
 		MaquinaModel maquinaModel = this.maquinaService.save(maquina);
@@ -27,7 +27,7 @@ public class MaquinaController {
 		
 	}
 	
-	@RequestMapping("/production/maquina/action/find")
+	@RequestMapping("/produccion/maquina/action/find")
 	MaquinaModel findById(@RequestBody MaquinaModel maquina){
 		
 		System.out.println("se recibe el parametro: " + maquina.getId());
@@ -38,7 +38,7 @@ public class MaquinaController {
 		
 	}
 	
-	@RequestMapping("/production/maquina/action/delete")
+	@RequestMapping("/produccion/maquina/action/delete")
 	MaquinaModel deleteById(@RequestBody MaquinaModel maquina){
 		
 		MaquinaModel maquinaModel = this.maquinaService.deleteById(maquina);
@@ -47,7 +47,7 @@ public class MaquinaController {
 		
 	}
 	
-	@RequestMapping("/production/maquina/action/all")
+	@RequestMapping("/produccion/maquina/action/all")
 	Iterable<MaquinaModel> findAll(@RequestBody MaquinaModel maquina){
 		
 		Iterable<MaquinaModel> maquinaModels = this.maquinaService.findAll(maquina);
@@ -57,14 +57,14 @@ public class MaquinaController {
 	}
 	
 	@RequestMapping(
-		value = "/api/production/maquina",
+		value = "/api/produccion/maquina",
 		method = RequestMethod.POST)
 	MaquinaModel saveOne(@RequestBody MaquinaModel maquina){
 		return this.maquinaService.save(maquina);
 	}
 	
 	@RequestMapping(
-		value = "/api/production/maquina", 
+		value = "/api/produccion/maquina",
 		params = {"page", "size"},
 		method = RequestMethod.GET)
 	Iterable<MaquinaModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
@@ -72,7 +72,7 @@ public class MaquinaController {
 	}
 	
 	@RequestMapping(
-		value = "/api/production/maquina/{id}",
+		value = "/api/produccion/maquina/{id}",
 		method = RequestMethod.GET)
 	MaquinaModel getById(@PathVariable Integer id){
 		return this.maquinaService.getById(id);

@@ -3,8 +3,8 @@
  */
 
 var urlPage = location.pathname;
-var urlResource = BASE_PATH + "/api/production/solicitudformula";
-var urlForm = BASE_PATH + "/production/solicitudformula/form";
+var urlResource = BASE_PATH + "/api/produccion/solicitudformula";
+var urlForm = BASE_PATH + "/produccion/solicitudformula/form";
 var list = null;
 var listData = null;
 

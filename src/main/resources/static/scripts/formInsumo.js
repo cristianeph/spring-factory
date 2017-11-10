@@ -3,7 +3,7 @@
  */
 var urlPage = location.pathname;
 var Input = null;
-var urlResource = BASE_PATH + "/api/production/insumo";
+var urlResource = BASE_PATH + "/api/produccion/insumo";
 
 document.addEventListener("DOMContentLoaded", function () {
 	

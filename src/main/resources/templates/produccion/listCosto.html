@@ -9,7 +9,6 @@
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,700,300' rel='stylesheet' type='text/css' />
 		<link rel="stylesheet" th:href="@{/styles/style.css}" />
 		<link rel="stylesheet" th:href="@{/styles/jquery-ui.css}"/>
-		<link rel="stylesheet" th:href="@{/styles/jquery-ui-timepicker-addon.min.css}"/>
 		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
@@ -20,21 +19,38 @@
 		<script type="text/javascript" th:src="@{/scripts/backbone-min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/form.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/formSendCosto.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listCosto.js}"></script>
 	</head>
 	<body>
 		<section class="main">
 			<section class="noti" th:include="/common/notification"></section>
 			<section class="head" th:include="/common/navigation"></section>
-			<section class="moda" th:include="/common/modal"></section>
 			<section class="body">
 				<section class="menu">
 					<article class="quic" th:include="/common/menu"></article>
 					<article class="tool">
 						<ul class="acci">
 							<li><span>Opciones</span></li>
-							<li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Enviar Costos</span></a>
+							<li>
+								<a th:href="@{/produccion/cost/getCosts}">
+									<span class="icon-plus"></span><span>Generar costos</span>
+								</a>
+							</li>
+						</ul>
+						<ul class="rang">
+							<li><span>Busqueda</span></li>
+							<li>
+								<a href="">
+									<span class="icon-search"></span>
+									<input type="text" data-field="inicio" placeholder="Inicio" />
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<span class="icon-search"></span>
+									<input type="text" data-field="fin" placeholder="Fin" />
+								</a>
 							</li>
 						</ul>
 					</article>
@@ -42,35 +58,20 @@
 				<section class="cont">
 					<article class="titl">
 						<ul class="subt">
-							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Enviar costos de produccion</span></a></li>
+							<li>
+								<a href="#">
+									<span class="icon-list-numbered"></span><span> Modulos - Ingresos</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="icon-database"></span><span></span>
+								</a>
+							</li>
 						</ul>
 					</article>
-					<article class="form">
-						<section class="mast">
-							<h1><strong>Datos del Costo de Produccion para el Periodo Seleccionado</strong></h1>
-							<form>
-								<div>
-									<input type="hidden" id="periodo.id" disabled="disabled" />
-
-									<label for="periodo.ano">Año</label>
-									<input type="text" id="periodo.ano" disabled="disabled" />
-
-									<label for="periodo.mes">Mes</label>
-									<input type="text" id="periodo.mes" disabled="disabled" />
-								</div>
-								<div>
-									<label for="periodo.estado">Estado</label>
-									<input type="text" id="periodo.estado" disabled="disabled" />
-								</div>
-							</form>
-						</section>
+					<article class="list">
 					</article>
-					
-					<article class="form list">
-						<section>
-						</section>
-					</article>
-					
 					<script type="text/template" id="template-costos">
 						<table id="list">
 							<thead>
@@ -119,7 +120,7 @@
 								<tr>
 									<td><span>#</span></td>
 									<td><span>-</span></td>
-									<td><span>Ninguna maquina asignada</span></td>
+									<td><span>Ninguna maquina registrada</span></td>
 									<td><span>-</span></td>
 									<td><span></span></td>
 								</tr>
@@ -159,13 +160,10 @@
 							</tfoot>
 						</table>
 					</script>
-					
-					
 				</section>
 				<section class="hidd">
-					<a th:href="@{/production/periodo/action/save}" id="documentSave"></a>
-					<a th:href="@{/production/periodo/action/find}" id="documentView"></a>
-					<a th:href="@{/production/cost/getCosts}" id="getCosts"></a>
+					<a th:href="@{/produccion/card/form}" id="documentView" >fallback</a>
+					<a th:href="@{/produccion/card/action/delete/document}" id="documentDelete" >fallback</a>
 				</section>
 			</section>
 		</section>

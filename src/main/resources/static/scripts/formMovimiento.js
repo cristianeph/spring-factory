@@ -3,8 +3,8 @@
  */
 var urlPage = location.pathname;
 var Warehouse = null;
-var urlResource = BASE_PATH + "/api/production/movimientoalmacen";
-var urlParametersResource = BASE_PATH + "/api/production/movimientoalmacen/parameters";
+var urlResource = BASE_PATH + "/api/produccion/movimientoalmacen";
+var urlParametersResource = BASE_PATH + "/api/produccion/movimientoalmacen/parameters";
 
 document.addEventListener("DOMContentLoaded", function () {
 

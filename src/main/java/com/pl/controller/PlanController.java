@@ -26,7 +26,7 @@ public class PlanController {
     @Autowired
     private MovimientoDetalleService movimientoDetalleService;
 
-    @RequestMapping("/production/plan/action/save")
+    @RequestMapping("/produccion/plan/action/save")
     PlanModel save(@RequestBody PlanModel plan) {
 
         PedidoModel pedidoEncontrado = pedidoService.findById(plan.getPedido());
@@ -37,7 +37,7 @@ public class PlanController {
 
     }
 
-    @RequestMapping("/production/plan/action/state")
+    @RequestMapping("/produccion/plan/action/state")
     PlanModel setState(@RequestBody PlanModel plan) {
 
         PlanModel planEncontrado = this.planService.findById(plan);
@@ -49,7 +49,7 @@ public class PlanController {
 
     }
 
-    @RequestMapping("/production/plan/action/request/resources")
+    @RequestMapping("/produccion/plan/action/request/resources")
     PlanModel requestResources(@RequestBody PlanInsumoModel planInsumo) {
         PlanModel planEncontrado = this.planService.findById(planInsumo.getPlan());
         planEncontrado.setEstado("Pendiente de solicitud");
@@ -67,34 +67,34 @@ public class PlanController {
         return planEncontrado;
     }
 
-    @RequestMapping("/production/plan/action/find")
+    @RequestMapping("/produccion/plan/action/find")
     PlanModel findById(@RequestBody PlanModel plan) {
         System.out.println("se recibe el parametro: " + plan.getCodigo());
         PlanModel planModel = this.planService.findById(plan);
         return planModel;
     }
 
-    @RequestMapping("/production/plan/action/delete")
+    @RequestMapping("/produccion/plan/action/delete")
     PlanModel deleteById(@RequestBody PlanModel plan) {
         PlanModel planModel = this.planService.deleteById(plan);
         return planModel;
     }
 
-    @RequestMapping("/production/plan/action/all")
+    @RequestMapping("/produccion/plan/action/all")
     Iterable<PlanModel> findAll(@RequestBody PlanModel plan) {
         Iterable<PlanModel> planModels = this.planService.findAll(plan);
         return planModels;
     }
 
     @RequestMapping(
-            value = "/api/production/plan",
+            value = "/api/produccion/plan",
             method = RequestMethod.POST)
     PlanModel getAll(@RequestBody PlanModel plan) {
         return this.planService.save(plan);
     }
 
     @RequestMapping(
-            value = "/api/production/plan",
+            value = "/api/produccion/plan",
             params = {"page", "size"},
             method = RequestMethod.GET)
     Iterable<PlanModel> getAll(@RequestParam Integer page, @RequestParam Integer size) {
@@ -102,7 +102,7 @@ public class PlanController {
     }
 
     @RequestMapping(
-            value = "/api/production/plan/{id}",
+            value = "/api/produccion/plan/{id}",
             method = RequestMethod.GET)
     PlanModel getById(@PathVariable Integer id) {
         return this.planService.getById(id);

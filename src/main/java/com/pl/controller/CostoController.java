@@ -21,7 +21,7 @@ public class CostoController {
 	@Autowired
 	private TrabajoService trabajoService;
 	
-	@RequestMapping("/production/cost/getCosts")
+	@RequestMapping("/produccion/cost/getCosts")
 	CostoModel getCosts(@RequestBody CostoModel costo){
 		
 		Iterable<PlanModel> planModels = this.planService.findAllBetweenFecha(costo.getInicio(), costo.getFin());

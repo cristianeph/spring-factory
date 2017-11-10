@@ -16,7 +16,7 @@ public class SolicitudInsumoController {
     private InsumoService insumoService;
 
     @RequestMapping(
-            value = "/api/production/solicitudinsumo",
+            value = "/api/produccion/solicitudinsumo",
             method = RequestMethod.POST
     )
     SolicitudInsumoModel save(@RequestBody SolicitudInsumoModel prueba) {
@@ -24,7 +24,7 @@ public class SolicitudInsumoController {
     }
 
     @RequestMapping(
-            value = "/api/production/solicitudinsumo",
+            value = "/api/produccion/solicitudinsumo",
             params = {"page", "size"},
             method = RequestMethod.GET
     )
@@ -33,7 +33,7 @@ public class SolicitudInsumoController {
     }
 
     @RequestMapping(
-            value = "/api/production/solicitudinsumo/{id}",
+            value = "/api/produccion/solicitudinsumo/{id}",
             method = RequestMethod.GET
     )
     SolicitudInsumoModel getById(@PathVariable Integer id) {
@@ -41,7 +41,7 @@ public class SolicitudInsumoController {
     }
 
     @RequestMapping(
-            value = "/api/production/solicitudinsumo/parameters",
+            value = "/api/produccion/solicitudinsumo/parameters",
             method = RequestMethod.GET)
     Iterable<InsumoModel> getAllParameters() {
         return this.insumoService.getAsParameters(new PageRequest(0, Integer.MAX_VALUE));

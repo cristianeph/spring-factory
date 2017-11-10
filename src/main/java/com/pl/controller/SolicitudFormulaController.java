@@ -20,7 +20,7 @@ public class SolicitudFormulaController {
     private PruebaFormulaService pruebaFormulaService;
 
     @RequestMapping(
-            value = "/api/production/solicitudformula",
+            value = "/api/produccion/solicitudformula",
             method = RequestMethod.POST
     )
     SolicitudFormulaModel save(@RequestBody SolicitudFormulaModel solicitud) {
@@ -28,7 +28,7 @@ public class SolicitudFormulaController {
     }
 
     @RequestMapping(
-            value = "/api/production/solicitudformula/{id}",
+            value = "/api/produccion/solicitudformula/{id}",
             method = RequestMethod.GET
     )
     SolicitudFormulaModel get(@PathVariable Integer id) {
@@ -36,7 +36,7 @@ public class SolicitudFormulaController {
     }
 
     @RequestMapping(
-            value = "/api/production/solicitudformula",
+            value = "/api/produccion/solicitudformula",
             params = {"page", "size"},
             method = RequestMethod.GET
     )
@@ -45,7 +45,7 @@ public class SolicitudFormulaController {
     }
 
     @RequestMapping(
-            value = "/api/production/solicitudformula/parameters",
+            value = "/api/produccion/solicitudformula/parameters",
             method = RequestMethod.GET
     )
     MuestraPruebaModel getParameters() {

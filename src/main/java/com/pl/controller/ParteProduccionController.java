@@ -31,23 +31,23 @@ public class ParteProduccionController {
 	@Autowired
 	private ActividadService actividadService;
 	
-	@RequestMapping("/production/parteproduccion/action/save")
+	@RequestMapping("/produccion/parteproduccion/action/save")
     ParteProduccionModel save(@RequestBody ParteProduccionModel parteproduccion){
 		return this.parteProduccionService.save(parteproduccion);
 	}
 
-	@RequestMapping("/production/parteproduccion/action/find")
+	@RequestMapping("/produccion/parteproduccion/action/find")
 	ParteProduccionModel findById(@RequestBody ParteProduccionModel tarjeta){
 		return this.parteProduccionService.findById(tarjeta);
 	}
 
-	@RequestMapping("/production/card/action/delete")
+	@RequestMapping("/produccion/card/action/delete")
     ParteProduccionModel deleteById(@RequestBody ParteProduccionModel tarjeta){
 		this.parteProduccionService.deleteById(tarjeta);
 		return null;
 	}
 
-	@RequestMapping("/production/card/action/delete/document/{id}")
+	@RequestMapping("/produccion/card/action/delete/document/{id}")
     ParteProduccionModel deleteByDocument(@PathVariable Integer id){
 		ParteProduccionModel tarjeta = new ParteProduccionModel();
 		tarjeta.setId(id);
@@ -55,21 +55,21 @@ public class ParteProduccionController {
 		return null;
 	}
 
-	@RequestMapping("/production/card/action/all")
+	@RequestMapping("/produccion/card/action/all")
 	Iterable<ParteProduccionModel> findAll(@RequestBody ParteProduccionModel tarjeta){
 		Iterable<ParteProduccionModel> tarjetaModels = this.parteProduccionService.findAll(tarjeta);
 		return tarjetaModels;
 	}
 
 	@RequestMapping(
-		value = "/api/production/parteproduccion",
+		value = "/api/produccion/parteproduccion",
 		method = RequestMethod.POST)
     ParteProduccionModel saveOne(@RequestBody ParteProduccionModel parte){
         return this.parteProduccionService.save(parte);
 	}
 	
 	@RequestMapping(
-		value = "/api/production/parteproduccion",
+		value = "/api/produccion/parteproduccion",
 		params = {"page", "size"},
 		method = RequestMethod.GET)
 	Iterable<ParteProduccionModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
@@ -77,14 +77,14 @@ public class ParteProduccionController {
 	}
 	
 	@RequestMapping(
-		value = "/api/production/parteproduccion/{id}",
+		value = "/api/produccion/parteproduccion/{id}",
 		method = RequestMethod.GET)
     ParteProduccionModel getById(@PathVariable Integer id){
 		return this.parteProduccionService.getById(id);
 	}
 
 	@RequestMapping(
-			value = "/api/production/parteproduccion/parameters",
+			value = "/api/produccion/parteproduccion/parameters",
 			method = RequestMethod.GET)
     ParteProduccionParametersModel getParameters() {
         ParteProduccionParametersModel parameters = new ParteProduccionParametersModel();

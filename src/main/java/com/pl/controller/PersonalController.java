@@ -15,7 +15,7 @@ public class PersonalController {
 	@Autowired
 	private PersonalService personalService;
 	
-	@RequestMapping("/production/personal/action/save")
+	@RequestMapping("/produccion/personal/action/save")
 	PersonalModel save(@RequestBody PersonalModel personal){
 		
 		PersonalModel personalModel = this.personalService.save(personal);
@@ -24,7 +24,7 @@ public class PersonalController {
 		
 	}
 	
-	@RequestMapping("/production/personal/action/find")
+	@RequestMapping("/produccion/personal/action/find")
 	PersonalModel findById(@RequestBody PersonalModel personal){
 		
 		System.out.println("se recibe el parametro: " + personal.getId());
@@ -35,7 +35,7 @@ public class PersonalController {
 		
 	}
 	
-	@RequestMapping("/production/personal/action/delete")
+	@RequestMapping("/produccion/personal/action/delete")
 	PersonalModel deleteById(@RequestBody PersonalModel personal){
 		
 		PersonalModel personalModel = this.personalService.deleteById(personal);
@@ -44,7 +44,7 @@ public class PersonalController {
 		
 	}
 	
-	@RequestMapping("/production/personal/action/all")
+	@RequestMapping("/produccion/personal/action/all")
 	Iterable<PersonalModel> findAll(@RequestBody PersonalModel personal){
 		
 		Iterable<PersonalModel> personalModels = this.personalService.findAll(personal);
