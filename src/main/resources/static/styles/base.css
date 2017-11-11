@@ -17,9 +17,6 @@
     background-color: whitesmoke;
 }
 
-/*.tool li{
-	margin: 0rem 0.5rem 0.5rem 0.5rem;
-}*/
 .subt li,
 .topi li {
     float: left;
@@ -34,12 +31,6 @@
     margin: 0.5rem 0.5rem;
 }
 
-/*.tool li:last-child{
-	margin: 0rem 0.5rem;
-}
-.tool div{
-	padding: 1rem;
-}*/
 .tool a,
 .subt a,
 .topi a {
@@ -92,44 +83,26 @@
     background-color: #fff;
     cursor: text;
     display: flex;
-    /*padding: 0rem 0rem;
-    overflow: hidden;*/
 }
 
 .reco span {
-    /*padding: 1rem 0rem 1rem 1rem !important;*/
     width: 1rem;
     display: block;
-    /*float: left;
-    line-height: 1.5rem;*/
 }
 
 .reco select {
-    /*display: block;*/
     color: #000000;
-    /*float: left;*/
-    /*min-width: calc(100% - 4rem) !important;
-    width: calc(100% - 4rem) !important;
-    line-height: 1.5rem;
-    padding: 1rem 1rem !important;
-    border: none !important;
-    outline: none;*/
 }
 
 .filt a {
     background-color: #fff;
     cursor: text;
     display: flex;
-    /*padding: 0rem 0rem;
-    overflow: hidden;*/
 }
 
 .filt span {
-    /*padding: 1rem 0rem 1rem 1rem !important;*/
     width: 1rem;
     display: block;
-    /*float: left;
-    line-height: 1.5rem;*/
 }
 
 .filt input {
@@ -137,7 +110,6 @@
     float: left;
     min-width: calc(100% - 4rem) !important;
     width: calc(100% - 4rem) !important;
-    /*padding: 1rem 1rem !important;*/
     border: none !important;
 }
 
@@ -194,11 +166,6 @@
 }
 
 .cont .titl {
-    /*position: fixed;
-    z-index: 1000;
-    top: 0;
-    width: calc(80% - 1rem);
-    margin-top: 3.5rem;*/
     color: #ececec;
     padding: 0rem 0rem;
     background-color: whitesmoke;
@@ -212,7 +179,6 @@
 .grap .arti {
     margin-right: 1rem;
     margin-bottom: 1rem;
-    /*background-color: #F7E7E0;*/
     background-color: #ffffff;
 }
 
@@ -237,7 +203,6 @@
 }
 
 .grap .arti:nth-child(odd) .indi {
-
     background-color: #134C7F;
 }
 
