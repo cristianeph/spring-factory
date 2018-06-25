@@ -19,7 +19,7 @@
 		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/form.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/formProducto.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formPedido.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -28,39 +28,57 @@
 			<section class="moda" th:include="/common/modal"></section>
 			<section class="body">
 				<section class="menu">
-					<article class="quic" th:include="/common/menu"></article>
+					<article class="quic" th:include="/common/menu-vendedor"></article>
 					<article class="tool">
 						<ul class="acci">
 							<li><span>Opciones</span></li>
-							<li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Grabar Producto</span></a></li>
+							<li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Grabar Pedido</span></a></li>
 						</ul>
 					</article>
 				</section>
 				<section class="cont">
 					<article class="titl">
 						<ul class="subt">
-							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Producto</span></a></li>
+							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Pedido</span></a></li>
 						</ul>
 					</article>
 					<article class="form">
 						<section class="mast">
-							<h1><strong>Datos del Producto</strong></h1>
+							<h1><strong>Datos del Pedido</strong></h1>
 							<form>
 								<div>
-									<input type="hidden" id="producto.id" disabled="disabled" />
+									<input type="hidden" id="pedido.id" disabled="disabled" />
 
-									<label for="producto.descripcion">Descripcion</label>
-									<input type="text" id="producto.descripcion" />
+									<label for="pedido.codigo">Codigo</label>
+									<input type="text" id="pedido.codigo" />
+
+									<label for="pedido.fecha">Fecha</label>
+									<input type="text" id="pedido.fecha" />
 								</div>
 								<div>
-									<label for="producto.formula">Formula</label>
-									<input type="text" id="producto.formula" disabled="disabled" data-reference="" />
-									<a th:href="@{/produccion/formula/action/all}"
+									<label for="pedido.cantidad">Cantidad</label>
+									<input type="text" id="pedido.cantidad" />
+
+									<label for="pedido.producto">Producto</label>
+									<input type="text" id="pedido.producto" disabled="disabled" data-reference="" />
+									<a th:href="@{/produccion/producto/action/all}"
 									   data-operation="cambiar"
-									   data-entity="formula"
-									   data-property="codigo"
-									   data-element="producto.formula"
+									   data-entity="producto"
+									   data-property="descripcion"
+									   data-element="pedido.producto"
 									   data-title="Busqueda de Producto">
+										<span class="icon-pencil"></span> Cambiar
+									</a>
+								</div>
+								<div>
+									<label for="pedido.cliente">Cliente</label>
+									<input type="text" id="pedido.cliente" disabled="disabled" data-reference="" />
+									<a th:href="@{/api/produccion/cliente/all}"
+									   data-operation="cambiar"
+									   data-entity="cliente"
+									   data-property="razonsocial"
+									   data-element="pedido.cliente"
+									   data-title="Busqueda de Cliente">
 										<span class="icon-pencil"></span> Cambiar
 									</a>
 								</div>
@@ -69,8 +87,8 @@
 					</article>
 				</section>
 				<section class="hidd">
-					<a th:href="@{/produccion/producto/action/save}" id="documentSave"></a>
-					<a th:href="@{/produccion/producto/action/find}" id="documentView"></a>
+					<a th:href="@{/produccion/pedido/action/save}" id="documentSave"></a>
+					<a th:href="@{/produccion/pedido/action/find}" id="documentView"></a>
 				</section>
 			</section>
 		</section>

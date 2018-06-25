@@ -10,13 +10,9 @@
 		<link rel="stylesheet" th:href="@{/styles/style.css}" />
 		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
-		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/jquery.tablesorter.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/listPedido.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listCustomer.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -24,20 +20,16 @@
 			<section class="head" th:include="/common/navigation"></section>
 			<section class="body">
 				<section class="menu">
-					<article class="quic" th:include="/common/menu"></article>
+					<article class="quic" th:include="/common/menu-vendedor"></article>
 					<article class="tool">
 						<ul class="acci">
 							<li><span>Opciones</span></li>
-							<li>
-								<a th:href="@{/produccion/pedido/form}">
-									<span class="icon-plus"></span><span>Nuevo Pedido</span>
-								</a>
-							</li>
+							<li><a th:href="@{/modulos/cliente/form}"><span class="icon-plus"></span><span>Nuevo Cliente</span></a></li>
 						</ul>
 						<ul class="reco">
 							<li><span>Registros</span></li>
 							<li>
-								<a th:href="@{/produccion/pedido/action/all}" data-operation="getAll" data-quantity="1">
+								<a th:href="@{/produccion/producto/action/all}" data-operation="getAll" data-quantity="1">
 									<span class="icon-search"></span>
 									<select>
 										<option value="">Registros</option>
@@ -66,7 +58,7 @@
 						<ul class="subt">
 							<li>
 								<a href="#">
-									<span class="icon-list-numbered"></span><span> Modulos - Pedido</span>
+									<span class="icon-list-numbered"></span><span> Modulos - Producto</span>
 								</a>
 							</li>
 							<li>
@@ -81,27 +73,28 @@
 							<thead>
 								<tr>
 									<th><span>#</span></th>
-									<th><span>Codigo</span></th>
-									<th><span>Producto</span></th>
-									<th><span>Cliente</span></th>
-									<th><span>Cantidad</span></th>
-									<th><span>Fecha</span></th>
-									<th class="qopt"><span class="icon-pencil2"></span></th>
+									<th><span>RUC</span></th>
+									<th><span>Razon social</span></th>
+									<th><span>Direccion</span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
-							<tbody></tbody>
+							<tbody>
+								<tr v-for="item in customers">
+									<td><span>{{item.id}}</span></td>
+									<td><span>{{item.ruc}}</span></td>
+									<td><span>{{item.razonsocial}}</span></td>
+									<td><span>{{item.direccion}}</span></td>
+									<td><a v-bind:href="getEditionForm(item)"><span>Actualizar cliente</span></a></td>
+								</tr>
+							</tbody>
 							<tfoot>
 								<tr>
-									<td colspan="8"><span></span></td>
+									<td colspan="5"><span></span></td>
 								</tr>
 							</tfoot>
 						</table>
 					</article>
-				</section>
-				<section class="hidd">
-					<a th:href="@{/produccion/pedido/form}" id="documentView" >fallback</a>
-					<a th:href="@{/produccion/pedido/action/delete/document}" id="documentDelete" >fallback</a>
 				</section>
 			</section>
 		</section>

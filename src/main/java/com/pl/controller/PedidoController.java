@@ -3,6 +3,9 @@ package com.pl.controller;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import com.pl.model.*;
+import com.pl.services.FormulaService;
+import com.pl.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.PageRequest;
@@ -12,9 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pl.model.IngredienteModel;
-import com.pl.model.PedidoModel;
-import com.pl.model.PreparadoModel;
 import com.pl.services.PedidoService;
 
 @RestController
@@ -22,6 +22,12 @@ public class PedidoController {
 	
 	@Autowired
 	private PedidoService pedidoService;
+
+	@Autowired
+    private FormulaService formulaService;
+
+	@Autowired
+    private ProductoService productoService;
 	
 	@RequestMapping("/produccion/pedido/action/save/details")
 	PedidoModel saveDetails(@RequestBody PedidoModel pedido){
@@ -84,10 +90,13 @@ public class PedidoController {
 		PedidoModel pedidoModel = this.pedidoService.save(pedido);
 		
 		if((pedidoModel.getPedidoPreparados().size() == 0) && (pedidoModel.getProducto() != null)){
-			
+            ProductoModel productoTemporal = this.productoService.findById(pedidoModel.getProducto().getId());
 			System.out.println("El pedido cumple con los requisitos para generar la copia de Formula");
+            System.out.println("Producto " + pedidoModel.getProducto().getId());
+            System.out.println("Formula: " + productoTemporal.getFormula().getId());
+			System.out.println("Tamano: " + productoTemporal.getFormula().getFormulaIngredientes().size());
 			
-			for (IngredienteModel ingrediente : pedidoModel.getProducto().getFormula().getFormulaIngredientes()) {
+			for (IngredienteModel ingrediente : productoTemporal.getFormula().getFormulaIngredientes()) {
 				
 				PreparadoModel preparado = new PreparadoModel();
 				preparado.setIdInsumo(ingrediente.getInsumo().getId());

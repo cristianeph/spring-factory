@@ -12,7 +12,7 @@
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/formPruebaproduccion.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/formCustomer.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -21,35 +21,47 @@
 			<section class="moda" th:include="/common/modal"></section>
 			<section class="body">
 				<section class="menu">
-					<article class="quic" th:include="/common/menu"></article>
+					<article class="quic" th:include="/common/menu-vendedor"></article>
 					<article class="tool">
 						<ul class="acci">
 							<li><span>Opciones</span></li>
-							<li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Grabar Prueba Producción</span></a></li>
+							<li><a href="#" data-operation="grabarDocumento"><span class="icon-floppy-disk"></span><span>Grabar Cliente</span></a></li>
 						</ul>
 					</article>
 				</section>
 				<section class="cont">
 					<article class="titl">
 						<ul class="subt">
-							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Prueba Producción</span></a></li>
+							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Cliente</span></a></li>
 						</ul>
 					</article>
 					<article class="form">
 						<section class="mast">
-							<h1><strong>Datos de la Prueba Producción</strong></h1>
-							<form id="test">
+							<h1><strong>Datos del Cliente</strong></h1>
+							<form id="customer">
 								<div>
 									<label for="id">Id</label> 
 									<input type="text" name="id" id="id" v-model="id" readonly="readonly" /> 
 								</div>
 								<div>
-									<label for="descripcion">Descripcion: </label>
-									<input type="text" name="descripcion" id="descripcion" v-model="descripcion" />
+									<label for="razonsocial">Razon social</label> 
+									<input type="text" name="razonsocial" id="razonsocial" v-model="razonsocial" /> 
 								</div>
 								<div>
-									<label for="observaciones">Observaciones: </label>
-									<input type="text" name="observaciones" id="observaciones" v-model="observaciones" />
+									<label for="ruc">RUC</label> 
+									<input type="text" name="ruc" id="ruc" v-model="ruc" maxlength="11" />
+								</div>
+								<div>
+									<label for="direccion">Direccion</label> 
+									<input type="text" name="direccion" id="direccion" v-model="direccion" /> 
+								</div>
+								<div>
+									<label for="siautorizado">Si autoriza compra de vienes fiscalizados?</label>
+									<input type="radio" name="autorizado" id="siautorizado" value="true" v-model="autorizado" />
+								</div>
+								<div>
+									<label for="autorizado">No autoriza compra de vienes fiscalizados?</label>
+									<input type="radio" name="autorizado" id="autorizado" value="false" v-model="autorizado" />
 								</div>
 							</form>
 						</section>

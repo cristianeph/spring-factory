@@ -11,59 +11,79 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(
-	name="cliente"
+        name = "cliente"
 )
 public class ClienteModel {
-	
-	@Transient
-	private Integer rows;
-	@Transient
-	private Integer resume;
-	
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
-	private String razonsocial;
-	private String direccion;
-	private String ruc;
-	
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="cliente")
-	
-	public Integer getRows() {
-		return rows;
-	}
-	public void setRows(Integer rows) {
-		this.rows = rows;
-	}
-	public Integer getResume() {
-		return resume;
-	}
-	public void setResume(Integer resume) {
-		this.resume = resume;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getRazonsocial() {
-		return razonsocial;
-	}
-	public void setRazonsocial(String razonsocial) {
-		this.razonsocial = razonsocial;
-	}
-	public String getDireccion() {
-		return direccion;
-	}
-	public void setDireccion(String direccion) {
-		this.direccion = direccion;
-	}
-	public String getRuc() {
-		return ruc;
-	}
-	public void setRuc(String ruc) {
-		this.ruc = ruc;
-	}
-	
+    /*DEBE TENER UNA AUTORIZACION PARA
+    COMPRAR PRODUCTOS FISCALIZADOS*/
+    @Transient
+    private Integer rows;
+    @Transient
+    private Integer resume;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    private String razonsocial;
+    private String direccion;
+    private String ruc;
+    private Boolean autorizado;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "cliente")
+
+    public Integer getRows() {
+        return rows;
+    }
+
+    public void setRows(Integer rows) {
+        this.rows = rows;
+    }
+
+    public Integer getResume() {
+        return resume;
+    }
+
+    public void setResume(Integer resume) {
+        this.resume = resume;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getRazonsocial() {
+        return razonsocial;
+    }
+
+    public void setRazonsocial(String razonsocial) {
+        this.razonsocial = razonsocial;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getRuc() {
+        return ruc;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
+    }
+
+    public Boolean getAutorizado() {
+        return autorizado;
+    }
+
+    public void setAutorizado(Boolean autorizado) {
+        this.autorizado = autorizado;
+    }
 }

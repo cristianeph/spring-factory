@@ -1,20 +1,16 @@
 <ul>
-	<li><span>Ventas</span></li>
-	<li><span>Contabilidad</span></li>
-	<li><span>Producción</span></li>
-	<li><span>Químico</span></li>
-</ul>
-<ul>
-	<li><span>Operario</span></li>
-    <li><span>Almacenero</span></li>
-</ul>
-<ul>
-	<li><span>Seguridad</span></li>
+	<li><a th:href="@{/modulos/vendedor}"><span>Vendedor</span></a></li>
+	<li><a th:href="@{/modulos/quimico}"><span>Quimico</span></a></li>
+	<li><a th:href="@{/modulos/jefeproduccion}"><span>Jefe Producción</span></a></li>
+	<li><a th:href="@{/modulos/operario}"><span>Operario</span></a></li>
+    <li><a th:href="@{/modulos/almacenero}"><span>Almacenero</span></a></li>
+    <li><a th:href="@{/modulos/contador}"><span>Contador</span></a></li>
+	<li><a th:href="@{/modulos/administrador}"><span>Administrador</span></a></li>
 </ul>
 
 <!--
 <ul>
-	<li><a th:href="@{/modules/home}"><span class="icon-home"></span><span>Inicio</span></a></li>
+	<li><a th:href="@{/modulos/home}"><span class="icon-home"></span><span>Inicio</span></a></li>
 	<li><a th:href="@{/produccion/plan/list}"><span class='icon-clipboard'></span><span>Orden de Trabajo</span></a></li>
 	<li><a th:href="@{/produccion/plan/validate/list}"><span class='icon-clipboard'></span><span>Validar Orden de trabajo</span></a></li>
 	<li><a th:href="@{/produccion/parteproduccion/list}"><span class='icon-alarm'></span><span>Parte de produccion</span></a></li>

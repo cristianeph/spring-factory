@@ -76,7 +76,9 @@ public class FormulaServiceImpl implements FormulaService {
 		
 		if(formula.getCodigo() != ""){
 			System.out.println(formula.getCodigo());
-			predicates.add(builder.like(root.get(FormulaModel_.codigo), "%" + formula.getCodigo() + "%"));
+			Predicate codigoLike = builder.like(root.get("codigo"), "%" + formula.getCodigo() + "%");
+			predicates.add(codigoLike);
+			/*predicates.add(builder.like(root.get(FormulaModel_.codigo), "%" + formula.getCodigo() + "%"));*/
 		}
 		
 		Predicate[] predicatesArray = new Predicate[predicates.size()];

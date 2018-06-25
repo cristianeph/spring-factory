@@ -57,11 +57,13 @@ public class ProductoServiceImpl implements ProductoService {
 		List<Predicate> predicates = new ArrayList<Predicate>();
 		if(producto.getId() != 0){
 			System.out.println(producto.getId());
-			predicates.add(builder.equal(root.get(ProductoModel_.id), producto.getId()));
+			Predicate idEqual = builder.equal(root.get("id"), producto.getId());
+			predicates.add(idEqual);
 		}
 		if(producto.getDescripcion() != ""){
-			System.out.println(producto.getDescripcion());
-			predicates.add(builder.like(root.get(ProductoModel_.descripcion), "%" + producto.getDescripcion() + "%"));
+            System.out.println(producto.getDescripcion());
+            Predicate descriptionLike = builder.like(root.get("descripcion"), "%" + producto.getDescripcion() + "%");
+			predicates.add(descriptionLike);
 		}
 		Predicate[] predicatesArray = new Predicate[predicates.size()];
 		query.where(builder.and(predicates.toArray(predicatesArray)));
@@ -79,6 +81,11 @@ public class ProductoServiceImpl implements ProductoService {
 			Page<ProductoModel> productos = new PageImpl<ProductoModel>(entityManager.createQuery(query.select(root)).getResultList()); 
 			return productos;
 		}
+	}
+
+	@Override
+	public Page<ProductoModel> getAll(PageRequest page) {
+		return this.productoRepository.findAll(page);
 	}
 
 	@Override

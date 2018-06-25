@@ -37,7 +37,7 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public ClienteModel save(ClienteModel cliente) {
-		
+		System.out.println(cliente);
 		return this.clienteRepository.save(cliente);
 		
 	}
@@ -72,7 +72,9 @@ public class ClienteServiceImpl implements ClienteService {
 		
 		if(cliente.getRazonsocial() != ""){
 			System.out.println(cliente.getRazonsocial());
-			predicates.add(builder.like(root.get(ClienteModel_.razonsocial), "%" + cliente.getRazonsocial() + "%"));
+			Predicate razonsocialLike = builder.like(root.get("razonsocial"), "%" + cliente.getRazonsocial() + "%");
+			predicates.add(razonsocialLike);
+			/*predicates.add(builder.like(root.get(ClienteModel_.razonsocial), "%" + cliente.getRazonsocial() + "%"));*/
 		}
 		
 		Predicate[] predicatesArray = new Predicate[predicates.size()];

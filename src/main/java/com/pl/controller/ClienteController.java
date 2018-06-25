@@ -39,7 +39,7 @@ public class ClienteController {
 		return clienteModel;
 	}
 	
-	@RequestMapping("/all")
+	@RequestMapping("/cliente/all")
 	Iterable<ClienteModel> findAll(@RequestBody ClienteModel cliente){
 		Iterable<ClienteModel> clienteModels = this.clienteService.findAll(cliente);
 		return clienteModels;
@@ -56,7 +56,7 @@ public class ClienteController {
 		value = "/cliente", 
 		params = {"page", "size"},
 		method = RequestMethod.GET)
-	Iterable<ClienteModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
+	Iterable<ClienteModel> getAll(@RequestParam Integer page, @RequestParam Integer size) {
 		return this.clienteService.getAll(new PageRequest((page - 1), size));
 	}
 	

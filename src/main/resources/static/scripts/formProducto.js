@@ -16,6 +16,9 @@ $(document).ready(function($){
 			
 			$("input[id='producto.id']").val(data.id);
 			$("input[id='producto.descripcion']").val(data.descripcion);
+            $("input[name='producto.fiscalizado']").filter("[value='" + data.fiscalizado + "']").attr('checked', true);
+            /*$("input[name='producto.fiscalizado']").filter("[value='1']").attr('checked', true);*/
+            /*$("input[id='producto.fiscalizado']").val(data.fiscalizado);*/
 			
 			$("input[id='producto.formula']").val(data.formula.codigo);
 			$("input[id='producto.formula']").attr("data-code", data.formula.id);
@@ -31,7 +34,8 @@ $(document).ready(function($){
 		var parameters = {
 			"id" : parseInt($("input[id='producto.id']").val()),
 			"descripcion": $("input[id='producto.descripcion']").val(),
-			"formula": {
+            "fiscalizado": $("input[name='producto.fiscalizado']:checked").val(),
+            "formula": {
 				"id" : parseInt($("input[id='producto.formula']").attr("data-code"))
 			}
 		};

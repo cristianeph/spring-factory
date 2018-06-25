@@ -25,14 +25,19 @@ strong {
 a {
     font-size: inherit;
     font-family: inherit;
-    text-decoration: none;
-    /*color: #BEC5AD;*/
     color: #FFFFFF;
     transition: all 0.6s;
+    text-decoration: none;
+}
+
+table a,
+form a{
+    color: #197BBD;
 }
 
 a:hover {
-    color: #BEC5AD;
+    color: #083965;
+    text-decoration: underline;
 }
 
 a.sele {
@@ -116,7 +121,7 @@ table {
     background: #ffffff;
     border-collapse: collapse;
     width: 100%;
-    color: #666666;
+    /*color: #666666;*/
 }
 
 table caption {
@@ -132,6 +137,10 @@ table caption strong {
 thead {
     text-transform: uppercase;
     /*background-color: #F7E7E0;*/
+    background-color: whitesmoke;
+}
+
+table tbody tr:hover {
     background-color: whitesmoke;
 }
 
@@ -179,9 +188,9 @@ table tbody tr td:last-child {
     text-align: center;
 }
 
-table tbody tr:hover td span {
+/*table tbody tr:hover td span {
     color: black;
-}
+}*/
 
 table tbody tr td a {
     display: block;

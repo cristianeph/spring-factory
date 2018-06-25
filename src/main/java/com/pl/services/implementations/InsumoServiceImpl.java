@@ -61,7 +61,9 @@ public class InsumoServiceImpl implements InsumoService {
 		}
 		if(insumo.getDescripcion() != ""){
 			System.out.println(insumo.getDescripcion());
-			predicates.add(builder.like(root.get(InsumoModel_.descripcion), "%" + insumo.getDescripcion() + "%"));
+			Predicate descripcionLike = builder.like(root.get("descripcion"), "%" + insumo.getDescripcion() + "%");
+			predicates.add(descripcionLike);
+			/*predicates.add(builder.like(root.get(InsumoModel_.descripcion), "%" + insumo.getDescripcion() + "%"));*/
 		}
 		Predicate[] predicatesArray = new Predicate[predicates.size()];
 		query.where(builder.and(predicates.toArray(predicatesArray)));

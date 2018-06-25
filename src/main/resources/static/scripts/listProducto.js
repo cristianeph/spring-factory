@@ -2,13 +2,43 @@
  * 
  */
 
-var entity = producto;
+var urlPage = location.pathname;
+var urlResource = BASE_PATH + "/api/produccion/producto";
+var urlForm = BASE_PATH + "/modulos/producto/form";
+var list;
+var listData;
 
-var parameters = {
+/*var entity = producto;*/
+/*var parameters = {
 	"entity" : entity,
 	"action" : ""
-};
+};*/
 
+document.addEventListener("DOMContentLoaded", function(){
+    list = new Vue({
+        el: '#list',
+        data: {
+            products: listData
+        },
+        methods: {
+            getEditionForm: function(customer){
+                return urlForm + "?id=" + customer.id;
+            }
+        },
+        beforeMount: function(){
+            var that = this;
+            var url = urlResource + "?page=1&size=15"
+            getData(url).onload = function(){
+                var response = JSON.parse(this.responseText);
+                console.log("valor antes de carga", that.products);
+                that.products = response.content;
+                console.log("valor despues de carga", that.products);
+            }
+        }
+    })
+});
+
+/*
 $(document).ready(function($){
 	
 });
@@ -66,4 +96,4 @@ function deleteDocument(event){
 		
 	}
 	
-}
+}*/
