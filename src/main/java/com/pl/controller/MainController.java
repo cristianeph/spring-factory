@@ -477,32 +477,32 @@ public class MainController {
         return "modulos/vendedor/home";
     }
 
-    @RequestMapping("vendedor/pedido/form")
+    @RequestMapping("modulos/vendedor/pedido/form")
     public String vendedorPedidoForm() {
         return "modulos/vendedor/formPedido";
     }
 
-    @RequestMapping("vendedor/pedido/list")
+    @RequestMapping("modulos/vendedor/pedido/list")
     public String vendedorPedidoList() {
         return "modulos/vendedor/listPedido";
     }
 
-    @RequestMapping("vendedor/producto/form")
+    @RequestMapping("modulos/vendedor/producto/form")
     public String vendedorProductForm() {
         return "modulos/vendedor/formProducto";
     }
 
-    @RequestMapping("vendedor/producto/list")
+    @RequestMapping("modulos/vendedor/producto/list")
     public String vendedorProductList() {
         return "modulos/vendedor/listProducto";
     }
 
-    @RequestMapping("vendedor/cliente/form")
+    @RequestMapping("modulos/vendedor/cliente/form")
     public String vendedorCustomerForm() {
         return "modulos/vendedor/formCliente";
     }
 
-    @RequestMapping("vendedor/cliente/list")
+    @RequestMapping("modulos/vendedor/cliente/list")
     public String vendedorCustomerList() {
         return "modulos/vendedor/listCliente";
     }
