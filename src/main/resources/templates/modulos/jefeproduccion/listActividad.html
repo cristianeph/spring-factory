@@ -12,7 +12,7 @@
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
 		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
 		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/listParteproduccion.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listActividad.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -20,22 +20,27 @@
 			<section class="head" th:include="/common/navigation"></section>
 			<section class="body">
 				<section class="menu">
-					<article class="quic" th:include="/common/menu"></article>
+					<article class="quic" th:include="/common/menu-jefeproduccion"></article>
 					<article class="tool">
 						<ul class="acci">
 							<li><span>Opciones</span></li>
-							<li><a th:href="@{/produccion/parteproduccion/form}"><span class="icon-plus"></span><span>Nuevo Parte producción</span></a></li>
+							<li><a th:href="@{/produccion/actividad/form}"><span class="icon-plus"></span><span>Nuevo Insumo</span></a></li>
 						</ul>
 						<ul class="filt">
 							<li><span>Filtro</span></li>
-							<li><a href="#"><span class="icon-search"></span><input type="text" class="filt" placeholder="Criterio" /></a></li>
+							<li>
+								<a href="#">
+									<span class="icon-search"></span>
+									<input type="text" class="filt" placeholder="Criterio" />
+								</a>
+							</li>
 						</ul>
 					</article>
 				</section>
 				<section class="cont">
 					<article class="titl">
 						<ul class="subt">
-							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Parte de producción</span></a></li>
+							<li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Actividad</span></a></li>
 							<li><a href="#"><span class="icon-database"></span><span></span></a></li>
 						</ul>
 					</article>
@@ -44,30 +49,24 @@
 							<thead>
 								<tr>
 									<th><span>#</span></th>
-									<th><span>Código</span></th>
-									<th><span>Fecha</span></th>
+									<th><span>Descripcion</span></th>
 									<th class="qopt"><span class="icon-pencil2"></span></th>
 								</tr>
 							</thead>
 							<tbody>
-							<tr v-for="item in productions">
-								<td><span>{{item.id}}</span></td>
-								<td><span>{{item.codigo}}</span></td>
-								<td><span>{{item.fecha}}</span></td>
-								<td><a v-bind:href="getEditionForm(item)"><span>Actualizar parte</span></a></td>
-							</tr>
+								<tr v-for="item in activities">
+									<td><span>{{item.id}}</span></td>
+									<td><span>{{item.descripcion}}</span></td>
+									<td><a v-bind:href="getEditionForm(item)"><span>Actualizar actividad</span></a></td>
+								</tr>
 							</tbody>
 							<tfoot>
 								<tr>
-									<td colspan="5"><span></span></td>
+									<td colspan="3"><span></span></td>
 								</tr>
 							</tfoot>
 						</table>
 					</article>
-				</section>
-				<section class="hidd">
-					<a th:href="@{/produccion/card/form}" id="documentView" >fallback</a>
-					<a th:href="@{/produccion/card/action/delete/document}" id="documentDelete" >fallback</a>
 				</section>
 			</section>
 		</section>

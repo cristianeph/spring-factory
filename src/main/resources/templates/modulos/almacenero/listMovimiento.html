@@ -13,7 +13,7 @@
     <link rel="stylesheet" th:href="@{/styles/base.css}"/>
     <script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
     <script type="text/javascript" th:src="@{/scripts/base.js}"></script>
-    <script type="text/javascript" th:src="@{/scripts/listMaquina.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/listMovimiento.js}"></script>
 </head>
 <body>
 <section class="main">
@@ -21,7 +21,7 @@
     <section class="head" th:include="/common/navigation"></section>
     <section class="body">
         <section class="menu">
-            <article class="quic" th:include="/common/menu"></article>
+            <article class="quic" th:include="/common/menu-almacenero"></article>
             <article class="tool">
                 <ul class="acci">
                     <li><span>Opciones</span></li>
@@ -35,7 +35,7 @@
         <section class="cont">
             <article class="titl">
                 <ul class="subt">
-                    <li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Insumos</span></a></li>
+                    <li><a href="#"><span class="icon-list-numbered"></span><span> Modulos - Movimiento de Almacen</span></a></li>
                     <li><a href="#"><span class="icon-database"></span><span></span></a></li>
                 </ul>
             </article>
@@ -44,15 +44,21 @@
                     <thead>
                     <tr>
                         <th><span>#</span></th>
-                        <th><span>Descripcion</span></th>
+                        <th><span>Fecha</span></th>
+                        <th><span>Insumo</span></th>
+                        <th><span>Tipo</span></th>
+                        <th><span>Cantidad</span></th>
                         <th class="qopt"><span class="icon-pencil2"></span></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="item in machines">
+                    <tr v-for="item in warehouse">
                         <td><span>{{item.id}}</span></td>
-                        <td><span>{{item.descripcion}}</span></td>
-                        <td><a v-bind:href="getEditionForm(item)"><span>Actualizar insumo</span></a></td>
+                        <td><span>{{item.fecha}}</span></td>
+                        <td><span>{{(item.movimientoDetalle) ? item.movimientoDetalle.insumo.descripcion : ''}}</span></td>
+                        <td><span>{{(item.tipo) ? 'Ingreso' : 'Salida'}}</span></td>
+                        <td><span>{{item.cantidad}}</span></td>
+                        <td><a v-bind:href="getEditionForm(item)"><span>Actualizar movimiento</span></a></td>
                     </tr>
                     </tbody>
                     <tfoot>

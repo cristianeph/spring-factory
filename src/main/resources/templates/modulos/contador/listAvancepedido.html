@@ -10,13 +10,9 @@
 		<link rel="stylesheet" th:href="@{/styles/style.css}" />
 		<link rel="stylesheet" th:href="@{/styles/basic.css}" />
 		<link rel="stylesheet" th:href="@{/styles/base.css}" />
-		<script type="text/javascript" th:src="@{/scripts/jquery-3.1.0.min.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/jquery.extend.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/jquery.tablesorter.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/basic.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/modules.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/list.js}"></script>
-		<script type="text/javascript" th:src="@{/scripts/listPlan.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/vue.min.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/base.js}"></script>
+		<script type="text/javascript" th:src="@{/scripts/listAvancepedido.js}"></script>
 	</head>
 	<body>
 		<section class="main">
@@ -24,20 +20,20 @@
 			<section class="head" th:include="/common/navigation"></section>
 			<section class="body">
 				<section class="menu">
-					<article class="quic" th:include="/common/menu"></article>
+					<article class="quic" th:include="/common/menu-contador"></article>
 					<article class="tool">
 						<ul class="acci">
 							<li><span>Opciones</span></li>
 							<li>
-								<a th:href="@{/produccion/plan/form}">
-									<span class="icon-plus"></span><span>Nueva Orden</span>
-								</a>
+								<!-- <a th:href="@{/produccion/producto/form}">
+									<span class="icon-plus"></span><span>Nuevo Producto</span>
+								</a> -->
 							</li>
 						</ul>
 						<ul class="reco">
 							<li><span>Registros</span></li>
 							<li>
-								<a th:href="@{/produccion/plan/action/all}" data-operation="getAll" data-quantity="1">
+								<a th:href="@{/produccion/producto/action/all}" data-operation="getAll" data-quantity="1">
 									<span class="icon-search"></span>
 									<select>
 										<option value="">Registros</option>
@@ -66,7 +62,7 @@
 						<ul class="subt">
 							<li>
 								<a href="#">
-									<span class="icon-list-numbered"></span><span> Modulos - Ordenes de Trabajo</span>
+									<span class="icon-list-numbered"></span><span> Modulos - Avance de pedido</span>
 								</a>
 							</li>
 							<li>
@@ -82,30 +78,31 @@
 								<tr>
 									<th><span>#</span></th>
 									<th><span>Codigo</span></th>
-									<th><span>Codigo Pedido</span></th>
-									<th><span>Fecha</span></th>
-									<th><span>Estado</span></th>
-									<th class="qopt"><span class="icon-pencil"></span></th>
-									<th class="qopt"><span class="icon-pencil"></span></th>
+									<th><span>Cantidad</span></th>
+									<th><span>Producto</span></th>
+									<th><span>Cliente</span></th>
 								</tr>
 							</thead>
-							<tbody></tbody>
+							<tbody>
+								<tr v-for="item in orders">
+									<td><span>{{item.id}}</span></td>
+									<td><span>{{item.codigo}}</span></td>
+									<td><span>{{item.cantidad}}</span></td>
+									<td><span>{{item.producto.descripcion}}</span></td>
+									<td><span>{{item.cliente.razonsocial}}</span></td>
+								</tr>
+							</tbody>
 							<tfoot>
 								<tr>
-									<td colspan="7"><span></span></td>
+									<td colspan="6"><span></span></td>
 								</tr>
 							</tfoot>
 						</table>
-						<ul>
-							<li><a class="chec" href="#"><span class="icon icon-checkmark"></span><span>confirmar</span></a></li>
-							<li><a class="view" href="#"><span class="icon icon-search"></span><span>ver</span></a></li>
-							<li><a class="dele" href="#"><span class="icon icon-close"></span><span>eliminar</span></a></li>
-						</ul>
 					</article>
 				</section>
 				<section class="hidd">
-					<a th:href="@{/produccion/plan/form}" id="documentView" >fallback</a>
-					<a th:href="@{/produccion/plan/action/delete}" id="documentDelete" >fallback</a>
+					<a th:href="@{/produccion/producto/form}" id="documentView" >fallback</a>
+					<a th:href="@{/produccion/producto/action/delete/document}" id="documentDelete" >fallback</a>
 				</section>
 			</section>
 		</section>

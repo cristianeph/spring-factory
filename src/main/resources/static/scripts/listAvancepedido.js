@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", function(){
 			orders: listData
 		},
 		beforeMount: function(){
-			let that = this;
-			let url = urlResource + "?page=1&size=15"
+			var that = this;
+			var url = urlResource + "?page=1&size=15"
 			getData(url).onload = function(){
 				var response = JSON.parse(this.responseText);
-				console.log("valor antes de carga", that.inputs);
+				console.log("valor antes de carga", that.orders);
 				that.orders = response.content;
-				console.log("valor despues de carga", that.inputs);
+				console.log("valor despues de carga", that.orders);
 			}
 		}
 	});

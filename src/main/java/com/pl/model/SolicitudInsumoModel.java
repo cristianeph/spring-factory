@@ -6,26 +6,27 @@ import java.util.Date;
 
 @Entity
 @Table(
-        name="solicitudinsumo"
+        name = "solicitudinsumo"
 )
 public class SolicitudInsumoModel {
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-	private String codigo;
+    private String codigo;
 
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "solicitud", cascade = CascadeType.ALL)
-	private MovimientoDetalleModel movimientoDetalle;
+    private MovimientoDetalleModel movimientoDetalle;
 
     private Date fecha;
 
-	@Column(name="idplan")
-	private Integer idPlan;
+    @Column(name = "idplan")
+    private Integer idPlan;
 
-	private BigDecimal cantidad;
+    private BigDecimal cantidad;
 
-	private String estado;
+    private String estado;
 
     public SolicitudInsumoModel() {
     }

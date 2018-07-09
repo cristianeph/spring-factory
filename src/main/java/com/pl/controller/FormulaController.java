@@ -126,7 +126,7 @@ public class FormulaController {
 	@RequestMapping(
 		value = "/api/produccion/formula",
 		params = {"page", "size"},
-		method = RequestMethod.POST)
+		method = RequestMethod.GET)
 	Iterable<FormulaModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
 		return this.formulaService.getAll(new PageRequest((page - 1), size));
 	}

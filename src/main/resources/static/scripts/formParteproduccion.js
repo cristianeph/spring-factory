@@ -13,7 +13,7 @@ var trabajoList = null;
 document.addEventListener("DOMContentLoaded", function () {
 
     Production = new Vue({
-        el: "#produccion",
+        el: "#production",
         data: {
             master: {
                 id: 0,
@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         methods: {
             setData: function(data) {
+                console.log('=====>', data);
                 this.master.id = data.id;
                 this.master.codigo = data.codigo;
                 this.master.fecha = data.fecha;

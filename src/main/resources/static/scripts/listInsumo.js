@@ -4,7 +4,7 @@
 
 var urlPage = location.pathname;
 var urlResource = BASE_PATH + "/api/produccion/insumo";
-var urlForm = BASE_PATH + "/produccion/insumo/form";
+var urlForm = BASE_PATH + "/modulos/quimico/insumo/form";
 var list = null;
 var listData = null;
 

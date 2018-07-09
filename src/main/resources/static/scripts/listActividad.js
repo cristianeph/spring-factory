@@ -4,7 +4,7 @@
 
 var urlPage = location.pathname;
 var urlResource = BASE_PATH + "/api/produccion/actividad";
-var urlForm = BASE_PATH + "/produccion/actividad/form";
+var urlForm = BASE_PATH + "/modulos/jefeproduccion/actividad/form";
 var list = null;
 var listData = null;
 

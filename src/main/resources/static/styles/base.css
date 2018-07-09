@@ -554,6 +554,13 @@
     display: flex;
 }
 
+.menu ul:first-child {
+    display: block;
+    list-style: none;
+    overflow: hidden;
+    transition: all 1s;
+    padding: 0rem;
+}
 .menu ul,
 .cont ul {
     display: block;
@@ -578,6 +585,7 @@
 }
 
 .menu .quic a span:nth-child(1) {
+    padding: 1em 0 1em 1em;
     display: block;
     float: left;
 }

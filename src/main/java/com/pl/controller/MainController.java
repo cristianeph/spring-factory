@@ -243,7 +243,7 @@ public class MainController {
         return "modulos/home";
     }
 
-    @RequestMapping("modulos/almacen")
+    /*@RequestMapping("modulos/almacen")
     public String produccionAlmacen() {
         return "modulos/almacen/home";
     }
@@ -254,13 +254,153 @@ public class MainController {
     }
 
     @RequestMapping("modulos/operario")
-    public String produccionOperario() {
+    public String produccionMainOperario() {
         return "modulos/operario/home";
     }
 
     @RequestMapping("modulos/produccion")
     public String produccionProduccion() {
         return "modulos/produccion/home";
+    }*/
+
+    /*CONTADOR*/
+
+    @RequestMapping("modulos/contador")
+    public String produccionContador() {
+        return "modulos/contador/home";
+    }
+
+    @RequestMapping("modulos/contador/enviarcostos/form")
+    public String contadorEnviarcostosForm() {
+        return "modulos/contador/formSendCosto";
+    }
+
+    @RequestMapping("modulos/contador/enviarcostos/list")
+    public String contadorEnviarcostosList() {
+        return "modulos/contador/listSendCosto";
+    }
+
+    /*@RequestMapping("modulos/contador/costos/form")
+    public String contadorCostosForm() {
+        return "modulos/contador/formCosto";
+    }*/
+
+    @RequestMapping("modulos/contador/costos/list")
+    public String contadorCostosList() {
+        return "modulos/contador/listCosto";
+    }
+
+    /*@RequestMapping("modulos/contador/avancepedido/form")
+    public String contadorAvancePedidoForm() {
+        return "modulos/contador/formAvancepedido";
+    }*/
+
+    @RequestMapping("modulos/contador/avancepedido/list")
+    public String contadorAvancePedidoList() {
+        return "modulos/contador/listAvancepedido";
+    }
+
+
+
+    /*ALMACENERO*/
+
+    @RequestMapping("modulos/almacenero")
+    public String produccionAlmacenero() {
+        return "modulos/almacenero/home";
+    }
+
+    @RequestMapping("modulos/almacenero/movimiento/form")
+    public String almaceneroMovimientoForm() {
+        return "modulos/almacenero/formMovimiento";
+    }
+
+    @RequestMapping("modulos/almacenero/movimiento/list")
+    public String almaceneroMovimientoList() {
+        return "modulos/almacenero/listMovimiento";
+    }
+
+    /*@RequestMapping("modulos/almacenero/solicitudinsumo/form")
+    public String almaceneroSolicitudinsumoForm() {
+        return "modulos/almacenero/formSolicitud";
+    }*/
+
+    @RequestMapping("modulos/almacenero/solicitudinsumo/list")
+    public String almaceneroSolicitudinsumoList() {
+        return "modulos/almacenero/listSolicitud";
+    }
+
+    /*OPERARIO*/
+
+    @RequestMapping("modulos/operario")
+    public String produccionOperario() {
+        return "modulos/operario/home";
+    }
+
+    @RequestMapping("modulos/operario/parteproduccion/form")
+    public String operarioParteproduccionForm() {
+        return "modulos/operario/formParteproduccion";
+    }
+
+    @RequestMapping("modulos/operario/parteproduccion/list")
+    public String operarioParteproduccionList() {
+        return "modulos/operario/listParteproduccion";
+    }
+
+    /*JEFE PRODUCCION*/
+
+    @RequestMapping("modulos/jefeproduccion")
+    public String produccionJefeproduccion() {
+        return "modulos/jefeproduccion/home";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/actividad/form")
+    public String jefeproduccionActividadForm() {
+        return "modulos/jefeproduccion/formActividad";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/actividad/list")
+    public String jefeproduccionActividadList() {
+        return "modulos/jefeproduccion/listActividad";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/maquina/form")
+    public String jefeproduccionMaquinaForm() {
+        return "modulos/jefeproduccion/formMaquina";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/maquina/list")
+    public String jefeproduccionMaquinaList() {
+        return "modulos/jefeproduccion/listMaquina";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/ordentrabajo/form")
+    public String jefeproduccionOrdentrabajoForm() {
+        return "modulos/jefeproduccion/formOrdentrabajo";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/ordentrabajo/list")
+    public String jefeproduccionOrdentrabajoList() {
+        return "modulos/jefeproduccion/listOrdentrabajo";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/plan/form")
+    public String jefeproduccionPlanForm() {
+        return "modulos/jefeproduccion/formPlan";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/plan/list")
+    public String jefeproduccionPlanList() {
+        return "modulos/jefeproduccion/listPlan";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/validateplan/form")
+    public String jefeproduccionValidateplanForm() {
+        return "modulos/validateplan/formValidateplan";
+    }
+
+    @RequestMapping("modulos/jefeproduccion/validateplan/list")
+    public String jefeproduccionValidateplanList() {
+        return "modulos/validateplan/listValidateplan";
     }
 
     /*QUIMICO*/
@@ -322,12 +462,12 @@ public class MainController {
 
     @RequestMapping("modulos/quimico/insumo/form")
     public String quimicoInsumoForm() {
-        return "modulos/insumo/formSolicitudinsumo";
+        return "modulos/quimico/formInsumo";
     }
 
     @RequestMapping("modulos/quimico/insumo/list")
     public String quimicoInsumoList() {
-        return "modulos/insumo/listSolicitudinsumo";
+        return "modulos/quimico/listInsumo";
     }
 
     /*VENDEDOR*/

@@ -149,7 +149,7 @@ public class PedidoController {
 	@RequestMapping(
 			value = "/api/produccion/pedido",
 			params = {"page", "size"},
-			method = RequestMethod.POST)
+			method = RequestMethod.GET)
 	Iterable<PedidoModel> getAll(@RequestParam Integer page, @RequestParam Integer size){
 		return this.pedidoService.getAll(new PageRequest((page-1), size));
 	}
